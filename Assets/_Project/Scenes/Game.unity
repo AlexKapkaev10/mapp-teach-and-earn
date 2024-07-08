@@ -301,7 +301,7 @@ GameObject:
   - component: {fileID: 1391746624}
   - component: {fileID: 1391746625}
   m_Layer: 0
-  m_Name: TonConnect_Core
+  m_Name: TonConnect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -336,7 +336,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UseWebWallets: 1
   RestoreConnectionOnAwake: 0
-  ManifestURL: https://odyssei.io/tonconnect.json
+  ManifestURL: https://abnormally-open-beetle.ngrok-free.app/tonconnect-manifest.json
   WalletsListSource: 
   WalletsListCacheTTL: 0
 --- !u!1660057539 &9223372036854775807
