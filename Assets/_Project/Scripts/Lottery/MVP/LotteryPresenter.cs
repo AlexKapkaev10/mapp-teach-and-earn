@@ -7,6 +7,7 @@ namespace Project.Lottery
     {
         void SetView(ILotteryView view);
         void AddItem(string itemText);
+        void Clear();
     }
     
     public class LotteryPresenter : ILotteryPresenter
@@ -33,10 +34,18 @@ namespace Project.Lottery
             {
                 return;
             }
+            
+            _view.SetActiveDeleteButton(true);
 
             ILotteryItem item = Object.Instantiate(_config.LotteryItemPrefab, _view.LotteryItemParent);
             item.SetHeader(itemText);
             _model.SetItem(item);
+        }
+
+        public void Clear()
+        {
+            _model.Clear();
+            _view.SetActiveDeleteButton(false);
         }
     }
 }

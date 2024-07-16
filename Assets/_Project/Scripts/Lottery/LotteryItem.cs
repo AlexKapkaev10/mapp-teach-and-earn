@@ -7,6 +7,7 @@ namespace Project.Lottery
     {
         void SetHeader(string textHeader);
         string GetHeader();
+        void Destroy();
     }
     
     public class LotteryItem : MonoBehaviour, ILotteryItem
@@ -20,6 +21,11 @@ namespace Project.Lottery
         public string GetHeader()
         {
             return _textHeader.text;
+        }
+
+        public void Destroy()
+        {
+            Destroy(gameObject);
         }
     }
 }

@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 
 namespace Project.Lottery
@@ -7,6 +6,7 @@ namespace Project.Lottery
     {
         void SetItem(ILotteryItem lotteryItem);
         bool TryAddItem(string itemHeader);
+        void Clear();
     }
     
     public class LotteryModel : ILotteryModel
@@ -28,6 +28,16 @@ namespace Project.Lottery
             }
 
             return true;
+        }
+
+        public void Clear()
+        {
+            foreach (var item in _lotteryItems)
+            {
+                item.Destroy();
+            }
+            
+            _lotteryItems.Clear();
         }
     }
 }
