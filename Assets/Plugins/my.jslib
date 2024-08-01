@@ -1,9 +1,7 @@
 mergeInto(LibraryManager.library, {
 
   Hello: function () {
-    window.alert("Hello, world!");
-    console.log("Hello, world!");
-    console.log(window.Telegram.WebApp.openInvoice);
+    window.Telegram.WebApp.openInvoice("https://t.me/$1K0N2ITWSUkaDQAAdtLZeXeXPfU");
   },
 /*
   Init: function(){
