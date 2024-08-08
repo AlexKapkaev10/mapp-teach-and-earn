@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 329abf37ccf94566ad4d4e6d662f72a5, type: 3}
+  m_Name: ViewsStateMachineConfig
+  m_EditorClassIdentifier: 
+  _viewPrefabs:
+  - {fileID: 5460749311647310639, guid: f293be8115df471499aba0ab078ddd68, type: 3}
+  - {fileID: 2598011214803200957, guid: e388994e99940ef4188e83b56fae4b6f, type: 3}
+  - {fileID: 3570279259286375542, guid: e6ea739fccf3c0140842db927aa11b24, type: 3}
+  - {fileID: 5636728982075948610, guid: f23662942009b694ea1286a07b7eff2b, type: 3}
+  - {fileID: 7794097828476397621, guid: 36d01d5bde8be544bb47c5e52b9684a6, type: 3}
+  - {fileID: 2960759740078323887, guid: 5a4bb775bd9c6cd4ea4fb7575b172d0a, type: 3}
+  - {fileID: 2864308229196923478, guid: a171fc2856587334d9763d1b4d6c5833, type: 3}
+  - {fileID: 3629275089020748720, guid: d3750ab1e6767fb40a7248a6f5fad9eb, type: 3}
+  - {fileID: 8959883872755513169, guid: 85ab510a4d743e4438e308d688cacefc, type: 3}
+  <IsCheckFps>k__BackingField: 1

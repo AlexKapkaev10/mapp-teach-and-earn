@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Soenneker.YouTube.Client</id>
+    <version>2.1.899</version>
+    <authors>Jake Soenneker</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <icon>icon.png</icon>
+    <readme>README.md</readme>
+    <projectUrl>https://github.com/soenneker/soenneker.youtube.client</projectUrl>
+    <description>An async thread-safe singleton for the YouTube client YouTubeExplode</description>
+    <copyright>Copyright © 2023-2024 Jake Soenneker</copyright>
+    <tags>youtube client search video singleton youtubeclientutil c# .net csharp dotnet</tags>
+    <repository type="git" url="https://github.com/soenneker/soenneker.youtube.client" commit="a92c21bb1fbad2de6e92cbcd7b9f4218a0aa04b8" />
+    <dependencies>
+      <group targetFramework="net8.0">
+        <dependency id="Microsoft.Extensions.Logging.Abstractions" version="8.0.1" exclude="Build,Analyzers" />
+        <dependency id="Soenneker.Utils.AsyncSingleton" version="2.1.331" exclude="Build,Analyzers" />
+        <dependency id="Soenneker.Utils.HttpClientCache" version="2.1.644" exclude="Build,Analyzers" />
+        <dependency id="YoutubeExplode" version="6.4.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>
