@@ -2,8 +2,8 @@ using System;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Video;
-using YoutubeExplode;
-using YoutubeExplode.Videos.Streams;
+/*using YoutubeExplode;
+using YoutubeExplode.Videos.Streams;*/
 
 namespace _Project.Scripts.Tools
 {
@@ -14,10 +14,10 @@ namespace _Project.Scripts.Tools
 
         private async void Start()
         {
-            await PlayYouTubeVideo(videoUrl);
+            //await PlayYouTubeVideo(videoUrl);
         }
 
-        private async Task PlayYouTubeVideo(string url)
+        /*private async Task PlayYouTubeVideo(string url)
         {
             var youtube = new YoutubeClient();
             var video = await youtube.Videos.GetAsync(url);
@@ -44,6 +44,6 @@ namespace _Project.Scripts.Tools
             }
 
 
-        }
+        }*/
     }
 }

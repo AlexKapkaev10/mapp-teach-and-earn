@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ViewsStateMachineConfig
   m_EditorClassIdentifier: 
   _viewPrefabs:
+  - {fileID: 2933652006748540083, guid: 6dc911aa5cc4da647a7f44d7a27a3457, type: 3}
   - {fileID: 5460749311647310639, guid: f293be8115df471499aba0ab078ddd68, type: 3}
   - {fileID: 2598011214803200957, guid: e388994e99940ef4188e83b56fae4b6f, type: 3}
   - {fileID: 3570279259286375542, guid: e6ea739fccf3c0140842db927aa11b24, type: 3}

@@ -90,11 +90,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5309330903523352094, guid: 961970b3a845ea14f9d775b9b0f8f2e7, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -50
+      value: -30
       objectReference: {fileID: 0}
     - target: {fileID: 5309330903523352094, guid: 961970b3a845ea14f9d775b9b0f8f2e7, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: -200
       objectReference: {fileID: 0}
     - target: {fileID: 5309330903523352094, guid: 961970b3a845ea14f9d775b9b0f8f2e7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -285,7 +285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec82534facc9e804d900b09c47d22a46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <ViewType>k__BackingField: 3
+  <ViewType>k__BackingField: 4
   _canvasGroup: {fileID: 8701466654281185024}
   _durationVisible: 0
   _ignoreSetVisible: 0

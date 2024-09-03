@@ -5,6 +5,7 @@ namespace Project.Code.Scripts.API
 {
     public interface ITestAPI
     {
+        void Init();
         float GetScore();
         float GetRandomClaim();
         void TransactionSend();
@@ -18,6 +19,11 @@ namespace Project.Code.Scripts.API
         private float _score;
 
         private const string k_saveScoreKey = "saveScore";
+
+        public void Init()
+        {
+            _score = PlayerPrefs.GetFloat(k_saveScoreKey, 0);
+        }
 
         public float GetScore()
         {

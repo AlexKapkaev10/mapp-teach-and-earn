@@ -49,15 +49,16 @@ namespace _Project.Scripts.UI
 
     public enum ViewType
     {
-        None,
-        Character,
-        Clicker,
-        GameInfo,
-        Loader,
-        GradientBg,
-        Activity,
-        CheckFPS,
-        SwitchViewMenu,
-        Quest
+        None = 0,
+        Main = 1,
+        Character = 2,
+        Clicker = 3,
+        GameInfo = 4,
+        Loader = 5,
+        GradientBg = 6,
+        Activity = 7,
+        CheckFPS = 8,
+        SwitchViewMenu = 9,
+        Quest = 10
     }
 }

@@ -1,6 +1,8 @@
+using _Project.Code.Configs.Views;
 using _Project.Scripts.Audio;
 using _Project.Scripts.UI;
 using Project.Code.Scripts.Module.Mining;
+using Project.Scripts;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -10,12 +12,14 @@ namespace Project.Code.Scripts.Architecture
     public class GameScope : BaseScope
     {
         [SerializeField] private ViewsStateMachineConfig _viewsStateMachineConfig;
-        [SerializeField] private AudioControllerConfig _audioControllerConfig; 
+        [SerializeField] private AudioControllerConfig _audioControllerConfig;
+        [SerializeField] private MainPresenterConfig _mainPresenterConfig;
         
         protected override void Configure(IContainerBuilder builder)
         {
             base.Configure(builder);
-            
+
+            builder.RegisterComponentInHierarchy<ITransactionHandler>();
             RegisterMining(builder);
             RegisterFactory(builder);
             RegisterAudioSystem(builder);
@@ -23,11 +27,12 @@ namespace Project.Code.Scripts.Architecture
 
         private void RegisterMining(IContainerBuilder builder)
         {
-            builder.Register<MiningModel>(Lifetime.Singleton)
-                .As<IMiningModel>();
+            builder.Register<MainModel>(Lifetime.Singleton)
+                .As<IMainModel>();
             
-            builder.Register<MiningPresenter>(Lifetime.Singleton)
-                .As<IMiningPresenter>();
+            builder.Register<MainPresenter>(Lifetime.Singleton)
+                .As<IMainPresenter>()
+                .WithParameter(_mainPresenterConfig);
         }
         
         private void RegisterAudioSystem(IContainerBuilder builder)

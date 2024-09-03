@@ -18,9 +18,9 @@ namespace _Project.Scripts.UI.StateMachine
         
         public void Enter()
         {
-            var character = _resolver.Instantiate(_config.GetViewPrefabByType(ViewType.Character), null);
+            var main = _resolver.Instantiate(_config.GetViewPrefabByType(ViewType.Main), null);
             var gameInfo = _resolver.Instantiate(_config.GetViewPrefabByType(ViewType.GameInfo), null);
-            _views.Add(character);
+            _views.Add(main);
             _views.Add(gameInfo);
         }
 

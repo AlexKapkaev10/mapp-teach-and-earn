@@ -30,7 +30,7 @@ namespace _Project.Scripts.Loaders
         {
             while (_slider.value < 1)
             {
-                _slider.value += _loadSimulationSpeed;
+                _slider.value += _loadSimulationSpeed * Time.unscaledTime;
                 yield return null;
             }
             LoadComplete?.Invoke();

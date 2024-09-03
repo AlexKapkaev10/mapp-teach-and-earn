@@ -19,7 +19,7 @@ mergeInto(LibraryManager.library, {
       validUntil: Math.floor(Date.now() / 1000) + 60, // 60 sec
       messages: [
           {
-              address: "UQDvrY8-Gsbxnmip0dqzvVhZrxoWzqYtGCtKt1EIidyo829S",
+              address: 'UQCrooVhxL4NZYMjkZzq55qLjzaDP9wjP98KgdUEuSVxfroE',
               amount: "20000000",
            // stateInit: "base64bocblahblahblah==" // just for instance. Replace with your transaction initState or remove
           }
@@ -29,9 +29,9 @@ mergeInto(LibraryManager.library, {
   try {
       const result = await tonConnectUI.sendTransaction(transaction);
       // const someTxData = await myAppExplorerService.getTransaction(result.boc);
-      window.unityInstanceRef.SendMessage('Handler', 'OnSend', 'Success');
+      window.unityInstanceRef.SendMessage('TransactionHandler', 'OnSend', 'Success');
   } catch (e) {
-      window.unityInstanceRef.SendMessage('Handler', 'OnSend', 'Error');
+      window.unityInstanceRef.SendMessage('TransactionHandler', 'OnSend', 'Error');
       console.error(e);
   }
   }

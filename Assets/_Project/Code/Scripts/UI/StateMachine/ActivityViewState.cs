@@ -18,9 +18,7 @@ namespace _Project.Scripts.UI.StateMachine
         
         public void Enter()
         {
-            var character = _resolver.Instantiate(_config.GetViewPrefabByType(ViewType.Character), null);
             var clicker = _resolver.Instantiate(_config.GetViewPrefabByType(ViewType.Activity), null);
-            _views.Add(character);
             _views.Add(clicker);
         }
 
