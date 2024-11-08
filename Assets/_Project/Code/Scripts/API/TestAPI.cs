@@ -33,6 +33,7 @@ namespace Project.Code.Scripts.API
         public float GetRandomClaim()
         {
             var random = Random.Range(_minClaim, _maxClaim);
+            
             SetScore(random);
             return _score;
         }
