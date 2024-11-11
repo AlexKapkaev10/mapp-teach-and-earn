@@ -1,7 +1,7 @@
-using _Project.Scripts.UI;
+using Project.Scripts.UI;
 using UnityEngine;
 
-namespace _Project.Scripts.Configs
+namespace Project.Scripts.Configs
 {
     [CreateAssetMenu(fileName = nameof(ClickerItemConfig), menuName = "Configs/Clicker/ClickerItemConfig")]
     public class ClickerItemConfig : ScriptableObject

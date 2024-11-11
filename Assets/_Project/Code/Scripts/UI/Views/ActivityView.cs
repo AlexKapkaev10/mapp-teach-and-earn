@@ -1,10 +1,10 @@
 using System.Collections.Generic;
-using _Project.Scripts.UI.Activity;
+using Project.Scripts.UI.Activity;
 using UnityEngine;
 using UnityEngine.UI;
 using VContainer;
 
-namespace _Project.Scripts.UI
+namespace Project.Scripts.UI
 {
     public sealed class ActivityView : View
     {

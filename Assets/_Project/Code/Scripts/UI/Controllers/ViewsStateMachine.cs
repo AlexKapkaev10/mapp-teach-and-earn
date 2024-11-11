@@ -1,14 +1,13 @@
 using System.Collections.Generic;
-using _Project.Scripts.UI.StateMachine;
+using Project.Scripts.UI.StateMachine;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
-namespace _Project.Scripts.UI
+namespace Project.Scripts.UI
 {
     public interface IViewsStateMachine
     {
-        void CreateViews();
         void SwitchStateByType(ViewStateType type);
     }
     
@@ -16,10 +15,11 @@ namespace _Project.Scripts.UI
     {
         private ViewsStateMachineConfig _config = default;
         private Dictionary<ViewStateType, IViewState> _dictionaryStates;
-        private IObjectResolver _resolver = default;
+        
         private IViewState _currentViewState = default;
-        private ViewStateType _currentStateType = ViewStateType.None;
+        
         private ISwitchViewMenu _switchViewMenu;
+        private IObjectResolver _resolver = default;
 
         [Inject]
         private void Construct(IObjectResolver resolver, ViewsStateMachineConfig config)
@@ -40,18 +40,14 @@ namespace _Project.Scripts.UI
             CreateMachine();
         }
 
-        public void CreateViews()
-        {
-            transform.SetParent(null);
-            foreach (var prefab in _config.ViewPrefabs)
-            {
-                _resolver.Instantiate(prefab, transform);
-            }
-        }
-
         public void SwitchStateByType(ViewStateType type)
         {
-            if (_currentStateType == type)
+            if (!_dictionaryStates.TryGetValue(type, out IViewState viewState))
+            {
+                return;
+            }
+            
+            if (_currentViewState == viewState)
             {
                 return;
             }
@@ -60,15 +56,8 @@ namespace _Project.Scripts.UI
             {
                 _currentViewState.Exit();
                 _currentViewState = null;
-                _currentStateType = ViewStateType.None;
             }
-
-            if (!_dictionaryStates.TryGetValue(type, out IViewState viewState))
-            {
-                return;
-            }
-
-            _currentStateType = type;
+            
             _currentViewState = viewState;
             _currentViewState.Enter();
         }

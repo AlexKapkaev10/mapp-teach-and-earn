@@ -1,9 +1,9 @@
-using _Project.Scripts.Bank;
+using Project.Scripts.Bank;
 using TMPro;
 using UnityEngine;
 using VContainer;
 
-namespace _Project.Scripts.UI
+namespace Project.Scripts.UI
 {
     public class GameInfoView : View
     {

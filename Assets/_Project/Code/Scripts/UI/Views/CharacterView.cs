@@ -1,11 +1,11 @@
 using System;
-using _Project.Scripts.Audio;
-using _Project.Scripts.Configs.Views;
-using _Project.Scripts.UI;
+using Project.Scripts.Audio;
+using Project.Scripts.Configs.Views;
+using Project.Scripts.UI;
 using UnityEngine;
 using VContainer;
 
-namespace _Project.Scripts.GameCharacter
+namespace Project.Scripts.GameCharacter
 {
     public class CharacterView : View
     {

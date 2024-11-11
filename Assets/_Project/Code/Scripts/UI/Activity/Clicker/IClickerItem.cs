@@ -1,6 +1,6 @@
 using System;
 
-namespace _Project.Scripts.UI
+namespace Project.Scripts.UI
 {
     public interface IClickerItem
     {

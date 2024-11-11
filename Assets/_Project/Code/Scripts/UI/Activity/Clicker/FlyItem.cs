@@ -2,7 +2,7 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine;
 
-namespace _Project.Scripts.UI
+namespace Project.Scripts.UI
 {
     public interface IAnimateItem
     {

@@ -1,4 +1,4 @@
-namespace _Project.Scripts.UI.Views
+namespace Project.Scripts.UI.Views
 {
     public interface IQuestView
     {

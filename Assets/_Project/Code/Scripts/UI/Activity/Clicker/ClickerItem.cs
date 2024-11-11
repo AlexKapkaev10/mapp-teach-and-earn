@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace _Project.Scripts.UI
+namespace Project.Scripts.UI
 {
     public class ClickerItem : MonoBehaviour
     {

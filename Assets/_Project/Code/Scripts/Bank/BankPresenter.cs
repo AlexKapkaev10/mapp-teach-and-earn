@@ -1,12 +1,12 @@
 using System;
+using VContainer.Unity;
 
-namespace _Project.Scripts.Bank
+namespace Project.Scripts.Bank
 {
-    public interface IBankPresenter
+    public interface IBankPresenter : IInitializable
     {
         event Action<string> GameCoinValueChange;
         string GetGameCoinCount();
-        void InitModel();
         void AddGameCoin(int count);
     }
     
@@ -19,7 +19,6 @@ namespace _Project.Scripts.Bank
         public BankPresenter(IBankModel model)
         {
             _model = model;
-            _model.GameCoinValueChange += OnGameCoinValueChange;
         }
 
         public string GetGameCoinCount()
@@ -27,11 +26,11 @@ namespace _Project.Scripts.Bank
             return _model.GameCoinCount.ToString();
         }
 
-        public void InitModel()
+        public void Initialize()
         {
-            _model.Init();
+            _model.GameCoinValueChange += OnGameCoinValueChange;
         }
-
+        
         public void AddGameCoin(int count)
         {
             _model.SetGameCoins(count);

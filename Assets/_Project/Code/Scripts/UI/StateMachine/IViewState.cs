@@ -1,4 +1,4 @@
-namespace _Project.Scripts.UI.StateMachine
+namespace Project.Scripts.UI.StateMachine
 {
     public interface IViewState
     {

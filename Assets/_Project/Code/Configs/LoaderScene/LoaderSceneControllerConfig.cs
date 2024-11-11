@@ -1,7 +1,7 @@
-using _Project.Scripts.Loaders;
+using Project.Scripts.Loader;
 using UnityEngine;
 
-namespace _Project.Configs.LoaderScene
+namespace Project.Configs.LoaderScene
 {
     [CreateAssetMenu(fileName = nameof(LoaderSceneControllerConfig), menuName = "Configs/Scene/LoaderSceneControllerConfig")]
     public class LoaderSceneControllerConfig : ScriptableObject

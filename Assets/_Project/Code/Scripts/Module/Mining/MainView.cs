@@ -1,4 +1,4 @@
-using _Project.Scripts.UI;
+using Project.Scripts.UI;
 using Project.Scripts;
 using TMPro;
 using UnityEngine;

@@ -1,14 +1,15 @@
 using System;
-using _Project.Scripts.SaveLoad;
+using Project.Scripts.SaveLoad;
+using UnityEngine;
 using VContainer;
+using VContainer.Unity;
 
-namespace _Project.Scripts.Bank
+namespace Project.Scripts.Bank
 {
-    public interface IBankModel
+    public interface IBankModel : IInitializable
     {
         event Action<int> GameCoinValueChange;
         int GameCoinCount { get; }
-        void Init();
         void SetGameCoins(int value);
     }
 
@@ -27,9 +28,11 @@ namespace _Project.Scripts.Bank
             _saveLoadService = saveLoadService;
         }
 
-        public void Init()
+        public void Initialize()
         {
             _gameCoinCount = _saveLoadService.LoadCoinsCount();
+            
+            Debug.Log("Bank Model Init");
         }
 
         public void SetGameCoins(int value)

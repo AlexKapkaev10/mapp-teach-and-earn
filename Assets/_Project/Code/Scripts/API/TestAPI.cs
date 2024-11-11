@@ -1,5 +1,9 @@
 
+using System;
+using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Project.Code.Scripts.API
 {
@@ -47,6 +51,14 @@ namespace Project.Code.Scripts.API
         {
             _score += addValue;
             PlayerPrefs.SetFloat(k_saveScoreKey, _score);
+        }
+
+
+        private async UniTaskVoid SetRandomClaimAsync()
+        {
+            await Task.Delay(TimeSpan.FromSeconds(1));
+            
+            
         }
     }
 }

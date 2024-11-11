@@ -1,8 +1,8 @@
-using _Project.Scripts.UI;
+using Project.Scripts.UI;
 using TMPro;
 using UnityEngine;
 
-namespace _Project.Scripts.Tools
+namespace Project.Scripts.Tools
 {
     public class CheckFps : View
     {

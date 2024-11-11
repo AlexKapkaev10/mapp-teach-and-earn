@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace _Project.Scripts.UI.Activity
+namespace Project.Scripts.UI.Activity
 {
     public interface IActivityButton
     {

@@ -1,7 +1,7 @@
-using _Project.Scripts.GameCharacter;
+using Project.Scripts.GameCharacter;
 using UnityEngine;
 
-namespace _Project.Scripts.Configs.Views
+namespace Project.Scripts.Configs.Views
 {
     [CreateAssetMenu(fileName = nameof(CharacterViewConfig), menuName = "Configs/Views/CharacterViewConfig")]
     public class CharacterViewConfig : ScriptableObject

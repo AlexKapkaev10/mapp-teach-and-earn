@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace _Project.Scripts.UI.Activity
+namespace Project.Scripts.UI.Activity
 {
     
     [CreateAssetMenu(fileName = nameof(ActivityViewConfig), menuName = "Configs/Views/ActivityViewConfig")]

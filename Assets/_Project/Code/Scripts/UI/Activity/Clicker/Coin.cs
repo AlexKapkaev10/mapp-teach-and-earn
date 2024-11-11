@@ -1,11 +1,11 @@
 using System;
-using _Project.Scripts.Configs;
-using _Project.Scripts.ObjectPoll;
 using DG.Tweening;
+using Project.Scripts.Configs;
+using Project.Scripts.ObjectPoll;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace _Project.Scripts.UI
+namespace Project.Scripts.UI
 {
     public class Coin : MonoBehaviour, IPointerClickHandler, IClickerItem
     {

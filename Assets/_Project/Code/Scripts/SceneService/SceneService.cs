@@ -1,6 +1,6 @@
 using UnityEngine.SceneManagement;
 
-namespace _Project.Scripts.Scene
+namespace Project.Scripts.Scene
 {
     public interface ISceneService
     {

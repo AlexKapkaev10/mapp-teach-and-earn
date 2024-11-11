@@ -1,5 +1,5 @@
 using System;
-using _Project.Code.Configs.Views;
+using Project.Code.Configs.Views;
 using Project.Scripts;
 
 namespace Project.Code.Scripts.Module.Mining

@@ -1,4 +1,4 @@
-namespace _Project.Scripts.Skills
+namespace Project.Scripts.Skills
 {
     public interface ISkillsService
     {

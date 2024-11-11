@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace _Project.Scripts.SaveLoad
+namespace Project.Scripts.SaveLoad
 {
     public interface ISaveLoadService
     {

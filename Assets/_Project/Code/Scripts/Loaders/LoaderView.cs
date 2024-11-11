@@ -1,11 +1,11 @@
 using System;
 using System.Collections;
-using _Project.Scripts.Audio;
-using _Project.Scripts.UI;
+using Project.Scripts.Audio;
+using Project.Scripts.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace _Project.Scripts.Loaders
+namespace Project.Scripts.Loader
 {
     public interface ILoaderView
     {

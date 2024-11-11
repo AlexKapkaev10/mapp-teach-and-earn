@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using VContainer;
 using VContainer.Unity;
 
-namespace _Project.Scripts.UI.StateMachine
+namespace Project.Scripts.UI.StateMachine
 {
     public class HomeViewState : IViewState
     {
@@ -20,6 +20,7 @@ namespace _Project.Scripts.UI.StateMachine
         {
             var main = _resolver.Instantiate(_config.GetViewPrefabByType(ViewType.Main), null);
             var gameInfo = _resolver.Instantiate(_config.GetViewPrefabByType(ViewType.GameInfo), null);
+            
             _views.Add(main);
             _views.Add(gameInfo);
         }

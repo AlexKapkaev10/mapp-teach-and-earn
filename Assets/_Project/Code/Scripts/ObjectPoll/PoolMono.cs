@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace _Project.Scripts.ObjectPoll
+namespace Project.Scripts.ObjectPoll
 {
     public class PoolMono<T> where T : MonoBehaviour
     {

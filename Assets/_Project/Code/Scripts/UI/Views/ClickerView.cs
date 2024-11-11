@@ -1,10 +1,10 @@
-using _Project.Scripts.Audio;
-using _Project.Scripts.Bank;
+using Project.Scripts.Audio;
+using Project.Scripts.Bank;
 using TMPro;
 using UnityEngine;
 using VContainer;
 
-namespace _Project.Scripts.UI
+namespace Project.Scripts.UI
 {
     public interface IClickerView
     {

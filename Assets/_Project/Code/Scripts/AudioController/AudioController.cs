@@ -3,7 +3,7 @@ using DG.Tweening;
 using UnityEngine;
 using VContainer;
 
-namespace _Project.Scripts.Audio
+namespace Project.Scripts.Audio
 {
     public interface IAudioController
     {

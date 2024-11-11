@@ -1,10 +1,12 @@
-using _Project.Scripts.Bank;
-using _Project.Scripts.SaveLoad;
-using _Project.Scripts.Scene;
-using _Project.Scripts.Skills;
+using Project.Scripts.Bank;
+using Project.Scripts.SaveLoad;
+using Project.Scripts.Scene;
+using Project.Scripts.Skills;
 using Project.Code.Scripts.API;
+using Project.Scripts.Factory;
 using UnityEngine;
 using VContainer;
+using VContainer.Unity;
 
 namespace Project.Code.Scripts.Architecture
 {
@@ -25,9 +27,10 @@ namespace Project.Code.Scripts.Architecture
         
         private void RegisterBank(IContainerBuilder builder)
         {
-            builder.Register<BankModel>(Lifetime.Singleton)
+            builder.RegisterEntryPoint<BankModel>()
                 .As<IBankModel>();
-            builder.Register<BankPresenter>(Lifetime.Singleton)
+            
+            builder.RegisterEntryPoint<BankPresenter>()
                 .As<IBankPresenter>();
         }
         
@@ -42,6 +45,9 @@ namespace Project.Code.Scripts.Architecture
             builder.Register<SkillsService>(Lifetime.Singleton)
                 .As<ISkillsService>()
                 .WithParameter(_skillsServiceConfig);
+            
+            builder.Register<Factory>(Lifetime.Singleton)
+                .As<IFactory>();
         }
     }
 }

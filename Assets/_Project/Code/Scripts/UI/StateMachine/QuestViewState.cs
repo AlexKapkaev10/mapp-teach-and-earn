@@ -3,7 +3,7 @@ using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
-namespace _Project.Scripts.UI.StateMachine
+namespace Project.Scripts.UI.StateMachine
 {
     public class QuestViewState : IViewState
     {

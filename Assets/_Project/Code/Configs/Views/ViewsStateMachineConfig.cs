@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace _Project.Scripts.UI
+namespace Project.Scripts.UI
 {
     [CreateAssetMenu(fileName = nameof(ViewsStateMachineConfig), menuName = "Configs/UI/StateMachine/ViewsStateMachineConfig")]
     public class ViewsStateMachineConfig : ScriptableObject

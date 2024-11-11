@@ -1,7 +1,7 @@
 using UnityEngine;
 using VContainer;
 
-namespace _Project.Scripts.UI
+namespace Project.Scripts.UI
 {
     public interface ISwitchViewMenu
     {

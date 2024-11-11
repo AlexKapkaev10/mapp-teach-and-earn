@@ -1,10 +1,10 @@
 using System;
-using _Project.Scripts.GameCharacter.Skin;
 using DG.Tweening;
+using Project.Scripts.GameCharacter.Skin;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace _Project.Scripts.GameCharacter
+namespace Project.Scripts.GameCharacter
 {
     public interface ICharacter
     {

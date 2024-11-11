@@ -2,7 +2,7 @@ using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
-namespace _Project.Scripts.Core
+namespace Project.Scripts.Core
 {
     public class LoaderScope : LifetimeScope
     {

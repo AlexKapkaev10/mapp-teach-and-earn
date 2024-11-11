@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace _Project.Scripts.Audio
+namespace Project.Scripts.Audio
 {
     [CreateAssetMenu(fileName = nameof(AudioControllerConfig), menuName = "Configs/Audio/AudioControllerConfig")]
     public class AudioControllerConfig : ScriptableObject

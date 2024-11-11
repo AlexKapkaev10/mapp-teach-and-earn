@@ -1,6 +1,6 @@
-using _Project.Code.Configs.Views;
-using _Project.Scripts.Audio;
-using _Project.Scripts.UI;
+using Project.Code.Configs.Views;
+using Project.Scripts.Audio;
+using Project.Scripts.UI;
 using Project.Code.Scripts.Module.Mining;
 using Project.Scripts;
 using UnityEngine;
