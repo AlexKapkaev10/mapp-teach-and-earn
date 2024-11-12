@@ -1,5 +1,6 @@
 using System.Runtime.InteropServices;
 using Project.Code.Scripts.API;
+using UnityEngine;
 
 namespace Project.Code.Scripts.Module.Mining
 {
@@ -26,7 +27,7 @@ namespace Project.Code.Scripts.Module.Mining
         
         private readonly ITestAPI _testAPI;
         private float _score;
-
+        
         public float Score => _testAPI.GetScore();
 
         private bool isInit = false;
@@ -66,6 +67,8 @@ namespace Project.Code.Scripts.Module.Mining
         {
 #if !UNITY_EDITOR
             Send();
+#else
+            Debug.Log("Editor Buy");
 #endif
         }
 

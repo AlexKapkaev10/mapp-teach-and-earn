@@ -39,7 +39,7 @@ namespace Project.Code.Scripts.API
             var random = Random.Range(_minClaim, _maxClaim);
             
             SetScore(random);
-            return _score;
+            return random;
         }
 
         public void TransactionSend()

@@ -1,6 +1,10 @@
 using System;
+using System.Threading;
+using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using Project.Code.Configs.Views;
 using Project.Scripts;
+using UnityEngine;
 
 namespace Project.Code.Scripts.Module.Mining
 {
@@ -11,6 +15,7 @@ namespace Project.Code.Scripts.Module.Mining
         void Claim();
         void Buy();
         void Upgrade();
+        void ClearLogsTimer();
     }
     
     public class MainPresenter : IMainPresenter
@@ -20,12 +25,13 @@ namespace Project.Code.Scripts.Module.Mining
         private readonly IMainModel _model;
         private readonly ITransactionHandler _transactionHandler;
         private IMainView _view;
-
-        public bool CanClaim { get; private set; } = true;
-
+        private CancellationTokenSource _cts;
+        
         private const string k_onSuccess = "Success";
         private const string k_onError = "Error";
         
+        public bool CanClaim { get; private set; } = true;
+
         public MainPresenter(MainPresenterConfig config, IMainModel model, ITransactionHandler transactionHandler)
         {
             _config = config;
@@ -37,25 +43,29 @@ namespace Project.Code.Scripts.Module.Mining
         public void Init(IMainView view)
         {
             _view = view;
-            _view.UpdateScore(_model.Score.ToString("F"));
+            _view.UpdateScore($"{_model.Score:F} POI");
             _model.SetInit();
         }
 
         private void OnTransactionSend(string message)
         {
-            if (message == k_onSuccess)
+            var isSuccess = message == k_onSuccess;
+            
+            if (isSuccess)
             {
                 TransactionSend();
             }
             
-            _view.UpdateLog(message);
+            _view.UpdateLog(message, isSuccess);
         }
 
         public void Claim()
         {
             _model.Claim(out var value);
-            _view.UpdateScore(value.ToString("F"));
+            _view.UpdateScore($"{_model.Score:F} POI");
             _view.UpdateClaimButton(false);
+            _view.UpdateLog($"Claimed {value:F} poi", true);
+            
             CanClaim = false;
         }
 
@@ -78,6 +88,26 @@ namespace Project.Code.Scripts.Module.Mining
         public void Dispose()
         {
             _transactionHandler.TransactionSend -= OnTransactionSend;
+        }
+
+        public void ClearLogsTimer()
+        {
+            if (_cts != null)
+            {
+                _cts.Cancel();
+                _cts = null;
+            }
+
+            _cts = new CancellationTokenSource();
+            ClearLogsAsync(_cts.Token).Forget();
+        }
+
+        private async UniTaskVoid ClearLogsAsync(CancellationToken token)
+        {
+            await Task.Delay(TimeSpan.FromMilliseconds(_config.ClearLogsDelay), token);
+            
+            _view.ClearLogs();
+            _cts = null;
         }
     }
 }

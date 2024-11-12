@@ -17,7 +17,7 @@ namespace Project.Scripts.Tools
             _frameCount++;
 
             _currentFPS = CalculateCurrentFPS();
-            _textFps.SetText(_currentFPS.ToString());
+            _textFps.SetText($"{_currentFPS.ToString()} fps");
         }
 
         private ushort CalculateCurrentFPS()
