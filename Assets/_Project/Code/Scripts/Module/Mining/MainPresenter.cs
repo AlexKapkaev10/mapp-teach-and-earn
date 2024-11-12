@@ -6,6 +6,7 @@ namespace Project.Code.Scripts.Module.Mining
 {
     public interface IMainPresenter : IDisposable
     {
+        bool CanClaim { get; }
         void Init(IMainView view);
         void Claim();
         void Buy();
@@ -19,6 +20,8 @@ namespace Project.Code.Scripts.Module.Mining
         private readonly IMainModel _model;
         private readonly ITransactionHandler _transactionHandler;
         private IMainView _view;
+
+        public bool CanClaim { get; private set; } = true;
 
         private const string k_onSuccess = "Success";
         private const string k_onError = "Error";
@@ -52,6 +55,8 @@ namespace Project.Code.Scripts.Module.Mining
         {
             _model.Claim(out var value);
             _view.UpdateScore(value.ToString("F"));
+            _view.UpdateClaimButton(false);
+            CanClaim = false;
         }
 
         public void Buy()

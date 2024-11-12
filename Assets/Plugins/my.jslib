@@ -5,7 +5,7 @@ mergeInto(LibraryManager.library, {
 
     Init: function (){
     tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
-      manifestUrl: 'https://abnormally-open-beetle.ngrok-free.app/tonconnect-manifest.json',
+      manifestUrl: 'https://tops-bullfrog-painfully.ngrok-free.app/tonconnect-manifest.json',
       buttonRootId: 'connect-button'
   });
   },

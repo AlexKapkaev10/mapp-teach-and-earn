@@ -10,6 +10,7 @@ namespace Project.Code.Scripts.Module.Mining
     public interface IMainView
     {
         void UpdateScore(string scoreText);
+        void UpdateClaimButton(bool isActive);
         void UpdateLog(string log);
     }
     
@@ -18,8 +19,10 @@ namespace Project.Code.Scripts.Module.Mining
         [SerializeField] private Button _buttonClaim;
         [SerializeField] private Button _buttonBuy;
         [SerializeField] private Button _buttonUpgrade;
+        
         [SerializeField] private TMP_Text _textScore;
         [SerializeField] private TMP_Text _textLog;
+        [SerializeField] private TMP_Text _textButtonClaim;
 
         private ITransactionHandler _transactionHandler;
         
@@ -39,6 +42,7 @@ namespace Project.Code.Scripts.Module.Mining
             _buttonClaim.onClick.AddListener(OnClaimClick);
             _buttonBuy.onClick.AddListener(OnBuyClick);
             _buttonUpgrade.onClick.AddListener(OnUpgradeClick);
+            UpdateClaimButton(_presenter.CanClaim);
         }
 
         private void OnDisable()
@@ -67,6 +71,16 @@ namespace Project.Code.Scripts.Module.Mining
         public void UpdateScore(string scoreText)
         {
             _textScore.SetText(scoreText);
+        }
+
+        public void UpdateClaimButton(bool isActive)
+        {
+            if (!isActive)
+            {
+                _textButtonClaim.SetText("today claimed");
+            }
+            
+            _buttonClaim.interactable = isActive;
         }
 
         public void UpdateLog(string log)

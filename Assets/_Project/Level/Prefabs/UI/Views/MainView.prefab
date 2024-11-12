@@ -225,6 +225,7 @@ MonoBehaviour:
   _buttonUpgrade: {fileID: 2470521595467330849}
   _textScore: {fileID: 7377321894473295650}
   _textLog: {fileID: 2588611271539870912}
+  _textButtonClaim: {fileID: 4129457173902803996}
 --- !u!224 &1359242552203999400 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1404567994136710295, guid: 9d5bcb7a0d252bd418e358654162c578, type: 3}
@@ -604,6 +605,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ButtonUpgrade
       objectReference: {fileID: 0}
+    - target: {fileID: 7694825844775663151, guid: 10cbd099157cd314996d146e295bba60, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -775,7 +780,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6769584421869213497, guid: 10cbd099157cd314996d146e295bba60, type: 3}
       propertyPath: m_text
-      value: buy 100
+      value: buy 100 points
       objectReference: {fileID: 0}
     - target: {fileID: 6769584421869213497, guid: 10cbd099157cd314996d146e295bba60, type: 3}
       propertyPath: m_fontStyle
@@ -1156,6 +1161,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10cbd099157cd314996d146e295bba60, type: 3}
+--- !u!114 &4129457173902803996 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6769584421869213497, guid: 10cbd099157cd314996d146e295bba60, type: 3}
+  m_PrefabInstance: {fileID: 7258855101805237029}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8931707980760875168 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2256144360437715845, guid: 10cbd099157cd314996d146e295bba60, type: 3}
