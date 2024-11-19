@@ -442,6 +442,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: GradientView
       objectReference: {fileID: 0}
+    - target: {fileID: 8265852552969471356, guid: 36d01d5bde8be544bb47c5e52b9684a6, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: 55242140bf48e4e42a32949573fc268a, type: 2}
+    - target: {fileID: 8265852552969471356, guid: 36d01d5bde8be544bb47c5e52b9684a6, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -499,6 +507,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameScope
       objectReference: {fileID: 0}
+    - target: {fileID: 7358779878279531110, guid: 9eb1796e43d58494697761d789b28093, type: 3}
+      propertyPath: _coroutineStarter
+      value: 
+      objectReference: {fileID: 7678316198298404488, guid: b23caa1179732c947bafa1958837d11c, type: 3}
     - target: {fileID: 7358779878279531110, guid: 9eb1796e43d58494697761d789b28093, type: 3}
       propertyPath: _mainPresenterConfig
       value: 

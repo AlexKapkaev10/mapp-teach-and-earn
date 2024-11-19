@@ -1,4 +1,3 @@
-using System.Collections;
 using Project.Scripts.UI;
 using Project.Scripts;
 using TMPro;
@@ -20,20 +19,14 @@ namespace Project.Code.Scripts.Module.Mining
     {
         [SerializeField] private Button _buttonClaim;
         [SerializeField] private Button _buttonBuy;
-        [SerializeField] private Button _buttonUpgrade;
-        
+        [SerializeField] private Button _buttonUpgradeRandom;
+
         [SerializeField] private TMP_Text _textScore;
         [SerializeField] private TMP_Text _textLog;
-        [SerializeField] private TMP_Text _textButtonClaim;
-        [SerializeField] private float _delayValue = 3f;
-
+        
         private ITransactionHandler _transactionHandler;
-
         private IMainPresenter _presenter;
 
-        private Coroutine _clearLogsRoutine;
-        private WaitForSeconds _clearLogsDelay;
-        
         [Inject]
         private void Construct(IMainPresenter presenter)
         {
@@ -47,10 +40,8 @@ namespace Project.Code.Scripts.Module.Mining
             
             _buttonClaim.onClick.AddListener(OnClaimClick);
             _buttonBuy.onClick.AddListener(OnBuyClick);
-            _buttonUpgrade.onClick.AddListener(OnUpgradeClick);
+            _buttonUpgradeRandom.onClick.AddListener(OnUpgradeRandomClick);
 
-            _clearLogsDelay = new WaitForSeconds(_delayValue);
-            
             UpdateClaimButton(_presenter.CanClaim);
         }
 
@@ -58,16 +49,14 @@ namespace Project.Code.Scripts.Module.Mining
         {
             _buttonClaim.onClick.RemoveListener(OnClaimClick);
             _buttonBuy.onClick.RemoveListener(OnBuyClick);
-            _buttonUpgrade.onClick.RemoveListener(OnUpgradeClick);
-
-            _clearLogsDelay = null;
+            _buttonUpgradeRandom.onClick.RemoveListener(OnUpgradeRandomClick);
             
             _presenter.Dispose();
         }
 
         private void OnClaimClick()
         {
-            _presenter.Claim();
+            _presenter.ClaimClick();
         }
 
         private void OnBuyClick()
@@ -75,9 +64,9 @@ namespace Project.Code.Scripts.Module.Mining
             _presenter.Buy();
         }
 
-        private void OnUpgradeClick()
+        private void OnUpgradeRandomClick()
         {
-            _presenter.Upgrade();
+            _presenter.UpgradeRandom();
         }
 
         public void UpdateScore(string scoreText)
@@ -87,39 +76,18 @@ namespace Project.Code.Scripts.Module.Mining
 
         public void UpdateClaimButton(bool isActive)
         {
-            if (!isActive)
-            {
-                _textButtonClaim.SetText("today claimed");
-            }
-            
-            _buttonClaim.interactable = isActive;
+            _buttonClaim.gameObject.SetActive(isActive);
         }
 
         public void UpdateLog(string log, bool isSuccess)
         {
             _textLog.SetText(log);
             _textLog.color = isSuccess ? Color.green : Color.red;
-
-            if (_clearLogsRoutine != null)
-            {
-                StopCoroutine(_clearLogsRoutine);
-                _clearLogsRoutine = null;
-            }
-            
-            _clearLogsRoutine = StartCoroutine(ClearLogsAsync());
         }
 
         public void ClearLogs()
         {
             _textLog.SetText("");
-        }
-
-        private IEnumerator ClearLogsAsync()
-        {
-            yield return _clearLogsDelay;
-            
-            ClearLogs();
-            _clearLogsRoutine = null;
         }
     }
 }

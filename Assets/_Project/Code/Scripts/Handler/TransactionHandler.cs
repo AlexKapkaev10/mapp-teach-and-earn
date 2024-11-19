@@ -1,7 +1,5 @@
 using System;
-using Project.Code.Scripts.API;
 using UnityEngine;
-using VContainer;
 
 namespace Project.Scripts
 {
@@ -14,12 +12,6 @@ namespace Project.Scripts
     public class TransactionHandler : MonoBehaviour, ITransactionHandler
     {
         public event Action<string> TransactionSend;
-
-        [Inject]
-        private void Configure(ITestAPI testAPI)
-        {
-            Debug.Log(testAPI);
-        }
 
         private void OnDestroy()
         {

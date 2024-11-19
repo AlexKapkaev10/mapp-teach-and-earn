@@ -1,3 +1,4 @@
+using System;
 using System.Runtime.InteropServices;
 using Project.Code.Scripts.API;
 using UnityEngine;
@@ -8,8 +9,9 @@ namespace Project.Code.Scripts.Module.Mining
     {
         float Score { get; }
         void SetInit();
-        void Claim(out float claimValue);
-        void Upgrade();
+        void Claim(Action<float> callBack);
+        void UpgradeForCoins();
+        void UpgradeForStars();
         void Buy();
         void TransactionSend();
     }
@@ -25,16 +27,15 @@ namespace Project.Code.Scripts.Module.Mining
         [DllImport("__Internal")]
         private static extern void Send();
         
-        private readonly ITestAPI _testAPI;
+        private readonly IClientAPI _clientAPI;
         private float _score;
+        private bool isInit;
+
+        public float Score => _clientAPI.GetScore();
         
-        public float Score => _testAPI.GetScore();
-
-        private bool isInit = false;
-
-        public MainModel(ITestAPI testAPI)
+        public MainModel(IClientAPI clientAPI)
         {
-            _testAPI = testAPI;
+            _clientAPI = clientAPI;
         }
 
         public void SetInit()
@@ -47,19 +48,20 @@ namespace Project.Code.Scripts.Module.Mining
 #if !UNITY_EDITOR
             Init();
 #endif
-            _testAPI.Init();
             isInit = true;
         }
 
-        public void Claim(out float claimValue)
+        public void Claim(Action<float> callBack)
         {
-            claimValue = _testAPI.GetRandomClaim();
+            _clientAPI.RandomClaim(callBack);
         }
 
-        public void Upgrade()
+        public void UpgradeForStars()
         {
 #if !UNITY_EDITOR
             BuyForStars();
+#else
+            Debug.Log("Editor Upgrade For Stars");
 #endif
         }
     
@@ -72,9 +74,14 @@ namespace Project.Code.Scripts.Module.Mining
 #endif
         }
 
+        public void UpgradeForCoins()
+        {
+            Debug.Log("Editor Upgrade For Coins");
+        }
+
         public void TransactionSend()
         {
-            _testAPI.TransactionSend();
+            _clientAPI.TransactionSend();
         }
     }
 }

@@ -38,7 +38,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5309330903523352094, guid: 961970b3a845ea14f9d775b9b0f8f2e7, type: 3}
       propertyPath: m_Pivot.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5309330903523352094, guid: 961970b3a845ea14f9d775b9b0f8f2e7, type: 3}
       propertyPath: m_Pivot.y
@@ -46,7 +46,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5309330903523352094, guid: 961970b3a845ea14f9d775b9b0f8f2e7, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5309330903523352094, guid: 961970b3a845ea14f9d775b9b0f8f2e7, type: 3}
       propertyPath: m_AnchorMax.y
@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5309330903523352094, guid: 961970b3a845ea14f9d775b9b0f8f2e7, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5309330903523352094, guid: 961970b3a845ea14f9d775b9b0f8f2e7, type: 3}
       propertyPath: m_AnchorMin.y
@@ -98,11 +98,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5309330903523352094, guid: 961970b3a845ea14f9d775b9b0f8f2e7, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 50
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 5309330903523352094, guid: 961970b3a845ea14f9d775b9b0f8f2e7, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -150
+      value: -180
       objectReference: {fileID: 0}
     - target: {fileID: 5309330903523352094, guid: 961970b3a845ea14f9d775b9b0f8f2e7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -119,6 +119,10 @@ PrefabInstance:
     - target: {fileID: 6532394552950141639, guid: 961970b3a845ea14f9d775b9b0f8f2e7, type: 3}
       propertyPath: m_Name
       value: GameCoins
+      objectReference: {fileID: 0}
+    - target: {fileID: 7020516347093279140, guid: 961970b3a845ea14f9d775b9b0f8f2e7, type: 3}
+      propertyPath: m_Padding.m_Right
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8534955062214920730, guid: 961970b3a845ea14f9d775b9b0f8f2e7, type: 3}
       propertyPath: m_AnchorMax.y

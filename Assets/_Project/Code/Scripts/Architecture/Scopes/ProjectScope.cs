@@ -1,9 +1,10 @@
 using Project.Scripts.Bank;
-using Project.Scripts.SaveLoad;
 using Project.Scripts.Scene;
 using Project.Scripts.Skills;
 using Project.Code.Scripts.API;
+using Project.Scripts.Architecture;
 using Project.Scripts.Factory;
+using Project.Scripts.Tools;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -13,13 +14,16 @@ namespace Project.Code.Scripts.Architecture
     public class ProjectScope : BaseScope
     {
         [SerializeField] private SkillsServiceConfig _skillsServiceConfig;
+        [SerializeField] private CoroutineStarter _coroutineStarter;
         
         protected override void Configure(IContainerBuilder builder)
         {
             base.Configure(builder);
+            builder.RegisterComponentInNewPrefab(_coroutineStarter, Lifetime.Singleton)
+                .As<ICoroutineStarter>();
 
-            builder.Register<TestAPI>(Lifetime.Singleton)
-                .As<ITestAPI>();
+            builder.RegisterEntryPoint<ClientAPI>()
+                .As<IClientAPI>();
             
             RegisterBank(builder);
             RegisterServices(builder);
@@ -39,7 +43,7 @@ namespace Project.Code.Scripts.Architecture
             builder.Register<SceneService>(Lifetime.Singleton)
                 .As<ISceneService>();
             
-            builder.Register<SaveLoadServiceSimple>(Lifetime.Singleton)
+            builder.Register<SaveLoadService>(Lifetime.Singleton)
                 .As<ISaveLoadService>();
             
             builder.Register<SkillsService>(Lifetime.Singleton)

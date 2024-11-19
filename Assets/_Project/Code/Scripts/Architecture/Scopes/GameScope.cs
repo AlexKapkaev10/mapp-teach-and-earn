@@ -14,7 +14,7 @@ namespace Project.Code.Scripts.Architecture
         [SerializeField] private ViewsStateMachineConfig _viewsStateMachineConfig;
         [SerializeField] private AudioControllerConfig _audioControllerConfig;
         [SerializeField] private MainPresenterConfig _mainPresenterConfig;
-        
+
         protected override void Configure(IContainerBuilder builder)
         {
             base.Configure(builder);

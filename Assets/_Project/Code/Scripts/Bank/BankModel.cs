@@ -1,6 +1,5 @@
 using System;
-using Project.Scripts.SaveLoad;
-using UnityEngine;
+using Project.Scripts.Architecture;
 using VContainer;
 using VContainer.Unity;
 
@@ -30,9 +29,7 @@ namespace Project.Scripts.Bank
 
         public void Initialize()
         {
-            _gameCoinCount = _saveLoadService.LoadCoinsCount();
-            
-            Debug.Log("Bank Model Init");
+            _gameCoinCount = _saveLoadService.GetCoinsCount();
         }
 
         public void SetGameCoins(int value)

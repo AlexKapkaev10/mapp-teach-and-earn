@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using Project.Code.Configs.Views;
 using Project.Scripts;
-using UnityEngine;
+using VContainer;
 
 namespace Project.Code.Scripts.Module.Mining
 {
@@ -12,9 +12,9 @@ namespace Project.Code.Scripts.Module.Mining
     {
         bool CanClaim { get; }
         void Init(IMainView view);
-        void Claim();
+        void ClaimClick();
         void Buy();
-        void Upgrade();
+        void UpgradeRandom();
         void ClearLogsTimer();
     }
     
@@ -32,19 +32,21 @@ namespace Project.Code.Scripts.Module.Mining
         
         public bool CanClaim { get; private set; } = true;
 
+        [Inject]
         public MainPresenter(MainPresenterConfig config, IMainModel model, ITransactionHandler transactionHandler)
         {
             _config = config;
             _model = model;
             _transactionHandler = transactionHandler;
-            _transactionHandler.TransactionSend += OnTransactionSend;
         }
 
         public void Init(IMainView view)
         {
+            _transactionHandler.TransactionSend += OnTransactionSend;
+            
             _view = view;
-            _view.UpdateScore($"{_model.Score:F} POI");
             _model.SetInit();
+            _view.UpdateScore($"{_model.Score:F} POI");
         }
 
         private void OnTransactionSend(string message)
@@ -59,12 +61,16 @@ namespace Project.Code.Scripts.Module.Mining
             _view.UpdateLog(message, isSuccess);
         }
 
-        public void Claim()
+        public void ClaimClick()
         {
-            _model.Claim(out var value);
-            _view.UpdateScore($"{_model.Score:F} POI");
+            _model.Claim(OnClaim);
             _view.UpdateClaimButton(false);
-            _view.UpdateLog($"Claimed {value:F} poi", true);
+        }
+
+        private void OnClaim(float claimValue)
+        {
+            _view.UpdateScore($"{_model.Score:F} POI");
+            _view.UpdateLog($"Claimed {claimValue:F} poi", true);
             
             CanClaim = false;
         }
@@ -74,9 +80,9 @@ namespace Project.Code.Scripts.Module.Mining
             _model.Buy();
         }
 
-        public void Upgrade()
+        public void UpgradeRandom()
         {
-            _model.Upgrade();
+            _model.UpgradeForCoins();
         }
 
         public void TransactionSend()
