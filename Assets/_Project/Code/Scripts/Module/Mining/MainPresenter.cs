@@ -1,9 +1,7 @@
 using System;
-using System.Threading;
-using System.Threading.Tasks;
-using Cysharp.Threading.Tasks;
 using Project.Code.Configs.Views;
 using Project.Scripts;
+using Project.Scripts.Bank;
 using VContainer;
 
 namespace Project.Code.Scripts.Module.Mining
@@ -15,7 +13,6 @@ namespace Project.Code.Scripts.Module.Mining
         void ClaimClick();
         void Buy();
         void UpgradeRandom();
-        void ClearLogsTimer();
     }
     
     public class MainPresenter : IMainPresenter
@@ -25,18 +22,23 @@ namespace Project.Code.Scripts.Module.Mining
         private readonly IMainModel _model;
         private readonly ITransactionHandler _transactionHandler;
         private IMainView _view;
-        private CancellationTokenSource _cts;
-        
+        private readonly IBank _bank;
+
         private const string k_onSuccess = "Success";
         private const string k_onError = "Error";
         
         public bool CanClaim { get; private set; } = true;
 
         [Inject]
-        public MainPresenter(MainPresenterConfig config, IMainModel model, ITransactionHandler transactionHandler)
+        public MainPresenter(
+            IMainModel model, 
+            ITransactionHandler transactionHandler,
+            IBank bank,
+            MainPresenterConfig config)
         {
             _config = config;
             _model = model;
+            _bank = bank;
             _transactionHandler = transactionHandler;
         }
 
@@ -46,7 +48,7 @@ namespace Project.Code.Scripts.Module.Mining
             
             _view = view;
             _model.SetInit();
-            _view.UpdateScore($"{_model.Score:F} POI");
+            _view.UpdateScore($"{_bank.GetPoints():F} POI");
         }
 
         private void OnTransactionSend(string message)
@@ -67,10 +69,10 @@ namespace Project.Code.Scripts.Module.Mining
             _view.UpdateClaimButton(false);
         }
 
-        private void OnClaim(float claimValue)
+        private void OnClaim(bool isSuccess, float claimPoints)
         {
-            _view.UpdateScore($"{_model.Score:F} POI");
-            _view.UpdateLog($"Claimed {claimValue:F} poi", true);
+            _view.UpdateScore($"{_bank.GetPoints():F} POI");
+            _view.UpdateLog($"Claimed {claimPoints:F} poi", true);
             
             CanClaim = false;
         }
@@ -88,32 +90,12 @@ namespace Project.Code.Scripts.Module.Mining
         public void TransactionSend()
         {
             _model.TransactionSend();
-            _view.UpdateScore(_model.Score.ToString("F"));
+            _view.UpdateScore(_bank.GetPoints().ToString("F"));
         }
 
         public void Dispose()
         {
             _transactionHandler.TransactionSend -= OnTransactionSend;
-        }
-
-        public void ClearLogsTimer()
-        {
-            if (_cts != null)
-            {
-                _cts.Cancel();
-                _cts = null;
-            }
-
-            _cts = new CancellationTokenSource();
-            ClearLogsAsync(_cts.Token).Forget();
-        }
-
-        private async UniTaskVoid ClearLogsAsync(CancellationToken token)
-        {
-            await Task.Delay(TimeSpan.FromMilliseconds(_config.ClearLogsDelay), token);
-            
-            _view.ClearLogs();
-            _cts = null;
         }
     }
 }

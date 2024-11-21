@@ -8,31 +8,25 @@ namespace Project.Scripts.Architecture
         float GetMaxClaim();
         float GetPoints();
         void SavePoints(float scoreValue);
-        int GetCoinsCount();
-        void SaveCoinsCount(int count);
+        int GetCoins();
+        void SaveCoins(int count);
     }
     
     public class SaveLoadService : ISaveLoadService
     {
         private const string k_saveScoreKey = "saveScore";
-        private const string _saveGameCoinKey = "saveGameCoinCount";
-        
-        private const string _saveMinClaimKey = "saveMinClaim";
-        private const string _saveMaxClaimKey = "saveMaxClaim";
+        private const string k_saveGameCoinKey = "saveGameCoinCount";
+        private const string k_saveMinClaimKey = "saveMinClaim";
+        private const string k_saveMaxClaimKey = "saveMaxClaim";
 
         public void SavePoints(float scoreValue)
         {
             PlayerPrefs.SetFloat(k_saveScoreKey, scoreValue);
         }
 
-        public float GetMinClaim()
+        public void SaveCoins(int count)
         {
-            return PlayerPrefs.GetFloat(_saveMinClaimKey, 0.1f);
-        }
-
-        public float GetMaxClaim()
-        {
-            return PlayerPrefs.GetFloat(_saveMaxClaimKey, 0.5f);
+            PlayerPrefs.SetInt(k_saveGameCoinKey, count);
         }
 
         public float GetPoints()
@@ -40,14 +34,19 @@ namespace Project.Scripts.Architecture
             return PlayerPrefs.GetFloat(k_saveScoreKey, 0f);
         }
 
-        public void SaveCoinsCount(int count)
+        public int GetCoins()
         {
-            PlayerPrefs.SetInt(_saveGameCoinKey, count);
+            return PlayerPrefs.GetInt(k_saveGameCoinKey, 0);
         }
 
-        public int GetCoinsCount()
+        public float GetMinClaim()
         {
-            return PlayerPrefs.GetInt(_saveGameCoinKey, 0);
+            return PlayerPrefs.GetFloat(k_saveMinClaimKey, 0.1f);
+        }
+
+        public float GetMaxClaim()
+        {
+            return PlayerPrefs.GetFloat(k_saveMaxClaimKey, 0.5f);
         }
     }
 }

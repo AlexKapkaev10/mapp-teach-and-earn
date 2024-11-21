@@ -1,104 +1,65 @@
 using System;
 using System.Collections;
-using Project.Scripts.Architecture;
+using Project.Scripts.Bank;
 using Project.Scripts.Tools;
 using UnityEngine;
 using UnityEngine.Networking;
 using VContainer;
-using VContainer.Unity;
-using Random = UnityEngine.Random;
 
 namespace Project.Code.Scripts.API
 {
-    public interface IClientAPI : IInitializable
+    public interface IClientAPI
     {
-        float GetScore();
-        void RandomClaim(Action<float> callBack);
+        void RandomClaim(Action<bool, float> callBack);
         void TransactionSend();
     }
     
     public class ClientAPI : IClientAPI
     {
         private ICoroutineStarter _coroutineStarter;
-        private ISaveLoadService _saveLoadService;
+        private IBank _bank;
 
-        private float _minClaim = 0.1f;
-        private float _maxClaim = 0.5f;
-        
-        private float _score;
-        
         private const string _url = "https://jsonplaceholder.typicode.com/posts";
 
         [Inject]
-        private void Construct(ICoroutineStarter coroutineStarter, ISaveLoadService saveLoadService)
+        private void Construct(ICoroutineStarter coroutineStarter, IBank bank)
         {
             _coroutineStarter = coroutineStarter;
-            _saveLoadService = saveLoadService;
+            _bank = bank;
         }
 
-        public void Initialize()
+        public void RandomClaim(Action<bool, float> callBack)
         {
-            _score = _saveLoadService.GetPoints();
-        }
-
-        public float GetScore()
-        {
-            return _saveLoadService.GetPoints();
-        }
-
-        public void RandomClaim(Action<float> callBack)
-        {
-            _coroutineStarter.Starter.StartCoroutine(GetRandomClaimAsync(callBack, _url));
+            _coroutineStarter.Starter.StartCoroutine(ClaimPointsAsync(callBack, _url));
         }
 
         public void TransactionSend()
         {
-            AddScore(100f);
+            _bank.SetPoints(100);
         }
 
-        private void AddScore(float addValue)
+        private IEnumerator ClaimPointsAsync(Action<bool, float> callBack, string url)
         {
-            _score += addValue;
-            _saveLoadService.SavePoints(_score);
-        }
+            using UnityWebRequest request = UnityWebRequest.Get(url);
+            float randomPoints = default;
+            bool isSuccess = default;
+            
+            yield return request.SendWebRequest();
+            
+            isSuccess = request.result == UnityWebRequest.Result.Success;
 
-        private IEnumerator GetRandomClaimAsync(Action<float> callBack, string url)
-        {
-            using (UnityWebRequest request = UnityWebRequest.Get(url))
+            if (isSuccess)
             {
-                yield return request.SendWebRequest();
-                
-                if (request.result != UnityWebRequest.Result.Success)
-                {
-                    Debug.LogError("Error: " + request.error);
-                }
-                else
-                {
-                    Debug.Log("Response API: " + request.downloadHandler.text);
-                }
-                
-                var random = Random.Range(_saveLoadService.GetMinClaim(), _saveLoadService.GetMaxClaim());
-                AddScore(random);
-                callBack?.Invoke(random);
+                Debug.Log("Response API: " + request.downloadHandler.text);
+                randomPoints = _bank.ClaimPoints();
+                _bank.SetPoints(randomPoints);
             }
-        }
-        
-        private IEnumerator GetRequestAsync(string url)
-        {
-            using (UnityWebRequest request = UnityWebRequest.Get(url))
+            else
             {
-                yield return request.SendWebRequest();
-                
-                if (request.result != UnityWebRequest.Result.Success)
-                {
-                    Debug.LogError("Error: " + request.error);
-                }
-                else
-                {
-                    Debug.Log("Response API: " + request.downloadHandler.text);
-                }
+                Debug.LogError("Error: " + request.error);
             }
+            
+            callBack?.Invoke(isSuccess, randomPoints);
         }
-        
     }
 }

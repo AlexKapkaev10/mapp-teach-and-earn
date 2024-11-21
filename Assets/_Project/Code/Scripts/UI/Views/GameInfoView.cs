@@ -9,10 +9,10 @@ namespace Project.Scripts.UI
     {
         [SerializeField] private TMP_Text _textCoins;
         
-        private IBankPresenter _presenter;
+        private IBank _presenter;
 
         [Inject]
-        private void Construct(IBankPresenter presenter)
+        private void Construct(IBank presenter)
         {
             _presenter = presenter;
         }
@@ -20,18 +20,18 @@ namespace Project.Scripts.UI
         protected override void OnEnable()
         {
             base.OnEnable();
-            UpdateCoinsText(_presenter.GetGameCoinCount());
-            _presenter.GameCoinValueChange += UpdateCoinsText;
+            UpdateCoinsText(_presenter.GetCoins());
+            _presenter.CoinValueChanged += UpdateCoinsText;
         }
 
         private void OnDisable()
         {
-            _presenter.GameCoinValueChange -= UpdateCoinsText;
+            _presenter.CoinValueChanged -= UpdateCoinsText;
         }
 
-        public void UpdateCoinsText(string coinsText)
+        private void UpdateCoinsText(int coinsText)
         {
-            _textCoins.SetText(coinsText);
+            _textCoins.SetText(coinsText.ToString());
         }
     }
 }

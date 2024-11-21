@@ -7,9 +7,8 @@ namespace Project.Code.Scripts.Module.Mining
 {
     public interface IMainModel
     {
-        float Score { get; }
         void SetInit();
-        void Claim(Action<float> callBack);
+        void Claim(Action<bool, float> callBack);
         void UpgradeForCoins();
         void UpgradeForStars();
         void Buy();
@@ -28,11 +27,8 @@ namespace Project.Code.Scripts.Module.Mining
         private static extern void Send();
         
         private readonly IClientAPI _clientAPI;
-        private float _score;
         private bool isInit;
 
-        public float Score => _clientAPI.GetScore();
-        
         public MainModel(IClientAPI clientAPI)
         {
             _clientAPI = clientAPI;
@@ -51,7 +47,7 @@ namespace Project.Code.Scripts.Module.Mining
             isInit = true;
         }
 
-        public void Claim(Action<float> callBack)
+        public void Claim(Action<bool, float> callBack)
         {
             _clientAPI.RandomClaim(callBack);
         }

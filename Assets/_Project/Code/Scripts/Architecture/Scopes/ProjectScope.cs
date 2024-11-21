@@ -31,11 +31,8 @@ namespace Project.Code.Scripts.Architecture
         
         private void RegisterBank(IContainerBuilder builder)
         {
-            builder.RegisterEntryPoint<BankModel>()
-                .As<IBankModel>();
-            
-            builder.RegisterEntryPoint<BankPresenter>()
-                .As<IBankPresenter>();
+            builder.RegisterEntryPoint<Bank>()
+                .As<IBank>();
         }
         
         private void RegisterServices(IContainerBuilder builder)

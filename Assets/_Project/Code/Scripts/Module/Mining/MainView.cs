@@ -89,5 +89,11 @@ namespace Project.Code.Scripts.Module.Mining
         {
             _textLog.SetText("");
         }
+
+        public void OpenUrl()
+        {
+            string url = "https://t.me/alexoneDevelop";
+            Application.OpenURL(url);
+        }
     }
 }
