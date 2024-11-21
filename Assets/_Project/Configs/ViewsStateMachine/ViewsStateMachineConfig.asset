@@ -23,4 +23,10 @@ MonoBehaviour:
   - {fileID: 2864308229196923478, guid: a171fc2856587334d9763d1b4d6c5833, type: 3}
   - {fileID: 3629275089020748720, guid: d3750ab1e6767fb40a7248a6f5fad9eb, type: 3}
   - {fileID: 8959883872755513169, guid: 85ab510a4d743e4438e308d688cacefc, type: 3}
-  <IsCheckFps>k__BackingField: 1
+  <IsCheckFps>k__BackingField: 0
+  <Test>k__BackingField:
+    m_AssetGUID: a171fc2856587334d9763d1b4d6c5833
+    m_SubObjectName: 
+    m_SubObjectGUID: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0

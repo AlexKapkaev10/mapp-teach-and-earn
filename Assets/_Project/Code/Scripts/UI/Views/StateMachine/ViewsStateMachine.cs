@@ -1,6 +1,11 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using Project.Scripts.Tools;
 using Project.Scripts.UI.StateMachine;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 using VContainer;
 using VContainer.Unity;
 
@@ -20,11 +25,16 @@ namespace Project.Scripts.UI
         
         private ISwitchViewMenu _switchViewMenu;
         private IObjectResolver _resolver = default;
+        private ICoroutineStarter _coroutineStarter;
 
         [Inject]
-        private void Construct(IObjectResolver resolver, ViewsStateMachineConfig config)
+        private void Construct(
+            IObjectResolver resolver, 
+            ICoroutineStarter coroutineStarter,
+            ViewsStateMachineConfig config)
         {
             _resolver = resolver;
+            _coroutineStarter = coroutineStarter;
             _config = config;
         }
 
@@ -35,9 +45,13 @@ namespace Project.Scripts.UI
                 Instantiate(_config.GetViewPrefabByType(ViewType.CheckFPS), null);
             }
 
-            _switchViewMenu = _resolver.Instantiate(_config.GetViewPrefabByType(ViewType.SwitchViewMenu), null) as SwitchViewMenu;
+            _switchViewMenu = _resolver
+                .Instantiate(_config.GetViewPrefabByType(ViewType.SwitchViewMenu), null) 
+                as SwitchViewMenu;
             
             CreateMachine();
+
+            StartCoroutine(LoadPrefabAsync(_config.Test));
         }
 
         public void SwitchStateByType(ViewStateType type)
@@ -71,6 +85,18 @@ namespace Project.Scripts.UI
                 { ViewStateType.Clicker , new ClickerViewState(_resolver, _config)},
                 { ViewStateType.Quest , new QuestViewState(_resolver, _config)}
             };
+        }
+
+        private IEnumerator LoadPrefabAsync(AssetReference assetReference)
+        {
+            var handle = assetReference.LoadAssetAsync<GameObject>();
+            
+            yield return handle;
+
+            if (handle.Status == AsyncOperationStatus.Succeeded)
+            {
+                _resolver.Instantiate(handle.Result, null);
+            }
         }
     }
 

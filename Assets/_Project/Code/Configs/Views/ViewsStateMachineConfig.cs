@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace Project.Scripts.UI
 {
@@ -7,6 +8,7 @@ namespace Project.Scripts.UI
     {
         [SerializeField] private View[] _viewPrefabs;
         [field: SerializeField] public bool IsCheckFps { get; private set; } = true;
+        [field: SerializeField] public AssetReference Test { get; private set; }
 
         public View[] ViewPrefabs => _viewPrefabs;
 
@@ -15,7 +17,9 @@ namespace Project.Scripts.UI
             foreach (var prefab in _viewPrefabs)
             {
                 if (prefab.ViewType == type)
+                {
                     return prefab;
+                }
             }
 
             return null;
