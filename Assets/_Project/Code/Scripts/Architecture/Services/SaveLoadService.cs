@@ -10,6 +10,7 @@ namespace Project.Scripts.Architecture
         void SavePoints(float scoreValue);
         int GetCoins();
         void SaveCoins(int count);
+        int GetLocaleID();
     }
     
     public class SaveLoadService : ISaveLoadService
@@ -18,6 +19,7 @@ namespace Project.Scripts.Architecture
         private const string k_saveGameCoinKey = "saveGameCoinCount";
         private const string k_saveMinClaimKey = "saveMinClaim";
         private const string k_saveMaxClaimKey = "saveMaxClaim";
+        private const string k_saveLocaleIDKey = "saveLocaleID";
 
         public void SavePoints(float scoreValue)
         {
@@ -47,6 +49,11 @@ namespace Project.Scripts.Architecture
         public float GetMaxClaim()
         {
             return PlayerPrefs.GetFloat(k_saveMaxClaimKey, 0.5f);
+        }
+        
+        public int GetLocaleID()
+        {
+            return PlayerPrefs.GetInt(k_saveLocaleIDKey, 0);
         }
     }
 }

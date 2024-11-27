@@ -4,6 +4,7 @@ using Project.Scripts.Skills;
 using Project.Code.Scripts.API;
 using Project.Scripts.Architecture;
 using Project.Scripts.Factory;
+using Project.Scripts.Localization;
 using Project.Scripts.Tools;
 using UnityEngine;
 using VContainer;
@@ -37,6 +38,9 @@ namespace Project.Code.Scripts.Architecture
         
         private void RegisterServices(IContainerBuilder builder)
         {
+            builder.RegisterEntryPoint<LocalizationService>()
+                .As<ILocalizationService>();
+            
             builder.Register<SceneService>(Lifetime.Singleton)
                 .As<ISceneService>();
             

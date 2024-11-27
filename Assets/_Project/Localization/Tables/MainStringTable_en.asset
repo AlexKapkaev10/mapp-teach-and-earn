@@ -22,6 +22,30 @@ MonoBehaviour:
     m_Localized: Claim
     m_Metadata:
       m_Items: []
+  - m_Id: 1807534534848512
+    m_Localized: Upgrade random
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1808882873561088
+    m_Localized: Buy 100 poi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1809062704345088
+    m_Localized: Connect wallet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1809217616769024
+    m_Localized: Home
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1809337523531776
+    m_Localized: Activity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1811403000147968
+    m_Localized: Tasks
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

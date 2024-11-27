@@ -19,6 +19,30 @@ MonoBehaviour:
     m_Key: _claim
     m_Metadata:
       m_Items: []
+  - m_Id: 1807534534848512
+    m_Key: _upgradeRandom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1808882873561088
+    m_Key: _buyPoints
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1809062704345088
+    m_Key: _connectWallet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1809217616769024
+    m_Key: _home
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1809337523531776
+    m_Key: _activity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1811403000147968
+    m_Key: _tasks
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
