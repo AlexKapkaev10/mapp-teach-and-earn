@@ -52,7 +52,7 @@ namespace Project.Scripts.UI
             _currentItem.SetActive(false);
             _currentItem = item;
             _currentItem.SetActive(true);
-            _viewsStateMachine.SwitchStateByType(item.Type);
+            _viewsStateMachine.SwitchViewByType(item.Type);
         }
     }
 }

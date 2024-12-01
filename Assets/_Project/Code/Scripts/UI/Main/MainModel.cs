@@ -49,7 +49,7 @@ namespace Project.Code.Scripts.Module.Mining
 
         public void Claim(Action<bool, float> callBack)
         {
-            _clientAPI.RandomClaim(callBack);
+            _clientAPI.RandomClaimAsync(callBack);
         }
 
         public void UpgradeForStars()

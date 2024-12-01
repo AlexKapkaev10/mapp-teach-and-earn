@@ -9,6 +9,8 @@ namespace Project.Scripts.UI
         [SerializeField] private View[] _viewPrefabs;
         [field: SerializeField] public bool IsCheckFps { get; private set; } = true;
         [field: SerializeField] public AssetReference Test { get; private set; }
+        [field: SerializeField] public AssetReference MainViewReference { get; private set; }
+        [field: SerializeField] public AssetReference InfoViewReference { get; private set; }
 
         public View[] ViewPrefabs => _viewPrefabs;
 

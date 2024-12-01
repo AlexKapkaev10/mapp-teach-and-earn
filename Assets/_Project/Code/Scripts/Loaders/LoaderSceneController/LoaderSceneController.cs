@@ -1,6 +1,8 @@
+using System.Threading.Tasks;
 using Project.Configs.LoaderScene;
 using Project.Scripts.Scene;
 using UnityEngine;
+using UnityEngine.ResourceManagement.AsyncOperations;
 using VContainer;
 
 namespace Project.Scripts.Loader
@@ -18,8 +20,10 @@ namespace Project.Scripts.Loader
             _sceneService = sceneService;
         }
 
-        private void Start()
+        private async void Start()
         {
+            await LoadAllAssets();
+            
             _loaderView = Instantiate(_config.LoaderView, null);
             _loaderView.LoadComplete += OnLoadComplete;
             _loaderView.StartSlider();
@@ -29,6 +33,31 @@ namespace Project.Scripts.Loader
         {
             _loaderView.LoadComplete -= OnLoadComplete;
             _sceneService.LoadSceneByName(_config.NextScene);
+        }
+
+        private async Task LoadAllAssets()
+        {
+            foreach (var assetReference in _config.References)
+            {
+                try
+                {
+                    var handle = assetReference.LoadAssetAsync<Object>();
+                    await handle.Task;
+
+                    if (handle.Status == AsyncOperationStatus.Succeeded)
+                    {
+                        Debug.Log($"Succeeded: {assetReference.RuntimeKey}");
+                    }
+                    else
+                    {
+                        Debug.LogError($"Fail: {assetReference.RuntimeKey}");
+                    }
+                }
+                catch (System.Exception ex)
+                {
+                    Debug.LogError($"Fail load {assetReference.RuntimeKey}: {ex.Message}");
+                }
+            }
         }
     }
 }

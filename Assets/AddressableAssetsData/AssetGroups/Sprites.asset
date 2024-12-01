@@ -10,48 +10,53 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Prefabs
+  m_Name: Sprites
   m_EditorClassIdentifier: 
-  m_GroupName: Prefabs
-  m_GUID: 9aee6af4daaf3c14e82703552724c098
+  m_GroupName: Sprites
+  m_GUID: f4627844ff2102d4abc0df4b4de7aafe
   m_SerializeEntries:
-  - m_GUID: 0a9e5d5495f7a3e4abc81fd434d1b54a
-    m_Address: TextHeader
+  - m_GUID: 0fd527b40a22ec345bcdcc7ff391e990
+    m_Address: bg-circle
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 10cbd099157cd314996d146e295bba60
-    m_Address: Button
+  - m_GUID: 23c27721b52dca447825e7c91085404e
+    m_Address: bg-square-2
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 6dc911aa5cc4da647a7f44d7a27a3457
-    m_Address: MainView
+  - m_GUID: 3018785682765f446a357fc1a70ec9d0
+    m_Address: icon-coin
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 7e2f1ee850296864ea15b1feacbb7f2a
-    m_Address: ButtonMainAction
+  - m_GUID: 3018dc1e52838bf4491a47be80be15dc
+    m_Address: bg-capsule
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 961970b3a845ea14f9d775b9b0f8f2e7
-    m_Address: GameCoins
+  - m_GUID: 411ebdda5ed8feb4eacafaa78fc2435f
+    m_Address: bg-square
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 9d5bcb7a0d252bd418e358654162c578
-    m_Address: Canvas
+  - m_GUID: 81c021d40ad2e7e4cbbbe2850cbeb140
+    m_Address: bg-square-4
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a171fc2856587334d9763d1b4d6c5833
-    m_Address: CheckFpsView
+  - m_GUID: 94c1f973ba32a52488324bd6f9128e19
+    m_Address: bg-dots
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: f23662942009b694ea1286a07b7eff2b
-    m_Address: GameInfoView
+  - m_GUID: a4824a60b24bb5843b341ac795d62ecd
+    m_Address: bg-square-3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bca2cfc97260d304a982781d44fe7d28
+    m_Address: bg-rect-4
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -59,5 +64,5 @@ MonoBehaviour:
   m_Settings: {fileID: 11400000, guid: 302c50e8503cf794f8c830ad33f8a904, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: e5ffaf779974f684d90feaa0f85cef0b, type: 2}
-    - {fileID: 11400000, guid: ca5182326ea985a4bb4684dc0e86342e, type: 2}
+    - {fileID: 11400000, guid: 1098d5707cabba042a7aa487761cb9cd, type: 2}
+    - {fileID: 11400000, guid: 99a0e02e55d7c854a8786575b232f55e, type: 2}

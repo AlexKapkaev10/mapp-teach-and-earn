@@ -9,7 +9,7 @@ namespace Project.Scripts
         void OnSend(string message);
     }
     
-    public class TransactionHandler : MonoBehaviour, ITransactionHandler
+    public class TonConnectHandler : MonoBehaviour, ITransactionHandler
     {
         public event Action<string> TransactionSend;
 

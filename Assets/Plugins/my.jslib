@@ -1,6 +1,20 @@
 let tonConnectUI;
 
 mergeInto(LibraryManager.library, {
+
+    ConnectToWallet: function () {
+        // Используем callback для взаимодействия с Unity
+        tonConnectUI.connectWallet()
+            .then((connectedWallet) => {
+                const connectedWalletString = JSON.stringify(connectedWallet);
+                console.log(tonConnectUI.wallet);
+                window.unityInstanceRef.SendMessage('TonConnectHandler', 'OnWalletConnected', connectedWalletString);
+            })
+            .catch((error) => {
+                console.error("Error connecting to wallet:", error);
+                window.unityInstanceRef.SendMessage('TonConnectHandler', 'OnWalletConnected', 'Error');
+            });
+    },
     
     Init: function (){
     tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
@@ -28,9 +42,9 @@ mergeInto(LibraryManager.library, {
   try {
       const result = await tonConnectUI.sendTransaction(transaction);
       // const someTxData = await myAppExplorerService.getTransaction(result.boc);
-      window.unityInstanceRef.SendMessage('TransactionHandler', 'OnSend', 'Success');
+      window.unityInstanceRef.SendMessage('TonConnectHandler', 'OnSend', 'Success');
   } catch (e) {
-      window.unityInstanceRef.SendMessage('TransactionHandler', 'OnSend', 'Error');
+      window.unityInstanceRef.SendMessage('TonConnectHandler', 'OnSend', 'Error');
       console.error(e);
   }
   }

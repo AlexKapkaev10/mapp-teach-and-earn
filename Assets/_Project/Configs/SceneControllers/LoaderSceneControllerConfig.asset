@@ -14,3 +14,83 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <LoaderView>k__BackingField: {fileID: 2960759740078323887, guid: 5a4bb775bd9c6cd4ea4fb7575b172d0a, type: 3}
   <NextScene>k__BackingField: Game
+  <References>k__BackingField:
+  - m_AssetGUID: 0a9e5d5495f7a3e4abc81fd434d1b54a
+    m_SubObjectName: 
+    m_SubObjectGUID: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 7e2f1ee850296864ea15b1feacbb7f2a
+    m_SubObjectName: 
+    m_SubObjectGUID: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 961970b3a845ea14f9d775b9b0f8f2e7
+    m_SubObjectName: 
+    m_SubObjectGUID: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 9d5bcb7a0d252bd418e358654162c578
+    m_SubObjectName: 
+    m_SubObjectGUID: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 55242140bf48e4e42a32949573fc268a
+    m_SubObjectName: 
+    m_SubObjectGUID: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 0fd527b40a22ec345bcdcc7ff391e990
+    m_SubObjectName: Circle
+    m_SubObjectGUID: 
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 1
+  - m_AssetGUID: 23c27721b52dca447825e7c91085404e
+    m_SubObjectName: bg-square-2
+    m_SubObjectGUID: 
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 1
+  - m_AssetGUID: 3018785682765f446a357fc1a70ec9d0
+    m_SubObjectName: icon-coin
+    m_SubObjectGUID: 
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 1
+  - m_AssetGUID: 3018dc1e52838bf4491a47be80be15dc
+    m_SubObjectName: bg-capsule
+    m_SubObjectGUID: 
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 1
+  - m_AssetGUID: 411ebdda5ed8feb4eacafaa78fc2435f
+    m_SubObjectName: bg-square
+    m_SubObjectGUID: 
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 1
+  - m_AssetGUID: 81c021d40ad2e7e4cbbbe2850cbeb140
+    m_SubObjectName: bg-square-4
+    m_SubObjectGUID: 
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 1
+  - m_AssetGUID: a4824a60b24bb5843b341ac795d62ecd
+    m_SubObjectName: bg-square-3
+    m_SubObjectGUID: 
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 1
+  - m_AssetGUID: bca2cfc97260d304a982781d44fe7d28
+    m_SubObjectName: bg-rect-4
+    m_SubObjectGUID: 
+    m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 1
+  - m_AssetGUID: fbae02b74414cfe47a62187aafab1437
+    m_SubObjectName: Font Material
+    m_SubObjectGUID: 
+    m_SubObjectType: UnityEngine.Material, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    m_EditorAssetChanged: 1

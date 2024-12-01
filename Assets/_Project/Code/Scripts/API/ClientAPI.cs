@@ -1,36 +1,52 @@
 using System;
-using System.Collections;
+using System.Threading;
+using System.Threading.Tasks;
+using Project.Code.Scripts.API.Response;
 using Project.Scripts.Bank;
-using Project.Scripts.Tools;
 using UnityEngine;
 using UnityEngine.Networking;
 using VContainer;
 
 namespace Project.Code.Scripts.API
 {
-    public interface IClientAPI
+    public interface IClientAPI : IDisposable
     {
-        void RandomClaim(Action<bool, float> callBack);
+        void RandomClaimAsync(Action<bool, float> callBack);
         void TransactionSend();
     }
     
     public class ClientAPI : IClientAPI
     {
-        private ICoroutineStarter _coroutineStarter;
+        private CancellationTokenSource _cts = new ();
         private IBank _bank;
 
         private const string _url = "https://jsonplaceholder.typicode.com/posts";
 
         [Inject]
-        private void Construct(ICoroutineStarter coroutineStarter, IBank bank)
+        private void Construct(IBank bank)
         {
-            _coroutineStarter = coroutineStarter;
             _bank = bank;
         }
 
-        public void RandomClaim(Action<bool, float> callBack)
+        public async void RandomClaimAsync(Action<bool, float> callBack)
         {
-            _coroutineStarter.Starter.StartCoroutine(ClaimPointsAsync(callBack, _url));
+            try
+            {
+                var token = _cts.Token;
+                var claimPoints = await ClaimPointsAsync(_url, token);
+                
+                if (token.IsCancellationRequested)
+                {
+                    token.ThrowIfCancellationRequested();
+                }
+                
+                _bank.SetPoints(claimPoints.Value);
+                callBack?.Invoke(claimPoints.IsSuccess, claimPoints.Value);
+            }
+            catch (Exception e)
+            {
+                callBack?.Invoke(false, 0);
+            }
         }
 
         public void TransactionSend()
@@ -38,28 +54,35 @@ namespace Project.Code.Scripts.API
             _bank.SetPoints(100);
         }
 
-        private IEnumerator ClaimPointsAsync(Action<bool, float> callBack, string url)
+        public void Dispose()
+        {
+            _cts.Cancel();
+            _cts = null;
+        }
+
+        private async Task<ClaimResponse> ClaimPointsAsync(string url, CancellationToken token)
         {
             using UnityWebRequest request = UnityWebRequest.Get(url);
-            float randomPoints = default;
-            bool isSuccess = default;
-            
-            yield return request.SendWebRequest();
-            
-            isSuccess = request.result == UnityWebRequest.Result.Success;
+
+            await request.SendWebRequest();
+
+            if (token.IsCancellationRequested)
+            {
+                token.ThrowIfCancellationRequested();
+            }
+
+            var isSuccess = request.result == UnityWebRequest.Result.Success;
+            ClaimResponse claimResponse = new ClaimResponse
+            {
+                IsSuccess = isSuccess
+            };
 
             if (isSuccess)
             {
-                Debug.Log("Response API: " + request.downloadHandler.text);
-                randomPoints = _bank.ClaimPoints();
-                _bank.SetPoints(randomPoints);
+                claimResponse.Value = _bank.ClaimPoints();
             }
-            else
-            {
-                Debug.LogError("Error: " + request.error);
-            }
-            
-            callBack?.Invoke(isSuccess, randomPoints);
+
+            return claimResponse;
         }
     }
 }

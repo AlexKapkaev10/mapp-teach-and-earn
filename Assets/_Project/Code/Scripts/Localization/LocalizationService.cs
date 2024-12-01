@@ -1,6 +1,5 @@
-using System.Collections;
+using Cysharp.Threading.Tasks;
 using Project.Scripts.Architecture;
-using Project.Scripts.Tools;
 using UnityEngine.Localization.Settings;
 using VContainer;
 using VContainer.Unity;
@@ -9,36 +8,29 @@ namespace Project.Scripts.Localization
 {
     public interface ILocalizationService : IInitializable
     {
-        
+        void SwitchLocale(int localeId);
     }
     
     public class LocalizationService : ILocalizationService
     {
-        private readonly ICoroutineStarter _coroutineStarter;
         private readonly ISaveLoadService _saveLoadService;
 
         [Inject]
-        public LocalizationService(
-            ICoroutineStarter coroutineStarter,
-            ISaveLoadService saveLoadService)
+        public LocalizationService(ISaveLoadService saveLoadService)
         {
-            _coroutineStarter = coroutineStarter;
             _saveLoadService = saveLoadService;
         }
         
-        public void Initialize()
+        public async void Initialize()
         {
-            _coroutineStarter.Starter.StartCoroutine(SwitchLocaleAsync(_saveLoadService.GetLocaleID()));
+            await LocalizationSettings.InitializationOperation;
+            SwitchLocale(_saveLoadService.GetLocaleID());
         }
 
-        private IEnumerator SwitchLocaleAsync(int localeId)
+        public void SwitchLocale(int localeId)
         {
-            yield return LocalizationSettings.InitializationOperation;
-
             var targetLocale = LocalizationSettings.AvailableLocales.Locales[localeId];
             LocalizationSettings.SelectedLocale = targetLocale;
-            
-            yield return LocalizationSettings.InitializationOperation;
         }
     }
 }

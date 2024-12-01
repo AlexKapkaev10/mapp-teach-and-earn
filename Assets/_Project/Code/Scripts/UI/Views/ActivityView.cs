@@ -50,7 +50,7 @@ namespace Project.Scripts.UI
 
         private void OnClickActivityButton(ViewStateType type)
         {
-            _viewsStateMachine.SwitchStateByType(type);
+            _viewsStateMachine.SwitchViewByType(type);
         }
     }
 }

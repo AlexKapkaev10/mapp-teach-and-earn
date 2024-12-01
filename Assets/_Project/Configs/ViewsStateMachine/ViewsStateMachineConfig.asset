@@ -30,3 +30,15 @@ MonoBehaviour:
     m_SubObjectGUID: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
+  <MainViewReference>k__BackingField:
+    m_AssetGUID: 6dc911aa5cc4da647a7f44d7a27a3457
+    m_SubObjectName: 
+    m_SubObjectGUID: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  <InfoViewReference>k__BackingField:
+    m_AssetGUID: f23662942009b694ea1286a07b7eff2b
+    m_SubObjectName: 
+    m_SubObjectGUID: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
