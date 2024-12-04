@@ -42,3 +42,11 @@ MonoBehaviour:
     m_SubObjectGUID: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
+  <SwitchViewReference>k__BackingField:
+    m_AssetGUID: d3750ab1e6767fb40a7248a6f5fad9eb
+    m_SubObjectName: 
+    m_SubObjectGUID: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  <MainViewAssetLabel>k__BackingField:
+    m_LabelString: mainView

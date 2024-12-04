@@ -1,26 +1,35 @@
-using System;
 using System.Collections;
-using Project.Scripts.Audio;
+using Project.Configs.LoaderScene;
+using Project.Scripts.Scene;
+using Project.Scripts.Services;
 using Project.Scripts.UI;
 using UnityEngine;
 using UnityEngine.UI;
+using VContainer;
 
 namespace Project.Scripts.Loader
 {
-    public interface ILoaderView
+    public class LoaderView : View
     {
-        event Action LoadComplete;
-        void StartSlider();
-    }
-    
-    public class LoaderView : View, ILoaderView
-    {
-        public event Action LoadComplete;
-        
+        [SerializeField] private LoaderSceneControllerConfig _config;
         [SerializeField] private Slider _slider;
         [SerializeField] private float _loadSimulationSpeed = 0.002f;
+        
+        private ISceneService _sceneService;
+        private IAssetResourceService _assetResourceService;
 
-
+        [Inject]
+        private void Construct(ISceneService sceneService, IAssetResourceService assetResourceService)
+        {
+            _sceneService = sceneService;
+            _assetResourceService = assetResourceService;
+        }
+        
+        private void Awake()
+        {
+            _assetResourceService.LoadAssetsByLabel(_config.PreloadLabel, StartSlider);
+        }
+        
         public void StartSlider()
         {
             StartCoroutine(LoadSimulationAsync());
@@ -33,8 +42,8 @@ namespace Project.Scripts.Loader
                 _slider.value += _loadSimulationSpeed * Time.unscaledTime;
                 yield return null;
             }
-            LoadComplete?.Invoke();
-            Destroy(gameObject);
+            
+            _sceneService.LoadSceneByName(_config.NextScene);
         }
     }
 }

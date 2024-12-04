@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
+using Project.Infrastructure.Extensions;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using VContainer;
@@ -30,12 +31,6 @@ namespace Project.Scripts.UI.StateMachine
             
             await LoadViewAsync(_config.MainViewReference, _cts.Token);
             await LoadViewAsync(_config.InfoViewReference, _cts.Token);
-            
-            /*var main = _resolver.Instantiate(_config.GetViewPrefabByType(ViewType.Main), null);
-            var gameInfo = _resolver.Instantiate(_config.GetViewPrefabByType(ViewType.GameInfo), null);
-            
-            _views.Add(main);
-            _views.Add(gameInfo);*/
         }
 
         public void Exit()
@@ -70,7 +65,7 @@ namespace Project.Scripts.UI.StateMachine
             }
             catch (Exception e)
             {
-                Debug.Log(e.Message);
+                this.Log(e.Message);
             }
 
         }

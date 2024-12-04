@@ -1,16 +1,17 @@
 using Project.Scripts.Bank;
 using Project.Scripts.Scene;
 using Project.Scripts.Skills;
-using Project.Code.Scripts.API;
+using Project.Scripts.API;
 using Project.Scripts.Architecture;
 using Project.Scripts.Factory;
 using Project.Scripts.Localization;
+using Project.Scripts.Services;
 using Project.Scripts.Tools;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
-namespace Project.Code.Scripts.Architecture
+namespace Project.Scripts.Architecture
 {
     public class ProjectScope : BaseScope
     {
@@ -32,12 +33,15 @@ namespace Project.Code.Scripts.Architecture
         
         private void RegisterBank(IContainerBuilder builder)
         {
-            builder.RegisterEntryPoint<Bank>()
+            builder.RegisterEntryPoint<Bank.Bank>()
                 .As<IBank>();
         }
         
         private void RegisterServices(IContainerBuilder builder)
         {
+            builder.Register<AssetResourceService>(Lifetime.Singleton)
+                .As<IAssetResourceService>();
+            
             builder.RegisterEntryPoint<LocalizationService>()
                 .As<ILocalizationService>();
             
@@ -51,7 +55,7 @@ namespace Project.Code.Scripts.Architecture
                 .As<ISkillsService>()
                 .WithParameter(_skillsServiceConfig);
             
-            builder.Register<Factory>(Lifetime.Singleton)
+            builder.Register<Factory.Factory>(Lifetime.Singleton)
                 .As<IFactory>();
         }
     }

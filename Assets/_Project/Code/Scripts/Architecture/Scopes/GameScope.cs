@@ -1,13 +1,13 @@
-using Project.Code.Configs.Views;
 using Project.Scripts.Audio;
 using Project.Scripts.UI;
-using Project.Code.Scripts.Module.Mining;
+using Project.Configs.Views;
 using Project.Scripts;
+using Project.Scripts.Module.Mining;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
-namespace Project.Code.Scripts.Architecture
+namespace Project.Scripts.Architecture
 {
     public class GameScope : BaseScope
     {

@@ -500,7 +500,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <ViewType>k__BackingField: 3
   _canvasGroup: {fileID: 694470245503270145}
-  _durationVisible: 0.25
+  _durationVisible: 0.2
   _ignoreSetVisible: 0
   _coin: {fileID: 4595954923353278869}
   _textCoinCount: {fileID: 3462768432512287289}

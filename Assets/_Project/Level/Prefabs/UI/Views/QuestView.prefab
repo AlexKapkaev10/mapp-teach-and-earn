@@ -139,5 +139,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <ViewType>k__BackingField: 10
   _canvasGroup: {fileID: 2265196064039397180}
-  _durationVisible: 0.4
+  _durationVisible: 0.2
   _ignoreSetVisible: 0

@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Sprites
+  m_Name: MainView
   m_EditorClassIdentifier: 
-  m_GroupName: Sprites
-  m_GUID: f4627844ff2102d4abc0df4b4de7aafe
+  m_GroupName: MainView
+  m_GUID: 9f748cc32b4ed6645bd8a78b74cf3d7f
   m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 302c50e8503cf794f8c830ad33f8a904, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 1098d5707cabba042a7aa487761cb9cd, type: 2}
-    - {fileID: 11400000, guid: 99a0e02e55d7c854a8786575b232f55e, type: 2}
+    - {fileID: 11400000, guid: d69bec590a31eb74f87686f7877a91bb, type: 2}
+    - {fileID: 11400000, guid: ed529943334b561419b9b77b96a435cd, type: 2}

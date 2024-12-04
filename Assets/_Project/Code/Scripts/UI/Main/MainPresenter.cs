@@ -1,10 +1,10 @@
 using System;
-using Project.Code.Configs.Views;
+using Project.Configs.Views;
 using Project.Scripts;
 using Project.Scripts.Bank;
 using VContainer;
 
-namespace Project.Code.Scripts.Module.Mining
+namespace Project.Scripts.Module.Mining
 {
     public interface IMainPresenter : IDisposable
     {

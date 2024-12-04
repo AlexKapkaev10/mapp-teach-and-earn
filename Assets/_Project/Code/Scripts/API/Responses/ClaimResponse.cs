@@ -1,4 +1,4 @@
-namespace Project.Code.Scripts.API.Response
+namespace Project.Scripts.API.Response
 {
     public class ClaimResponse
     {

@@ -14,12 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GroupName: Materials
   m_GUID: dd3bb467bcf03ea4ca4196e6fe04cc68
-  m_SerializeEntries:
-  - m_GUID: 55242140bf48e4e42a32949573fc268a
-    m_Address: Gradient
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 302c50e8503cf794f8c830ad33f8a904, type: 2}
   m_SchemaSet:

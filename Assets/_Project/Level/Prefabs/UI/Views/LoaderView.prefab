@@ -521,8 +521,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <ViewType>k__BackingField: 5
   _canvasGroup: {fileID: 6411996270595933409}
-  _durationVisible: 0.4
+  _durationVisible: 0.2
   _ignoreSetVisible: 1
+  _config: {fileID: 0}
   _slider: {fileID: 949357701767316642}
   _loadSimulationSpeed: 0.002
 --- !u!1 &7345543039918812426 stripped

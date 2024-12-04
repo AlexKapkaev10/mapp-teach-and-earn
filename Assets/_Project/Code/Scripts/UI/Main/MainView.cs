@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using VContainer;
 
-namespace Project.Code.Scripts.Module.Mining
+namespace Project.Scripts.Module.Mining
 {
     public interface IMainView
     {
@@ -88,12 +88,6 @@ namespace Project.Code.Scripts.Module.Mining
         public void ClearLogs()
         {
             _textLog.SetText("");
-        }
-
-        public void OpenUrl()
-        {
-            string url = "https://t.me/alexoneDevelop";
-            Application.OpenURL(url);
         }
     }
 }

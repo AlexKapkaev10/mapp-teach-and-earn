@@ -63,8 +63,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 602ae01ee24f402438ba8589ad3d41d9, type: 2}
   - {fileID: 11400000, guid: 61b5627ec27e0d54c805d36729695f86, type: 2}
   - {fileID: 11400000, guid: ec7c41035efbb464389bd9c35a425fb3, type: 2}
+  - {fileID: 11400000, guid: 61a780f21b83d6d42948efa2a2608755, type: 2}
   - {fileID: 11400000, guid: 08ee9c1c767d9a54e86585bd9ef121e2, type: 2}
   - {fileID: 11400000, guid: 7e2935517f7cba4408ddd7010ea07da3, type: 2}
+  - {fileID: 11400000, guid: 6b759bf786af7d74e8a6aa3a56c56f17, type: 2}
   - {fileID: 11400000, guid: c33ffae202320904fa798754889dfbe5, type: 2}
   - {fileID: 11400000, guid: 8e142f2529e999f4eaa6d9fb760e1ede, type: 2}
   - {fileID: 11400000, guid: b44b659037c62754e9f7861f3ad203e7, type: 2}
@@ -110,6 +112,8 @@ MonoBehaviour:
     - Locale
     - Locale-en
     - Locale-ru-RU
+    - preload
+    - mainView
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: ce481b96c8a4c0c4e86a86eeb2be424e, type: 2}

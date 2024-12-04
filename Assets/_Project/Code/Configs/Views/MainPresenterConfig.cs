@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Project.Code.Configs.Views
+namespace Project.Configs.Views
 {
     [CreateAssetMenu(fileName = nameof(MainPresenterConfig), menuName = "Configs/UI/StateMachine/MainPresenterConfig")]
     public class MainPresenterConfig : ScriptableObject

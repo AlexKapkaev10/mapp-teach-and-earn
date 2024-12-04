@@ -11,9 +11,8 @@ namespace Project.Scripts.UI
         [field: SerializeField] public AssetReference Test { get; private set; }
         [field: SerializeField] public AssetReference MainViewReference { get; private set; }
         [field: SerializeField] public AssetReference InfoViewReference { get; private set; }
-
-        public View[] ViewPrefabs => _viewPrefabs;
-
+        [field: SerializeField] public AssetReference SwitchViewReference { get; private set; }
+        
         public View GetViewPrefabByType(ViewType type)
         {
             foreach (var prefab in _viewPrefabs)

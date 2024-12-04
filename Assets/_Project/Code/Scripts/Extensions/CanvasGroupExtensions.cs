@@ -3,7 +3,7 @@ using DG.Tweening;
 using UnityEngine;
 using VContainer;
 
-namespace NewRP.Game.Infrastructure.Extensions
+namespace Project.Infrastructure.Extensions
 {
 	[Preserve]
 	public static class CanvasGroupExtensions

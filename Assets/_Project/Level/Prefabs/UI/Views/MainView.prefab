@@ -278,7 +278,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <ViewType>k__BackingField: 1
   _canvasGroup: {fileID: 3848734138623421765}
-  _durationVisible: 0.4
+  _durationVisible: 0.2
   _ignoreSetVisible: 0
   _buttonClaim: {fileID: 484163036881235789}
   _buttonBuy: {fileID: 8277788441829478379}

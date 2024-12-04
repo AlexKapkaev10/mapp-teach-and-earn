@@ -1,9 +1,10 @@
 using System;
 using System.Runtime.InteropServices;
-using Project.Code.Scripts.API;
+using Project.Infrastructure.Extensions;
+using Project.Scripts.API;
 using UnityEngine;
 
-namespace Project.Code.Scripts.Module.Mining
+namespace Project.Scripts.Module.Mining
 {
     public interface IMainModel
     {
@@ -57,7 +58,7 @@ namespace Project.Code.Scripts.Module.Mining
 #if !UNITY_EDITOR
             BuyForStars();
 #else
-            Debug.Log("Editor Upgrade For Stars");
+            this.Log("Editor Upgrade For Stars");
 #endif
         }
     
@@ -66,18 +67,24 @@ namespace Project.Code.Scripts.Module.Mining
 #if !UNITY_EDITOR
             Send();
 #else
-            Debug.Log("Editor Buy");
+            this.Log("Editor Buy");
 #endif
         }
 
         public void UpgradeForCoins()
         {
-            Debug.Log("Editor Upgrade For Coins");
+            this.Log("Editor Upgrade For Coins");
         }
 
         public void TransactionSend()
         {
             _clientAPI.TransactionSend();
+        }
+        
+        public void OpenUrl()
+        {
+            string url = "https://t.me/alexoneDevelop";
+            Application.OpenURL(url);
         }
     }
 }

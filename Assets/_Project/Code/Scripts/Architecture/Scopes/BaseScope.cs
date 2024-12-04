@@ -1,6 +1,6 @@
 using VContainer.Unity;
 
-namespace Project.Code.Scripts.Architecture
+namespace Project.Scripts.Architecture
 {
     public class BaseScope : LifetimeScope
     {

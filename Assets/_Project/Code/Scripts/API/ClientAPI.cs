@@ -1,13 +1,14 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Project.Code.Scripts.API.Response;
+using Project.Infrastructure.Extensions;
+using Project.Scripts.API.Response;
 using Project.Scripts.Bank;
 using UnityEngine;
 using UnityEngine.Networking;
 using VContainer;
 
-namespace Project.Code.Scripts.API
+namespace Project.Scripts.API
 {
     public interface IClientAPI : IDisposable
     {
@@ -46,6 +47,7 @@ namespace Project.Code.Scripts.API
             catch (Exception e)
             {
                 callBack?.Invoke(false, 0);
+                this.Log(e.Message);
             }
         }
 
@@ -72,6 +74,7 @@ namespace Project.Code.Scripts.API
             }
 
             var isSuccess = request.result == UnityWebRequest.Result.Success;
+            
             ClaimResponse claimResponse = new ClaimResponse
             {
                 IsSuccess = isSuccess
@@ -80,6 +83,7 @@ namespace Project.Code.Scripts.API
             if (isSuccess)
             {
                 claimResponse.Value = _bank.ClaimPoints();
+                this.Log(request);
             }
 
             return claimResponse;

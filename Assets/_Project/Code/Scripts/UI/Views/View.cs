@@ -27,6 +27,7 @@ namespace Project.Scripts.UI
         private void SetEnable()
         {
             _tweener = _canvasGroup.DOFade(1, _durationVisible)
+                .From(0f)
                 .SetEase(Ease.Linear)
                 .OnComplete(()=> _tweener = null);
         }
@@ -34,6 +35,7 @@ namespace Project.Scripts.UI
         public virtual void SetDisable()
         {
             _tweener = _canvasGroup.DOFade(0, _durationVisible)
+                .From(1f)
                 .SetEase(Ease.Linear)
                 .OnComplete(()=> Destroy(gameObject));
         }

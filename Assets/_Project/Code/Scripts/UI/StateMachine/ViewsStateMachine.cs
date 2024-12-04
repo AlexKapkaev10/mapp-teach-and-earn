@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Project.Scripts.Services;
 using Project.Scripts.UI.StateMachine;
 using UnityEngine;
 using VContainer;
@@ -18,12 +19,16 @@ namespace Project.Scripts.UI
 
         private IObjectResolver _resolver;
         private IViewState _currentViewState;
-        private ISwitchViewMenu _switchViewMenu;
+        private IAssetResourceService _resourceService;
 
         [Inject]
-        private void Construct(IObjectResolver resolver, ViewsStateMachineConfig config)
+        private void Construct(
+            IObjectResolver resolver,
+            IAssetResourceService resourceService,
+            ViewsStateMachineConfig config)
         {
             _resolver = resolver;
+            _resourceService = resourceService;
             _config = config;
         }
 
@@ -33,10 +38,13 @@ namespace Project.Scripts.UI
             {
                 Instantiate(_config.GetViewPrefabByType(ViewType.CheckFPS), null);
             }
+            
+            _resourceService.LoadGameObjectByReference(_config.SwitchViewReference, OnSwitchMenuLoaded);
+        }
 
-            _switchViewMenu = _resolver
-                .Instantiate(_config.GetViewPrefabByType(ViewType.SwitchViewMenu), null) 
-                as SwitchViewMenu;
+        private void OnSwitchMenuLoaded(GameObject prefab)
+        {
+            _resolver.Instantiate(prefab, null);
             
             CreateMachine();
         }

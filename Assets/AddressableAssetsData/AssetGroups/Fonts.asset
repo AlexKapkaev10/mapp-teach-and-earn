@@ -14,12 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GroupName: Fonts
   m_GUID: 9f74166eddee6d14bb35908a04c1fdae
-  m_SerializeEntries:
-  - m_GUID: fbae02b74414cfe47a62187aafab1437
-    m_Address: Unageo-Regular
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 302c50e8503cf794f8c830ad33f8a904, type: 2}
   m_SchemaSet:

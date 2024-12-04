@@ -1,0 +1,101 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: PreLoad
+  m_EditorClassIdentifier: 
+  m_GroupName: PreLoad
+  m_GUID: e85ac48860cf61f4f95c3bc34f38bad2
+  m_SerializeEntries:
+  - m_GUID: 0a9e5d5495f7a3e4abc81fd434d1b54a
+    m_Address: TextHeader
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 10cbd099157cd314996d146e295bba60
+    m_Address: Button
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3018785682765f446a357fc1a70ec9d0
+    m_Address: icon-coin
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 449e79cd752ccd04790b5b9f4ed3cc37
+    m_Address: Unageo-Regular SDF
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 55242140bf48e4e42a32949573fc268a
+    m_Address: Gradient
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6f9e8adeea879104993aa9439b579784
+    m_Address: icon-home
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7e2f1ee850296864ea15b1feacbb7f2a
+    m_Address: ButtonMainAction
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 84c9850bc390502418da941967c4b9bc
+    m_Address: icon-rocket
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 961970b3a845ea14f9d775b9b0f8f2e7
+    m_Address: GameCoins
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 988540917f4f5b34caa324f68c7f3e07
+    m_Address: icon-quest
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9d5bcb7a0d252bd418e358654162c578
+    m_Address: Canvas
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a171fc2856587334d9763d1b4d6c5833
+    m_Address: CheckFpsView
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fbae02b74414cfe47a62187aafab1437
+    m_Address: Unageo-Regular
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - preload
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 302c50e8503cf794f8c830ad33f8a904, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 9eb27d3dad8be174f9543aee94a40d33, type: 2}
+    - {fileID: 11400000, guid: 3f53bd319f5229740ba392240f2792a2, type: 2}
