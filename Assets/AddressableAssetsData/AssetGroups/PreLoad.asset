@@ -27,6 +27,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - preload
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 167b41a6fbfcfcc4f8f5179ae65f9046
+    m_Address: GameSpriteAtlas
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - preload
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3018785682765f446a357fc1a70ec9d0
     m_Address: icon-coin
     m_ReadOnly: 0
@@ -59,6 +65,12 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 84c9850bc390502418da941967c4b9bc
     m_Address: icon-rocket
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8ffd21245b7d4104184e5c4a6b7fe03a
+    m_Address: BgSpriteAtlas
     m_ReadOnly: 0
     m_SerializedLabels:
     - preload

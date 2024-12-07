@@ -22,5 +22,10 @@ namespace Project.Scripts
         {
             TransactionSend?.Invoke(message);
         }
+
+        public void OnWalletConnected(string jsonMassage)
+        {
+            Debug.Log(jsonMassage);
+        }
     }
 }

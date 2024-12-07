@@ -2,7 +2,7 @@ let tonConnectUI;
 
 mergeInto(LibraryManager.library, {
 
-    ConnectToWallet: function () {
+    ConnectWalletJS: function () {
         // Используем callback для взаимодействия с Unity
         tonConnectUI.connectWallet()
             .then((connectedWallet) => {
@@ -18,8 +18,8 @@ mergeInto(LibraryManager.library, {
     
     Init: function (){
     tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
-      manifestUrl: 'https://tops-bullfrog-painfully.ngrok-free.app/tonconnect-manifest.json',
-      buttonRootId: 'connect-button'
+      manifestUrl: 'https://tops-bullfrog-painfully.ngrok-free.app/tonconnect-manifest.json'
+      //buttonRootId: 'connect-button'
   });
   },
 

@@ -13,6 +13,7 @@ namespace Project.Scripts.Module.Mining
         void ClaimClick();
         void Buy();
         void UpgradeRandom();
+        void ConnectWallet();
     }
     
     public class MainPresenter : IMainPresenter
@@ -85,6 +86,11 @@ namespace Project.Scripts.Module.Mining
         public void UpgradeRandom()
         {
             _model.UpgradeForCoins();
+        }
+
+        public void ConnectWallet()
+        {
+            _model.ConnectWallet();
         }
 
         public void TransactionSend()

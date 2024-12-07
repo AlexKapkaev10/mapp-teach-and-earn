@@ -14,6 +14,7 @@ namespace Project.Scripts.Module.Mining
         void UpgradeForStars();
         void Buy();
         void TransactionSend();
+        void ConnectWallet();
     }
     
     public class MainModel : IMainModel
@@ -26,6 +27,9 @@ namespace Project.Scripts.Module.Mining
     
         [DllImport("__Internal")]
         private static extern void Send();
+        
+        [DllImport("__Internal")]
+        private static extern void ConnectWalletJS();
         
         private readonly IClientAPI _clientAPI;
         private bool isInit;
@@ -80,7 +84,16 @@ namespace Project.Scripts.Module.Mining
         {
             _clientAPI.TransactionSend();
         }
-        
+
+        public void ConnectWallet()
+        {
+#if !UNITY_EDITOR
+            ConnectWalletJS();
+#else
+            this.Log("Editor Connect Wallet");
+#endif
+        }
+
         public void OpenUrl()
         {
             string url = "https://t.me/alexoneDevelop";

@@ -20,6 +20,7 @@ namespace Project.Scripts.Module.Mining
         [SerializeField] private Button _buttonClaim;
         [SerializeField] private Button _buttonBuy;
         [SerializeField] private Button _buttonUpgradeRandom;
+        [SerializeField] private Button _buttonConnectWallet;
 
         [SerializeField] private TMP_Text _textScore;
         [SerializeField] private TMP_Text _textLog;
@@ -41,8 +42,14 @@ namespace Project.Scripts.Module.Mining
             _buttonClaim.onClick.AddListener(OnClaimClick);
             _buttonBuy.onClick.AddListener(OnBuyClick);
             _buttonUpgradeRandom.onClick.AddListener(OnUpgradeRandomClick);
+            _buttonConnectWallet.onClick.AddListener(OnConnectWalletClick);
 
             UpdateClaimButton(_presenter.CanClaim);
+        }
+
+        private void OnConnectWalletClick()
+        {
+            _presenter.ConnectWallet();
         }
 
         private void OnDisable()

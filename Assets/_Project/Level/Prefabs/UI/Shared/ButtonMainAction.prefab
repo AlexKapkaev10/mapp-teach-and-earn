@@ -164,6 +164,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.79045033
       objectReference: {fileID: 0}
+    - target: {fileID: 5037834180570026965, guid: 10cbd099157cd314996d146e295bba60, type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 3.76
+      objectReference: {fileID: 0}
     - target: {fileID: 6769584421869213497, guid: 10cbd099157cd314996d146e295bba60, type: 3}
       propertyPath: m_text
       value: claim (0.1 - 0.5)
