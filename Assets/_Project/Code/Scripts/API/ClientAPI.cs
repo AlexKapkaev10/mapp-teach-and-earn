@@ -13,7 +13,7 @@ namespace Project.Scripts.API
     public interface IClientAPI : IDisposable
     {
         void RandomClaimAsync(Action<bool, float> callBack);
-        void TransactionSend();
+        void ConfirmTransaction();
     }
     
     public class ClientAPI : IClientAPI
@@ -51,7 +51,7 @@ namespace Project.Scripts.API
             }
         }
 
-        public void TransactionSend()
+        public void ConfirmTransaction()
         {
             _bank.SetPoints(100);
         }

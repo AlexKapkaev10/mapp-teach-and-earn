@@ -13,24 +13,24 @@ namespace Project.Scripts.Module.Mining
         void UpgradeForCoins();
         void UpgradeForStars();
         void Buy();
-        void TransactionSend();
+        void OnTransactionSend();
         void ConnectWallet();
     }
     
     public class MainModel : IMainModel
     {
         [DllImport("__Internal")]
-        private static extern void BuyForStars();
-    
+        private static extern void jsInit();
+
         [DllImport("__Internal")]
-        private static extern void Init();
-    
+        private static extern void jsConnectWallet();
+
         [DllImport("__Internal")]
-        private static extern void Send();
-        
+        private static extern void jsBuyByStars();
+
         [DllImport("__Internal")]
-        private static extern void ConnectWalletJS();
-        
+        private static extern void jsSendTransaction();
+
         private readonly IClientAPI _clientAPI;
         private bool isInit;
 
@@ -47,9 +47,36 @@ namespace Project.Scripts.Module.Mining
             }
 
 #if !UNITY_EDITOR
-            Init();
+            jsInit();
 #endif
             isInit = true;
+        }
+
+        public void ConnectWallet()
+        {
+#if !UNITY_EDITOR
+            jsConnectWallet();
+#else
+            this.Log("Editor Connect Wallet");
+#endif
+        }
+
+        public void UpgradeForStars()
+        {
+#if !UNITY_EDITOR
+            jsBuyByStars();
+#else
+            this.Log("Editor Upgrade For Stars");
+#endif
+        }
+
+        public void Buy()
+        {
+#if !UNITY_EDITOR
+            jsSendTransaction();
+#else
+            this.Log("Editor Buy");
+#endif
         }
 
         public void Claim(Action<bool, float> callBack)
@@ -57,41 +84,14 @@ namespace Project.Scripts.Module.Mining
             _clientAPI.RandomClaimAsync(callBack);
         }
 
-        public void UpgradeForStars()
-        {
-#if !UNITY_EDITOR
-            BuyForStars();
-#else
-            this.Log("Editor Upgrade For Stars");
-#endif
-        }
-    
-        public void Buy()
-        {
-#if !UNITY_EDITOR
-            Send();
-#else
-            this.Log("Editor Buy");
-#endif
-        }
-
         public void UpgradeForCoins()
         {
             this.Log("Editor Upgrade For Coins");
         }
 
-        public void TransactionSend()
+        public void OnTransactionSend()
         {
-            _clientAPI.TransactionSend();
-        }
-
-        public void ConnectWallet()
-        {
-#if !UNITY_EDITOR
-            ConnectWalletJS();
-#else
-            this.Log("Editor Connect Wallet");
-#endif
+            _clientAPI.ConfirmTransaction();
         }
 
         public void OpenUrl()

@@ -85,7 +85,7 @@ namespace Project.Scripts.Module.Mining
 
         public void UpgradeRandom()
         {
-            _model.UpgradeForCoins();
+            _model.UpgradeForStars();
         }
 
         public void ConnectWallet()
@@ -95,7 +95,7 @@ namespace Project.Scripts.Module.Mining
 
         public void TransactionSend()
         {
-            _model.TransactionSend();
+            _model.OnTransactionSend();
             _view.UpdateScore(_bank.GetPoints().ToString("F"));
         }
 
