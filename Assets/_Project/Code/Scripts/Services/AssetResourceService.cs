@@ -1,6 +1,5 @@
 using System;
 using System.Threading.Tasks;
-using Cysharp.Threading.Tasks;
 using Project.Infrastructure.Extensions;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -35,8 +34,6 @@ namespace Project.Scripts.Services
                 var handle = Addressables.LoadAssetsAsync<Object>(label.labelString);
                 
                 await handle.Task;
-                
-                this.Log(handle.Result as MonoBehaviour);
 
                 if (handle.Status == AsyncOperationStatus.Succeeded)
                 {
@@ -57,7 +54,7 @@ namespace Project.Scripts.Services
         {
             try
             {
-                var reference = await assetReference.LoadAssetAsync<GameObject>();
+                var reference = await assetReference.LoadAssetAsync<GameObject>().Task;
                 calBack?.Invoke(reference);
             }
             catch (Exception ex)

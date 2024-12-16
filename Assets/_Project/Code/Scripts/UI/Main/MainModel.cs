@@ -1,106 +1,49 @@
 using System;
-using System.Runtime.InteropServices;
-using Project.Infrastructure.Extensions;
-using Project.Scripts.API;
-using UnityEngine;
+using Project.Scripts.Connect;
 
-namespace Project.Scripts.Module.Mining
+namespace Project.Scripts.Mining
 {
     public interface IMainModel
     {
-        void SetInit();
-        void Claim(Action<bool, float> callBack);
-        void UpgradeForCoins();
-        void UpgradeForStars();
+        void Claim(Action<bool, float> onClaim);
         void Buy();
-        void OnTransactionSend();
+        void UpgradeForStars();
         void ConnectWallet();
+        void OnTransactionSend();
     }
     
     public class MainModel : IMainModel
     {
-        [DllImport("__Internal")]
-        private static extern void jsInit();
+        private readonly ITelegramConnectService _connectService;
 
-        [DllImport("__Internal")]
-        private static extern void jsConnectWallet();
-
-        [DllImport("__Internal")]
-        private static extern void jsBuyByStars();
-
-        [DllImport("__Internal")]
-        private static extern void jsSendTransaction();
+        public MainModel(ITelegramConnectService connectService)
+        {
+            _connectService = connectService;
+        }
         
-        [DllImport("__Internal")]
-        private static extern void jsShareLink(string link, string text);
-
-        private readonly IClientAPI _clientAPI;
-        private bool isInit;
-
-        public MainModel(IClientAPI clientAPI)
+        public void Claim(Action<bool, float> onClaim)
         {
-            _clientAPI = clientAPI;
-        }
-
-        public void SetInit()
-        {
-            if (isInit)
-            {
-                return;
-            }
-
-#if !UNITY_EDITOR
-            jsInit();
-#endif
-            isInit = true;
-        }
-
-        public void ConnectWallet()
-        {
-#if !UNITY_EDITOR
-            jsConnectWallet();
-#else
-            this.Log("Editor Connect Wallet");
-#endif
-        }
-
-        public void UpgradeForStars()
-        {
-#if !UNITY_EDITOR
-            jsBuyByStars();
-#else
-            this.Log("Editor Upgrade For Stars");
-#endif
+            _connectService.Claim(onClaim);
         }
 
         public void Buy()
         {
-#if !UNITY_EDITOR
-            jsShareLink("https://google.com", "Hello");
-#else
-            this.Log("Editor Buy");
-#endif
+            _connectService.Buy();
         }
 
-        public void Claim(Action<bool, float> callBack)
+        public void UpgradeForStars()
         {
-            _clientAPI.RandomClaimAsync(callBack);
+            _connectService.UpgradeForStars();
         }
 
-        public void UpgradeForCoins()
+        public void ConnectWallet()
         {
-            this.Log("Editor Upgrade For Coins");
+            _connectService.ConnectWallet();
         }
 
         public void OnTransactionSend()
         {
-            _clientAPI.ConfirmTransaction();
-        }
-
-        public void OpenUrl()
-        {
-            string url = "https://t.me/alexoneDevelop";
-            Application.OpenURL(url);
+            _connectService.OnTransactionSend();
         }
     }
 }

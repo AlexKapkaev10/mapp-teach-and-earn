@@ -1,8 +1,7 @@
 using Project.Scripts.Audio;
 using Project.Scripts.UI;
 using Project.Configs.Views;
-using Project.Scripts;
-using Project.Scripts.Module.Mining;
+using Project.Scripts.Mining;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;

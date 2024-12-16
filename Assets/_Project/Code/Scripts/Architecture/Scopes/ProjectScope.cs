@@ -2,11 +2,11 @@ using Project.Scripts.Bank;
 using Project.Scripts.Scene;
 using Project.Scripts.Skills;
 using Project.Scripts.API;
-using Project.Scripts.Architecture;
+using Project.Scripts.Connect;
 using Project.Scripts.Factory;
+using Project.Scripts.Loader;
 using Project.Scripts.Localization;
 using Project.Scripts.Services;
-using Project.Scripts.Tools;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -16,13 +16,12 @@ namespace Project.Scripts.Architecture
     public class ProjectScope : BaseScope
     {
         [SerializeField] private SkillsServiceConfig _skillsServiceConfig;
-        [SerializeField] private CoroutineStarter _coroutineStarter;
+        [SerializeField] private TelegramConnectServiceConfig _telegramConnectServiceConfig;
+        [SerializeField] private LoaderServiceConfig _loaderServiceConfig;
         
         protected override void Configure(IContainerBuilder builder)
         {
             base.Configure(builder);
-            builder.RegisterComponentInNewPrefab(_coroutineStarter, Lifetime.Singleton)
-                .As<ICoroutineStarter>();
 
             builder.RegisterEntryPoint<ClientAPI>()
                 .As<IClientAPI>();
@@ -39,6 +38,14 @@ namespace Project.Scripts.Architecture
         
         private void RegisterServices(IContainerBuilder builder)
         {
+            builder.Register<TelegramConnectService>(Lifetime.Singleton)
+                .As<ITelegramConnectService>()
+                .WithParameter(_telegramConnectServiceConfig);
+            
+            builder.Register<LoaderService>(Lifetime.Singleton)
+                .As<ILoaderService>()
+                .WithParameter(_loaderServiceConfig);
+            
             builder.Register<AssetResourceService>(Lifetime.Singleton)
                 .As<IAssetResourceService>();
             

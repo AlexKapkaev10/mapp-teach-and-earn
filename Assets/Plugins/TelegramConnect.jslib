@@ -17,10 +17,10 @@ mergeInto(LibraryManager.library, {
             
             const initDataString = JSON.stringify(initDataUnsafe);
             
-            window.unityInstanceRef.SendMessage('TonConnectHandler', 'OnReceiveInitData', initData);
-            window.unityInstanceRef.SendMessage('TonConnectHandler', 'OnLaunchDataReceived', initDataString);
+            window.unityInstanceRef.SendMessage('TelegramConnectHandler', 'OnReceiveInitData', initData);
+            window.unityInstanceRef.SendMessage('TelegramConnectHandler', 'OnLaunchDataReceived', initDataString);
         } catch (error) {
-            window.unityInstanceRef.SendMessage('TonConnectHandler', 'OnLaunchDataReceived', 'Error');
+            window.unityInstanceRef.SendMessage('TelegramConnectHandler', 'OnLaunchDataReceived', 'Error');
         }
     },
     

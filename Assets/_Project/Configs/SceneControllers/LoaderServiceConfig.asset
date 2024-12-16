@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2dedf2e5688b40faa3b796c005e111ce, type: 3}
-  m_Name: LoaderSceneControllerConfig
+  m_Name: LoaderServiceConfig
   m_EditorClassIdentifier: 
   <NextScene>k__BackingField: Game
   <PreloadLabel>k__BackingField:

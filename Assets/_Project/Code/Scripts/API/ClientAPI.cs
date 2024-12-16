@@ -56,6 +56,11 @@ namespace Project.Scripts.API
             _bank.SetPoints(100);
         }
 
+        public void OpenUrl(string url)
+        {
+            Application.OpenURL(url);
+        }
+
         public void Dispose()
         {
             _cts.Cancel();

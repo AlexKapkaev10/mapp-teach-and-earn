@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using VContainer;
 
-namespace Project.Scripts.Module.Mining
+namespace Project.Scripts.Mining
 {
     public interface IMainView
     {

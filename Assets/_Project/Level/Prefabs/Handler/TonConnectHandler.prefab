@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6866328739645690306}
   - component: {fileID: 7224494680271788256}
   m_Layer: 0
-  m_Name: TransactionHandler
+  m_Name: TonConnectHandler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

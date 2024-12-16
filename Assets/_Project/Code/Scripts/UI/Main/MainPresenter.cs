@@ -4,7 +4,7 @@ using Project.Scripts;
 using Project.Scripts.Bank;
 using VContainer;
 
-namespace Project.Scripts.Module.Mining
+namespace Project.Scripts.Mining
 {
     public interface IMainPresenter : IDisposable
     {
@@ -48,7 +48,6 @@ namespace Project.Scripts.Module.Mining
             _transactionHandler.TransactionSend += OnTransactionSend;
             
             _view = view;
-            _model.SetInit();
             _view.UpdateScore($"{_bank.GetPoints():F} POI");
         }
 
