@@ -28,6 +28,11 @@ namespace Project.Scripts
         {
             Debug.Log(jsonMassage);
         }
+
+        public void OnReceiveInitData(string initData)
+        {
+            
+        }
         
         public void OnLaunchDataReceived(string jsonData)
         {
@@ -38,10 +43,10 @@ namespace Project.Scripts
                 TelegramData telegramData = JsonUtility.FromJson<TelegramData>(jsonData);
                 string formattedAuthDate = ConvertTimestampToDate(telegramData.auth_date);
                 
-                Debug.Log($"Parsed Auth Date: {formattedAuthDate}");
+                /*Debug.Log($"Parsed Auth Date: {formattedAuthDate}");
                 Debug.Log($"User Info: {telegramData.user.first_name} {telegramData.user.last_name} ({telegramData.user.username})");
                 Debug.Log($"User Info: {telegramData.user.id})");
-                Debug.Log($"Chat Type: {telegramData.chat_type}");
+                Debug.Log($"Chat Type: {telegramData.chat_type}");*/
             }
             else
             {

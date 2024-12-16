@@ -30,6 +30,9 @@ namespace Project.Scripts.Module.Mining
 
         [DllImport("__Internal")]
         private static extern void jsSendTransaction();
+        
+        [DllImport("__Internal")]
+        private static extern void jsShareLink(string link, string text);
 
         private readonly IClientAPI _clientAPI;
         private bool isInit;
@@ -73,7 +76,7 @@ namespace Project.Scripts.Module.Mining
         public void Buy()
         {
 #if !UNITY_EDITOR
-            jsSendTransaction();
+            jsShareLink("https://google.com", "Hello");
 #else
             this.Log("Editor Buy");
 #endif

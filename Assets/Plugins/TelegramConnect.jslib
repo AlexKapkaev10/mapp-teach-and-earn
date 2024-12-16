@@ -5,10 +5,19 @@ mergeInto(LibraryManager.library, {
         tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
             manifestUrl: 'https://tops-bullfrog-painfully.ngrok-free.app/tonconnect-manifest.json'
         });
-
+        
         try {
-            const initData = window.Telegram.WebApp.initDataUnsafe;
-            const initDataString = JSON.stringify(initData);
+            
+            const href = new URL(window.location);
+            console.log(href.searchParams.get("tgWebAppStartParam"));
+            console.log(href.searchParams.get("startapp"));
+            
+            const initData = window.Telegram.WebApp.initData;
+            const initDataUnsafe = window.Telegram.WebApp.initDataUnsafe;
+            
+            const initDataString = JSON.stringify(initDataUnsafe);
+            
+            window.unityInstanceRef.SendMessage('TonConnectHandler', 'OnReceiveInitData', initData);
             window.unityInstanceRef.SendMessage('TonConnectHandler', 'OnLaunchDataReceived', initDataString);
         } catch (error) {
             window.unityInstanceRef.SendMessage('TonConnectHandler', 'OnLaunchDataReceived', 'Error');
@@ -29,6 +38,14 @@ mergeInto(LibraryManager.library, {
     
     jsBuyByStars: function () {
         window.Telegram.WebApp.openInvoice("https://t.me/$1K0N2ITWSUkaDQAAdtLZeXeXPfU");
+    },
+    
+    jsShareLink: function (linkArg, textArg) {
+
+        const link = UTF8ToString(linkArg);
+        const text = UTF8ToString(textArg);
+        
+        window.Telegram.WebApp.openTelegramLink('https://t.me/share/url?url=' + encodeURIComponent(link) +'&text=' + text);
     },
     
     jsSendTransaction: async function () {
