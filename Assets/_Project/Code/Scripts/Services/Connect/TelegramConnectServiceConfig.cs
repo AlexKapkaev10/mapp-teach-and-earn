@@ -6,7 +6,7 @@ namespace Project.Scripts.Connect
     public class TelegramConnectServiceConfig : ScriptableObject
     {
         [field: SerializeField, TextArea] public string EditorInitData { get; private set; }
-        
+        [field: SerializeField] public string ManifestUrl { get; private set; }
         [field: SerializeField] public string ServerUrl { get; private set; } = "https://inv-my.ngrok.app/validate";
         [field: SerializeField] public string DataKey { get; private set; } = "initData";
         [field: SerializeField] public string ContentTypeKey { get; private set; } = "Content-Type";

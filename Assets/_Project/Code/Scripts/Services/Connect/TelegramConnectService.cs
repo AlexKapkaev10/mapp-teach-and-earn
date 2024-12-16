@@ -14,6 +14,7 @@ namespace Project.Scripts.Connect
         void Buy();
         void OnTransactionSend();
         void ConnectWallet();
+        void DisconnectWallet();
         void ShareLink(string link, string header);
     }
     
@@ -67,6 +68,11 @@ namespace Project.Scripts.Connect
         public void ConnectWallet()
         {
             _model.ConnectWallet();
+        }
+
+        public void DisconnectWallet()
+        {
+            _model.DisconnectWallet();
         }
 
         public void ShareLink(string link, string header)

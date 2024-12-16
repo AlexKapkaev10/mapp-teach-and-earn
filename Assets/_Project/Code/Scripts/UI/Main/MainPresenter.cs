@@ -14,6 +14,7 @@ namespace Project.Scripts.Mining
         void Buy();
         void UpgradeRandom();
         void ConnectWallet();
+        void DisconnectWallet();
     }
     
     public class MainPresenter : IMainPresenter
@@ -90,6 +91,11 @@ namespace Project.Scripts.Mining
         public void ConnectWallet()
         {
             _model.ConnectWallet();
+        }
+
+        public void DisconnectWallet()
+        {
+            _model.DisconnectWallet();
         }
 
         public void TransactionSend()

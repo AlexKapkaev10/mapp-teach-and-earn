@@ -22,12 +22,13 @@ namespace Project.Scripts.Connect
         void ConnectWallet();
         void ShareLink(string link, string header);
         void OnInitDataResponse(string initData);
+        void DisconnectWallet();
     }
     
     public class TelegramConnectModel : ITelegramConnectModel
     {
         [DllImport("__Internal")]
-        private static extern void jsInit();
+        private static extern void jsInit(string manifestUrl);
 
         [DllImport("__Internal")]
         private static extern void jsConnectWallet();
@@ -40,6 +41,9 @@ namespace Project.Scripts.Connect
         
         [DllImport("__Internal")]
         private static extern void jsShareLink(string link, string text);
+        
+        [DllImport("__Internal")]
+        private static extern void jsDisconnectWallet();
         
         private bool _isInit;
         private readonly IClientAPI _clientAPI;
@@ -64,7 +68,7 @@ namespace Project.Scripts.Connect
             }
 
 #if !UNITY_EDITOR
-            jsInit();
+            jsInit(_config.ManifestUrl);
 #else
             this.Log("Editor Init");
             OnInitDataResponse(_config.EditorInitData);
@@ -129,7 +133,16 @@ namespace Project.Scripts.Connect
             Debug.Log(response);
             _loaderService.StartLoadResources();
         }
-        
+
+        public void DisconnectWallet()
+        {
+#if !UNITY_EDITOR
+            jsDisconnectWallet();
+#else
+            this.Log("Editor Disconnect Wallet");
+#endif
+        }
+
         [ItemCanBeNull]
         private async Task<string> SendInitDataAsync(string initData)
         {

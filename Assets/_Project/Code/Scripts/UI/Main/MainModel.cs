@@ -9,6 +9,7 @@ namespace Project.Scripts.Mining
         void Buy();
         void UpgradeForStars();
         void ConnectWallet();
+        void DisconnectWallet();
         void OnTransactionSend();
     }
     
@@ -39,6 +40,11 @@ namespace Project.Scripts.Mining
         public void ConnectWallet()
         {
             _connectService.ConnectWallet();
+        }
+
+        public void DisconnectWallet()
+        {
+            _connectService.DisconnectWallet();
         }
 
         public void OnTransactionSend()

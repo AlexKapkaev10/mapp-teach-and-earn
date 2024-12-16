@@ -30,5 +30,10 @@ namespace Project.Scripts
         {
             this.Log(message);
         }
+
+        public void OnWalletDisconnected()
+        {
+            Debug.Log("Wallet Disconnect");
+        }
     }
 }

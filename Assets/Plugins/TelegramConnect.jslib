@@ -1,13 +1,14 @@
 let tonConnectUI;
 
 mergeInto(LibraryManager.library, {
-    jsInit: function () {
+    jsInit: function (manifestArg) {
+
+        const manifest = UTF8ToString(manifestArg);
         tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
-            manifestUrl: 'https://tops-bullfrog-painfully.ngrok-free.app/tonconnect-manifest.json'
+            manifestUrl: manifest
         });
         
         try {
-            
             const href = new URL(window.location);
             console.log(href.searchParams.get("tgWebAppStartParam"));
             console.log(href.searchParams.get("startapp"));
@@ -38,6 +39,11 @@ mergeInto(LibraryManager.library, {
     
     jsBuyByStars: function () {
         window.Telegram.WebApp.openInvoice("https://t.me/$1K0N2ITWSUkaDQAAdtLZeXeXPfU");
+    },
+
+    jsDisconnectWallet: async function () {
+        await tonConnectUI.disconnect();
+        window.unityInstanceRef.SendMessage('TonConnectHandler', 'OnWalletDisconnected');
     },
     
     jsShareLink: function (linkArg, textArg) {

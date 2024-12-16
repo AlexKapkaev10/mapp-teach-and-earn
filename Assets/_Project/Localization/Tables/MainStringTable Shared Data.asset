@@ -43,6 +43,10 @@ MonoBehaviour:
     m_Key: _tasks
     m_Metadata:
       m_Items: []
+  - m_Id: 9067237648265216
+    m_Key: _disconnectWallet
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
