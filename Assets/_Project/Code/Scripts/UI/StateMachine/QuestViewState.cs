@@ -1,6 +1,6 @@
 using System.Collections.Generic;
+using Project.Scripts.Services;
 using VContainer;
-using VContainer.Unity;
 
 namespace Project.Scripts.UI.StateMachine
 {
@@ -8,28 +8,22 @@ namespace Project.Scripts.UI.StateMachine
     {
         private readonly List<View> _views = new ();
         private readonly ViewsStateMachineConfig _config;
-        private readonly IObjectResolver _resolver;
+        private readonly IFactory _factory;
 
-        public QuestViewState(IObjectResolver resolver, ViewsStateMachineConfig config)
+        public QuestViewState(IFactory factory, ViewsStateMachineConfig config)
         {
-            _resolver = resolver;
+            _factory = factory;
             _config = config;
         }
         
         public void Enter()
         {
-            var quest = _resolver.Instantiate(_config.GetViewPrefabByType(ViewType.Quest), null);
-            _views.Add(quest);
+
         }
 
         public void Exit()
         {
-            foreach (var view in _views)
-            {
-                view.SetDisable();
-            }
-            
-            _views.Clear();
+
         }
     }
 }

@@ -1,6 +1,5 @@
 using System;
 using Project.Configs.Views;
-using Project.Scripts;
 using Project.Scripts.Bank;
 using VContainer;
 

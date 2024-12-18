@@ -8,22 +8,13 @@ namespace Project.Scripts.UI
     {
         [SerializeField] private View[] _viewPrefabs;
         [field: SerializeField] public bool IsCheckFps { get; private set; } = true;
-        [field: SerializeField] public AssetReference Test { get; private set; }
         [field: SerializeField] public AssetReference MainViewReference { get; private set; }
+        [field: SerializeField] public AssetReference ActivityViewReference { get; private set; }
         [field: SerializeField] public AssetReference InfoViewReference { get; private set; }
         [field: SerializeField] public AssetReference SwitchViewReference { get; private set; }
-        
-        public View GetViewPrefabByType(ViewType type)
-        {
-            foreach (var prefab in _viewPrefabs)
-            {
-                if (prefab.ViewType == type)
-                {
-                    return prefab;
-                }
-            }
-
-            return null;
-        }
+        [field: SerializeField] public AssetReference DramMachineViewReference { get; private set; }
+        //ToDo: Replace to AssetReference
+        [field: SerializeField] public View ClickerViewPrefab { get; private set; }
+        [field: SerializeField] public View FpsViewPrefab { get; private set; }
     }
 }

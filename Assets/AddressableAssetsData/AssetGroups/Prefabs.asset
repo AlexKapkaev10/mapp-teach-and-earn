@@ -15,6 +15,11 @@ MonoBehaviour:
   m_GroupName: Prefabs
   m_GUID: 9aee6af4daaf3c14e82703552724c098
   m_SerializeEntries:
+  - m_GUID: 41c46ab03c180304f9ffc89069e6437f
+    m_Address: DramMachineView
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6dc911aa5cc4da647a7f44d7a27a3457
     m_Address: MainView
     m_ReadOnly: 0
@@ -26,6 +31,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - mainView
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e388994e99940ef4188e83b56fae4b6f
+    m_Address: ActivityView
+    m_ReadOnly: 0
+    m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f23662942009b694ea1286a07b7eff2b
     m_Address: GameInfoView

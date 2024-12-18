@@ -1,6 +1,5 @@
 using System.Collections.Generic;
-using VContainer;
-using VContainer.Unity;
+using Project.Scripts.Services;
 
 namespace Project.Scripts.UI.StateMachine
 {
@@ -8,17 +7,17 @@ namespace Project.Scripts.UI.StateMachine
     {
         private readonly List<View> _views = new List<View>();
         private readonly ViewsStateMachineConfig _config;
-        private readonly IObjectResolver _resolver;
+        private readonly IFactory _factory;
         
-        public ClickerViewState(IObjectResolver resolver, ViewsStateMachineConfig config)
+        public ClickerViewState(IFactory factory, ViewsStateMachineConfig config)
         {
             _config = config;
-            _resolver = resolver;
+            _factory = factory;
         }
         
         public void Enter()
         {
-            var clicker = _resolver.Instantiate(_config.GetViewPrefabByType(ViewType.Clicker), null);
+            var clicker = _factory.GetView(_config.ClickerViewPrefab);
             _views.Add(clicker);
         }
 

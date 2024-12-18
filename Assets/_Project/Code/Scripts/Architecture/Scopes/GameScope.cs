@@ -2,6 +2,7 @@ using Project.Scripts.Audio;
 using Project.Scripts.UI;
 using Project.Configs.Views;
 using Project.Scripts.Mining;
+using Project.Scripts.Services;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -19,8 +20,12 @@ namespace Project.Scripts.Architecture
             base.Configure(builder);
 
             builder.RegisterComponentInHierarchy<ITransactionHandler>();
+
+            builder.Register<Factory>(Lifetime.Singleton)
+                .As<IFactory>();
+            
             RegisterMining(builder);
-            RegisterFactory(builder);
+            RegisterViewStateMachine(builder);
             RegisterAudioSystem(builder);
         }
 
@@ -41,7 +46,7 @@ namespace Project.Scripts.Architecture
                 .WithParameter(_audioControllerConfig);
         }
 
-        private void RegisterFactory(IContainerBuilder builder)
+        private void RegisterViewStateMachine(IContainerBuilder builder)
         {
             builder.RegisterComponentInHierarchy<ViewsStateMachine>()
                 .As<IViewsStateMachine>()

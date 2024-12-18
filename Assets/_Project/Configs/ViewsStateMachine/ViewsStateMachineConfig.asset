@@ -24,14 +24,14 @@ MonoBehaviour:
   - {fileID: 3629275089020748720, guid: d3750ab1e6767fb40a7248a6f5fad9eb, type: 3}
   - {fileID: 8959883872755513169, guid: 85ab510a4d743e4438e308d688cacefc, type: 3}
   <IsCheckFps>k__BackingField: 0
-  <Test>k__BackingField:
-    m_AssetGUID: a171fc2856587334d9763d1b4d6c5833
+  <MainViewReference>k__BackingField:
+    m_AssetGUID: 6dc911aa5cc4da647a7f44d7a27a3457
     m_SubObjectName: 
     m_SubObjectGUID: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  <MainViewReference>k__BackingField:
-    m_AssetGUID: 6dc911aa5cc4da647a7f44d7a27a3457
+  <ActivityViewReference>k__BackingField:
+    m_AssetGUID: e388994e99940ef4188e83b56fae4b6f
     m_SubObjectName: 
     m_SubObjectGUID: 
     m_SubObjectType: 
@@ -48,5 +48,11 @@ MonoBehaviour:
     m_SubObjectGUID: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  <MainViewAssetLabel>k__BackingField:
-    m_LabelString: mainView
+  <DramMachineViewReference>k__BackingField:
+    m_AssetGUID: 41c46ab03c180304f9ffc89069e6437f
+    m_SubObjectName: 
+    m_SubObjectGUID: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  <ClickerViewPrefab>k__BackingField: {fileID: 3570279259286375542, guid: e6ea739fccf3c0140842db927aa11b24, type: 3}
+  <FpsViewPrefab>k__BackingField: {fileID: 2864308229196923478, guid: a171fc2856587334d9763d1b4d6c5833, type: 3}

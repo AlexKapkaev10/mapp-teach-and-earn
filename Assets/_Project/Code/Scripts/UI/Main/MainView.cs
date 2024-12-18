@@ -1,5 +1,4 @@
 using Project.Scripts.UI;
-using Project.Scripts;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

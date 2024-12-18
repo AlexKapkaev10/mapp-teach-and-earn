@@ -3,7 +3,6 @@ using Project.Scripts.Services;
 using Project.Scripts.UI.StateMachine;
 using UnityEngine;
 using VContainer;
-using VContainer.Unity;
 
 namespace Project.Scripts.UI
 {
@@ -17,17 +16,14 @@ namespace Project.Scripts.UI
         private Dictionary<ViewStateType, IViewState> _dictionaryStates;
         private ViewsStateMachineConfig _config;
 
-        private IObjectResolver _resolver;
+        private IFactory _factory;
         private IViewState _currentViewState;
         private IAssetResourceService _resourceService;
 
         [Inject]
-        private void Construct(
-            IObjectResolver resolver,
-            IAssetResourceService resourceService,
-            ViewsStateMachineConfig config)
+        private void Construct(IFactory factory, IAssetResourceService resourceService, ViewsStateMachineConfig config)
         {
-            _resolver = resolver;
+            _factory = factory;
             _resourceService = resourceService;
             _config = config;
         }
@@ -36,7 +32,7 @@ namespace Project.Scripts.UI
         {
             if (_config.IsCheckFps)
             {
-                Instantiate(_config.GetViewPrefabByType(ViewType.CheckFPS), null);
+                Instantiate(_config.FpsViewPrefab, null);
             }
             
             _resourceService.LoadGameObjectByReference(_config.SwitchViewReference, OnSwitchMenuLoaded);
@@ -44,7 +40,7 @@ namespace Project.Scripts.UI
 
         private void OnSwitchMenuLoaded(GameObject prefab)
         {
-            _resolver.Instantiate(prefab, null);
+            _factory.GetView(prefab.GetComponent<View>());
             
             CreateMachine();
         }
@@ -70,10 +66,11 @@ namespace Project.Scripts.UI
         {
             _dictionaryStates = new Dictionary<ViewStateType, IViewState>
             {
-                { ViewStateType.Home , new HomeViewState(_resolver, _config)},
-                { ViewStateType.Activity , new ActivityViewState(_resolver, _config)},
-                { ViewStateType.Clicker , new ClickerViewState(_resolver, _config)},
-                { ViewStateType.Quest , new QuestViewState(_resolver, _config)}
+                { ViewStateType.Home , new HomeViewState(_factory, _config)},
+                { ViewStateType.Activity , new ActivityViewState(_factory, _config)},
+                { ViewStateType.Clicker , new ClickerViewState(_factory, _config)},
+                { ViewStateType.Quest , new QuestViewState(_factory, _config)},
+                { ViewStateType.DramMachine , new DramMachineViewState(_factory, _config)}
             };
         }
     }
@@ -85,6 +82,7 @@ namespace Project.Scripts.UI
         Activity,
         Clicker,
         Farm,
-        Quest
+        Quest,
+        DramMachine
     }
 }

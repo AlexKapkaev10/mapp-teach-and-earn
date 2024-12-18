@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Cysharp.Threading.Tasks;
 using Project.Infrastructure.Extensions;
 using Project.Scripts.Services;
 using UnityEngine;
@@ -10,15 +9,15 @@ using UnityEngine.AddressableAssets;
 
 namespace Project.Scripts.UI.StateMachine
 {
-    public class HomeViewState : IViewState
+    public class DramMachineViewState : IViewState
     {
-        private readonly List<View> _views = new ();
-
-        private CancellationTokenSource _cts;
         private readonly ViewsStateMachineConfig _config;
         private readonly IFactory _factory;
+        private readonly List<View> _views = new ();
+        
+        private CancellationTokenSource _cts;
 
-        public HomeViewState(IFactory factory, ViewsStateMachineConfig config)
+        public DramMachineViewState(IFactory factory, ViewsStateMachineConfig config)
         {
             _config = config;
             _factory = factory;
@@ -27,9 +26,7 @@ namespace Project.Scripts.UI.StateMachine
         public async void Enter()
         {
             _cts = new CancellationTokenSource();
-            
-            await LoadViewAsync(_config.MainViewReference, _cts.Token);
-            await LoadViewAsync(_config.InfoViewReference, _cts.Token);
+            await LoadViewAsync(_config.DramMachineViewReference, _cts.Token);
         }
 
         public void Exit()
@@ -49,15 +46,13 @@ namespace Project.Scripts.UI.StateMachine
         {
             try
             {
-                var reference = await assetReference.LoadAssetAsync<GameObject>();
-
+                var reference = await assetReference.LoadAssetAsync<GameObject>().Task;
                 if (token.IsCancellationRequested)
                 {
                     token.ThrowIfCancellationRequested();
                 }
-            
+
                 var view = _factory.GetView(reference.GetComponent<View>());
-                
                 _views.Add(view);
                 assetReference.ReleaseAsset();
             }

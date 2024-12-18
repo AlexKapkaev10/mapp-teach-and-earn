@@ -1,35 +1,66 @@
+using System;
 using System.Collections.Generic;
-using VContainer;
-using VContainer.Unity;
+using System.Threading;
+using System.Threading.Tasks;
+using Project.Infrastructure.Extensions;
+using Project.Scripts.Services;
+using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace Project.Scripts.UI.StateMachine
 {
     public class ActivityViewState : IViewState
     {
-        private readonly List<View> _views = new List<View>();
         private readonly ViewsStateMachineConfig _config;
-        private readonly IObjectResolver _resolver;
+        private readonly List<View> _views = new ();
+        private readonly IFactory _factory;
         
-        public ActivityViewState(IObjectResolver resolver, ViewsStateMachineConfig config)
+        private CancellationTokenSource _cts;
+
+        public ActivityViewState(IFactory factory, ViewsStateMachineConfig config)
         {
             _config = config;
-            _resolver = resolver;
+            _factory = factory;
         }
         
-        public void Enter()
+        public async void Enter()
         {
-            var clicker = _resolver.Instantiate(_config.GetViewPrefabByType(ViewType.Activity), null);
-            _views.Add(clicker);
+            _cts = new CancellationTokenSource();
+
+            await LoadViewAsync(_config.ActivityViewReference, _cts.Token);
         }
 
         public void Exit()
         {
+            _cts.Cancel();
+            _cts = null;
+            
             foreach (var view in _views)
             {
                 view.SetDisable();
             }
             
             _views.Clear();
+        }
+        
+        private async Task LoadViewAsync(AssetReference assetReference, CancellationToken token)
+        {
+            try
+            {
+                var reference = await assetReference.LoadAssetAsync<GameObject>().Task;
+                if (token.IsCancellationRequested)
+                {
+                    token.ThrowIfCancellationRequested();
+                }
+
+                var view = _factory.GetView(reference.GetComponent<View>());
+                _views.Add(view);
+                assetReference.ReleaseAsset();
+            }
+            catch (Exception e)
+            {
+                this.Log(e.Message);
+            }
         }
     }
 }

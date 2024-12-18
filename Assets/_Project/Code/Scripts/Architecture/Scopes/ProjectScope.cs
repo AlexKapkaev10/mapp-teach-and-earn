@@ -3,7 +3,6 @@ using Project.Scripts.Scene;
 using Project.Scripts.Skills;
 using Project.Scripts.API;
 using Project.Scripts.Connect;
-using Project.Scripts.Factory;
 using Project.Scripts.Loader;
 using Project.Scripts.Localization;
 using Project.Scripts.Services;
@@ -61,9 +60,6 @@ namespace Project.Scripts.Architecture
             builder.Register<SkillsService>(Lifetime.Singleton)
                 .As<ISkillsService>()
                 .WithParameter(_skillsServiceConfig);
-            
-            builder.Register<Factory.Factory>(Lifetime.Singleton)
-                .As<IFactory>();
         }
     }
 }

@@ -1,15 +1,16 @@
+using Project.Scripts.UI;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
-namespace Project.Scripts.Factory
+namespace Project.Scripts.Services
 {
     public interface IFactory
     {
         IObjectResolver Resolver { get; }
 
-        T GetMonoBehavior<T>(in T component, in Transform parent = null) 
-            where T : MonoBehaviour;
+        T GetView<T>(in T component, in Transform parent = null) 
+            where T : View;
     }
     
     public sealed class Factory : IFactory
@@ -23,7 +24,7 @@ namespace Project.Scripts.Factory
             _resolver = resolver;
         }
 
-        public T GetMonoBehavior<T>(in T component, in Transform parent = null) where T : MonoBehaviour
+        public T GetView<T>(in T component, in Transform parent = null) where T : View
         {
             return _resolver.Instantiate(component, parent);
         }

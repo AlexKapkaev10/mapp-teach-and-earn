@@ -5,8 +5,6 @@ namespace Project.Scripts.UI
 {
     public class View : MonoBehaviour
     {
-        [field: SerializeField] public ViewType ViewType { get; private set; }
-        
         [SerializeField] private CanvasGroup _canvasGroup;
         [SerializeField] private float _durationVisible = 0.4f;
         [SerializeField] private bool _ignoreSetVisible = false;
@@ -47,20 +45,5 @@ namespace Project.Scripts.UI
                 DOTween.Kill(_tweener);
             }
         }
-    }
-
-    public enum ViewType
-    {
-        None = 0,
-        Main = 1,
-        Character = 2,
-        Clicker = 3,
-        GameInfo = 4,
-        Loader = 5,
-        GradientBg = 6,
-        Activity = 7,
-        CheckFPS = 8,
-        SwitchViewMenu = 9,
-        Quest = 10
     }
 }

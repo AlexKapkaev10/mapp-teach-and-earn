@@ -45,6 +45,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - preload
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 493e9c311f26c314b9490c9e44394828
+    m_Address: sner-med-komp-edit
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - preload
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 55242140bf48e4e42a32949573fc268a
     m_Address: Gradient
     m_ReadOnly: 0
@@ -95,6 +101,36 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a171fc2856587334d9763d1b4d6c5833
     m_Address: CheckFpsView
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b3062cf83517c4641822aad1adf38981
+    m_Address: zvuki-barabana-izdavaemyie-stukom-po-korobkam
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b684370faeb7be34690caae52273728f
+    m_Address: zvuk-malogo-barabana
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c035bf4338b930949be2bddcd922259c
+    m_Address: ActivityViewConfig
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: de825c02b34036b469e4c56573cc3c2a
+    m_Address: bass-bochka-zvonkaya-chetkaya
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f569371d3755c314da9da8d423b6461e
+    m_Address: ImageBorder
     m_ReadOnly: 0
     m_SerializedLabels:
     - preload

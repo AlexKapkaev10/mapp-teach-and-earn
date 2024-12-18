@@ -18,9 +18,9 @@ MonoBehaviour:
     HeaderLocalizationKey: Clicker
     DescriptionLocalizationKey: tap and earn coins
   - SpriteIcon: {fileID: 21300000, guid: 736961022b50ca74e86b44011accafff, type: 3}
-    SwitchToStateType: 0
-    HeaderLocalizationKey: Mining Farm
-    DescriptionLocalizationKey: mine diamonds
+    SwitchToStateType: 6
+    HeaderLocalizationKey: Dram Machine
+    DescriptionLocalizationKey: make sound
   - SpriteIcon: {fileID: 21300000, guid: 48630bfc72c169945a849c3819e2cb86, type: 3}
     SwitchToStateType: 0
     HeaderLocalizationKey: Quest
