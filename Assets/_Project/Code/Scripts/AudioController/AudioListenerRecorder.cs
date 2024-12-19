@@ -1,17 +1,21 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Project.Scripts.Audio
 {
     public class AudioListenerRecorder : MonoBehaviour
     {
-        private FileStream _fileStream;
+        private readonly List<byte[]> _audioDataList = new List<byte[]>(); // Лист для хранения байтов аудио
+        private MemoryStream _memoryStream;
         private bool _isRecording = false;
         private int _outputRate;
-        private string _fileName;
         private int _recordedChannels;
         private const int k_headerSize = 44;
+
+        [SerializeField] private AudioSource _audioSource;
 
         private void Start()
         {
@@ -25,14 +29,14 @@ namespace Project.Scripts.Audio
                 Debug.LogWarning("Recording is already in progress.");
                 return;
             }
-            
-            _fileName = Path.Combine(Application.persistentDataPath, "audio_listener_record.wav");
-            StartWriting(_fileName);
+
+            _memoryStream = new MemoryStream();
+            WriteEmptyHeader(); // Записываем пустой заголовок WAV
             _isRecording = true;
-            Debug.Log($"Recording started. File path: {_fileName}");
+            Debug.Log("Recording started.");
         }
 
-        public void StopRecording()
+        private void StopRecording()
         {
             if (!_isRecording)
             {
@@ -40,16 +44,39 @@ namespace Project.Scripts.Audio
                 return;
             }
 
+            if (_recordedChannels <= 0)
+            {
+                Debug.LogError("Invalid number of channels in WAV header.");
+                return;
+            }
+
             _isRecording = false;
             WriteHeader(_recordedChannels);
-            Debug.Log($"Recording stopped. File saved: {_fileName}");
+
+            byte[] recordedData = _memoryStream.ToArray();
+            _audioDataList.Add(recordedData);
+
+            _memoryStream.Dispose();
+            _memoryStream = null;
+
+            Debug.Log($"Recording stopped. Audio saved to memory. Total recordings: {_audioDataList.Count}");
+            
+            PlayRecordingAsync(_audioDataList.Count - 1);
         }
 
         private void OnAudioFilterRead(float[] data, int channels)
         {
             if (!_isRecording) return;
 
+            if (channels <= 0)
+            {
+                Debug.LogError("Invalid number of channels during recording.");
+                return;
+            }
+
             _recordedChannels = channels;
+            Debug.Log($"Channels detected: {_recordedChannels}");
+
             NormalizeData(data);
             ConvertAndWrite(data);
         }
@@ -57,12 +84,12 @@ namespace Project.Scripts.Audio
         private void NormalizeData(float[] data)
         {
             float maxAmplitude = 0f;
-            
+
             foreach (var sample in data)
             {
                 maxAmplitude = Mathf.Max(maxAmplitude, Mathf.Abs(sample));
             }
-            
+
             if (maxAmplitude > 1f)
             {
                 for (int i = 0; i < data.Length; i++)
@@ -85,60 +112,62 @@ namespace Project.Scripts.Audio
                 bytesData[i * 2 + 1] = (byte)((intData[i] >> 8) & 0xFF);
             }
 
-            _fileStream.Write(bytesData, 0, bytesData.Length);
+            _memoryStream.Write(bytesData, 0, bytesData.Length);
         }
 
-        private void StartWriting(string fileName)
+        private void WriteEmptyHeader()
         {
-            _fileStream = new FileStream(fileName, FileMode.Create);
             byte[] emptyByte = new byte[k_headerSize];
-            _fileStream.Write(emptyByte, 0, k_headerSize);
+            _memoryStream.Write(emptyByte, 0, k_headerSize);
         }
 
         private void WriteHeader(int channels)
         {
-            _fileStream.Seek(0, SeekOrigin.Begin);
+            if (channels <= 0)
+            {
+                channels = 2;
+            }
+
+            _memoryStream.Seek(0, SeekOrigin.Begin);
 
             byte[] riff = ToByteArray("RIFF");
-            _fileStream.Write(riff, 0, 4);
+            _memoryStream.Write(riff, 0, 4);
 
-            byte[] chunkSize = BitConverter.GetBytes((int)(_fileStream.Length - 8));
-            _fileStream.Write(chunkSize, 0, 4);
+            byte[] chunkSize = BitConverter.GetBytes((int)(_memoryStream.Length - 8));
+            _memoryStream.Write(chunkSize, 0, 4);
 
             byte[] wave = ToByteArray("WAVE");
-            _fileStream.Write(wave, 0, 4);
+            _memoryStream.Write(wave, 0, 4);
 
             byte[] fmt = ToByteArray("fmt ");
-            _fileStream.Write(fmt, 0, 4);
+            _memoryStream.Write(fmt, 0, 4);
 
             byte[] subChunk1 = BitConverter.GetBytes(16);
-            _fileStream.Write(subChunk1, 0, 4);
+            _memoryStream.Write(subChunk1, 0, 4);
 
             UInt16 audioFormat = 1; // PCM
-            _fileStream.Write(BitConverter.GetBytes(audioFormat), 0, 2);
+            _memoryStream.Write(BitConverter.GetBytes(audioFormat), 0, 2);
 
             UInt16 numChannels = (UInt16)channels;
-            _fileStream.Write(BitConverter.GetBytes(numChannels), 0, 2);
+            _memoryStream.Write(BitConverter.GetBytes(numChannels), 0, 2);
 
             byte[] sampleRate = BitConverter.GetBytes(_outputRate);
-            _fileStream.Write(sampleRate, 0, 4);
+            _memoryStream.Write(sampleRate, 0, 4);
 
             byte[] byteRate = BitConverter.GetBytes(_outputRate * channels * 2);
-            _fileStream.Write(byteRate, 0, 4);
+            _memoryStream.Write(byteRate, 0, 4);
 
             UInt16 blockAlign = (UInt16)(channels * 2);
-            _fileStream.Write(BitConverter.GetBytes(blockAlign), 0, 2);
+            _memoryStream.Write(BitConverter.GetBytes(blockAlign), 0, 2);
 
             UInt16 bitsPerSample = 16;
-            _fileStream.Write(BitConverter.GetBytes(bitsPerSample), 0, 2);
+            _memoryStream.Write(BitConverter.GetBytes(bitsPerSample), 0, 2);
 
             byte[] dataString = ToByteArray("data");
-            _fileStream.Write(dataString, 0, 4);
+            _memoryStream.Write(dataString, 0, 4);
 
-            byte[] subChunk2Size = BitConverter.GetBytes((int)(_fileStream.Length - k_headerSize));
-            _fileStream.Write(subChunk2Size, 0, 4);
-
-            _fileStream.Close();
+            byte[] subChunk2Size = BitConverter.GetBytes((int)(_memoryStream.Length - k_headerSize));
+            _memoryStream.Write(subChunk2Size, 0, 4);
         }
 
         private byte[] ToByteArray(string str)
@@ -150,6 +179,70 @@ namespace Project.Scripts.Audio
             }
             return bytes;
         }
-    }
 
+        private async void PlayRecordingAsync(int index)
+        {
+            if (index < 0 || index >= _audioDataList.Count)
+            {
+                Debug.LogError("Invalid recording index.");
+                return;
+            }
+
+            byte[] audioBytes = _audioDataList[index];
+            AudioClip clip = ConvertToAudioClip(audioBytes);
+
+            if (clip == null)
+            {
+                Debug.LogError("Failed to convert byte array to AudioClip.");
+                return;
+            }
+
+            await PlayWhenReadyAsync(clip);
+        }
+
+        private async Task PlayWhenReadyAsync(AudioClip clip)
+        {
+            while (clip.loadState != AudioDataLoadState.Loaded)
+            {
+                await Task.Yield(); // Асинхронно ждем загрузки клипа
+            }
+
+            _audioSource.clip = clip;
+            _audioSource.Play();
+            Debug.Log("Audio is playing...");
+        }
+
+        private AudioClip ConvertToAudioClip(byte[] wavData)
+        {
+            const int headerSize = 44;
+            if (wavData.Length < headerSize)
+            {
+                Debug.LogError("Invalid WAV data: too short.");
+                return null;
+            }
+
+            int sampleRate = BitConverter.ToInt32(wavData, 24);
+            int channels = BitConverter.ToInt16(wavData, 22);
+
+            if (channels <= 0 || sampleRate <= 0)
+            {
+                Debug.LogError($"Invalid WAV header. SampleRate: {sampleRate}, Channels: {channels}");
+                return null;
+            }
+
+            int samples = (wavData.Length - headerSize) / 2;
+
+            float[] audioData = new float[samples];
+            for (int i = 0; i < samples; i++)
+            {
+                short sample = BitConverter.ToInt16(wavData, headerSize + i * 2);
+                audioData[i] = sample / 32768f;
+            }
+
+            AudioClip audioClip = AudioClip.Create("GeneratedAudio", samples, channels, sampleRate, false);
+            audioClip.SetData(audioData, 0);
+
+            return audioClip;
+        }
+    }
 }
