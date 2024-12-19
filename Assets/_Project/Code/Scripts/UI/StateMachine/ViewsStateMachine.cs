@@ -3,15 +3,16 @@ using Project.Scripts.Services;
 using Project.Scripts.UI.StateMachine;
 using UnityEngine;
 using VContainer;
+using VContainer.Unity;
 
 namespace Project.Scripts.UI
 {
-    public interface IViewsStateMachine
+    public interface IViewsStateMachine : IInitializable
     {
         void SwitchViewByType(ViewStateType type);
     }
     
-    public class ViewsStateMachine : MonoBehaviour, IViewsStateMachine
+    public class ViewsStateMachine : IViewsStateMachine
     {
         private Dictionary<ViewStateType, IViewState> _dictionaryStates;
         private ViewsStateMachineConfig _config;
@@ -28,11 +29,11 @@ namespace Project.Scripts.UI
             _config = config;
         }
 
-        private void Awake()
+        public void Initialize()
         {
             if (_config.IsCheckFps)
             {
-                Instantiate(_config.FpsViewPrefab, null);
+                _factory.GetView(_config.FpsViewPrefab.GetComponent<View>());
             }
             
             _resourceService.LoadGameObjectByReference(_config.SwitchViewReference, OnSwitchMenuLoaded);

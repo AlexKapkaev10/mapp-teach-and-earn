@@ -32,8 +32,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4325491740031382602}
-  - {fileID: 3735144028178402452}
   - {fileID: 2694371333354110946}
+  - {fileID: 3735144028178402452}
   m_Father: {fileID: 8527437047003458774}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -57,8 +57,8 @@ MonoBehaviour:
     m_Left: 0
     m_Right: 0
     m_Top: 20
-    m_Bottom: 0
-  m_ChildAlignment: 1
+    m_Bottom: 30
+  m_ChildAlignment: 7
   m_Spacing: 30
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 1
@@ -138,6 +138,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 74913813223423095, guid: b546b0e0b699fff48ab3dcc81606128d, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 74913813223423095, guid: b546b0e0b699fff48ab3dcc81606128d, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 74913813223423095, guid: b546b0e0b699fff48ab3dcc81606128d, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
       objectReference: {fileID: 0}
@@ -199,11 +207,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4315884986704794134, guid: b546b0e0b699fff48ab3dcc81606128d, type: 3}
       propertyPath: _stateType
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4472091687874587390, guid: b546b0e0b699fff48ab3dcc81606128d, type: 3}
       propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
-      value: 1809337523531776
+      value: 10073019516874752
       objectReference: {fileID: 0}
     - target: {fileID: 4472091687874587390, guid: b546b0e0b699fff48ab3dcc81606128d, type: 3}
       propertyPath: m_StringReference.m_TableReference.m_TableCollectionName
@@ -219,11 +227,11 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 84c9850bc390502418da941967c4b9bc, type: 3}
     - target: {fileID: 7648017746351244685, guid: b546b0e0b699fff48ab3dcc81606128d, type: 3}
       propertyPath: m_Name
-      value: ActivitiItem
+      value: Pads
       objectReference: {fileID: 0}
     - target: {fileID: 8642256983833379549, guid: b546b0e0b699fff48ab3dcc81606128d, type: 3}
       propertyPath: m_text
-      value: Activity
+      value: Pads
       objectReference: {fileID: 0}
     - target: {fileID: 8642256983833379549, guid: b546b0e0b699fff48ab3dcc81606128d, type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
@@ -231,11 +239,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8777069398961880062, guid: b546b0e0b699fff48ab3dcc81606128d, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 85
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8777069398961880062, guid: b546b0e0b699fff48ab3dcc81606128d, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 85
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8777069398961880062, guid: b546b0e0b699fff48ab3dcc81606128d, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -376,7 +384,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 6f9e8adeea879104993aa9439b579784, type: 3}
     - target: {fileID: 7648017746351244685, guid: b546b0e0b699fff48ab3dcc81606128d, type: 3}
       propertyPath: m_Name
-      value: HomeItem
+      value: Home
       objectReference: {fileID: 0}
     - target: {fileID: 8642256983833379549, guid: b546b0e0b699fff48ab3dcc81606128d, type: 3}
       propertyPath: m_text
@@ -489,7 +497,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 988540917f4f5b34caa324f68c7f3e07, type: 3}
     - target: {fileID: 7648017746351244685, guid: b546b0e0b699fff48ab3dcc81606128d, type: 3}
       propertyPath: m_Name
-      value: QuestItem
+      value: Quest
       objectReference: {fileID: 0}
     - target: {fileID: 7648017746351244685, guid: b546b0e0b699fff48ab3dcc81606128d, type: 3}
       propertyPath: m_IsActive
@@ -684,4 +692,4 @@ MonoBehaviour:
   _canvasGroup: {fileID: 5345729775423481438}
   _durationVisible: 0.2
   _ignoreSetVisible: 0
-  _defaultType: 1
+  _defaultType: 6

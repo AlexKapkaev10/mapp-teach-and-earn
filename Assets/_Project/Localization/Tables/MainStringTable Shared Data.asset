@@ -47,6 +47,10 @@ MonoBehaviour:
     m_Key: _disconnectWallet
     m_Metadata:
       m_Items: []
+  - m_Id: 10073019516874752
+    m_Key: _pads
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -48,7 +48,7 @@ namespace Project.Scripts.Architecture
 
         private void RegisterViewStateMachine(IContainerBuilder builder)
         {
-            builder.RegisterComponentInHierarchy<ViewsStateMachine>()
+            builder.RegisterEntryPoint<ViewsStateMachine>()
                 .As<IViewsStateMachine>()
                 .WithParameter(_viewsStateMachineConfig);
         }
