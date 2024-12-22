@@ -189,7 +189,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 0.8313726, g: 0.91372555, b: 0.4156863, a: 1}
     m_HighlightedColor: {r: 0.83137256, g: 0.9137255, b: 0.41568628, a: 1}
@@ -226,9 +226,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7a31129994d44d1b08564dd92660cc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Index>k__BackingField: 0
+  _imageIndicator: {fileID: 6955869149205432177}
+  _clip: {fileID: 8300000, guid: 493e9c311f26c314b9490c9e44394828, type: 3}
   _audioSource: {fileID: 4150809510212386415}
-  _clip: {fileID: 8300000, guid: b3062cf83517c4641822aad1adf38981, type: 3}
-  _button: {fileID: 5589332641023596005}
+  _colorIndicatorDefault: {r: 0.83137256, g: 0.9137255, b: 0.41568628, a: 1}
+  _keyCodePress: A
 --- !u!1 &5154352541913037108
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,6 +465,14 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.41331434
       objectReference: {fileID: 0}
+    - target: {fileID: 2065277622263533521, guid: f569371d3755c314da9da8d423b6461e, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: d0c787c7e282b2f419677602a19c9f9c, type: 2}
+    - target: {fileID: 2065277622263533521, guid: f569371d3755c314da9da8d423b6461e, type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5010888096400190762, guid: f569371d3755c314da9da8d423b6461e, type: 3}
       propertyPath: m_Name
       value: ImageBorder
@@ -470,6 +481,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: f3d537885d1e35d49b4a8efdd352a627, type: 3}
+    - target: {fileID: 7716558868604149013, guid: f569371d3755c314da9da8d423b6461e, type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -480,6 +495,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 116451815272087710, guid: f569371d3755c314da9da8d423b6461e, type: 3}
   m_PrefabInstance: {fileID: 837264133122906724}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6955869149205432177 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7716558868604149013, guid: f569371d3755c314da9da8d423b6461e, type: 3}
+  m_PrefabInstance: {fileID: 837264133122906724}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1228283804623817917
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -606,7 +632,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5010888096400190762, guid: f569371d3755c314da9da8d423b6461e, type: 3}
       propertyPath: m_Name
-      value: ImageBorder
+      value: Indicator
+      objectReference: {fileID: 0}
+    - target: {fileID: 5010888096400190762, guid: f569371d3755c314da9da8d423b6461e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5394141539908584709, guid: f569371d3755c314da9da8d423b6461e, type: 3}
+      propertyPath: m_Name
+      value: ImageIndicator
       objectReference: {fileID: 0}
     - target: {fileID: 7716558868604149013, guid: f569371d3755c314da9da8d423b6461e, type: 3}
       propertyPath: m_Type

@@ -4,50 +4,51 @@ namespace Project.Scripts
 {
     public class Metronome : MonoBehaviour
     {
-        public AudioSource tickSound; // Звук метронома
-        public int bpm = 120; // Начальный BPM
-        private float beatInterval; // Интервал между ударами в секундах
-        private float nextBeatTime; // Время следующего удара
+        [SerializeField] private AudioSource _audioSource;
+        [SerializeField] private int _bpm = 120;
+        
+        private float beatInterval;
+        private float nextBeatTime;
 
-        void Start()
+        private void OnEnable()
         {
             UpdateBeatInterval();
-            nextBeatTime = Time.time; // Инициализация времени следующего удара
+            nextBeatTime = Time.time;
         }
 
-        void Update()
+        private void OnDisable()
         {
-            // Проверяем текущее время на необходимость удара
+            nextBeatTime = default;
+        }
+
+        private void Update()
+        {
             if (Time.time >= nextBeatTime)
             {
                 PlayTick();
-                nextBeatTime += beatInterval; // Устанавливаем время следующего удара
-            }
-        }
-
-        private void PlayTick()
-        {
-            // Проигрываем звук удара
-            if (tickSound != null)
-            {
-                tickSound.Play();
+                nextBeatTime += beatInterval;
             }
         }
 
         public void SetBPM(int newBPM)
         {
-            // Обновляем BPM и пересчитываем интервал
-            bpm = Mathf.Clamp(newBPM, 30, 300); // Ограничиваем BPM от 30 до 300
+            _bpm = Mathf.Clamp(newBPM, 30, 300);
             UpdateBeatInterval();
 
-            // Корректируем время следующего удара, чтобы избежать рассинхронизации
             nextBeatTime = Time.time + beatInterval;
+        }
+
+        private void PlayTick()
+        {
+            if (_audioSource != null)
+            {
+                _audioSource.Play();
+            }
         }
 
         private void UpdateBeatInterval()
         {
-            // Пересчитываем интервал между ударами на основе нового BPM
-            beatInterval = 60f / bpm;
+            beatInterval = 60f / _bpm;
         }
     }
 }
