@@ -211,6 +211,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GradientView
       objectReference: {fileID: 0}
+    - target: {fileID: 8265852552969471356, guid: 36d01d5bde8be544bb47c5e52b9684a6, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: 629ea1d497ee48c4090632679f4ed5d5, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -358,11 +362,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4225159571560709001, guid: 5a4bb775bd9c6cd4ea4fb7575b172d0a, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 4225159571560709001, guid: 5a4bb775bd9c6cd4ea4fb7575b172d0a, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 4225159571560709001, guid: 5a4bb775bd9c6cd4ea4fb7575b172d0a, type: 3}
       propertyPath: m_AnchoredPosition.y

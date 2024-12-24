@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b68fe2de6a5c45069a20b92562b3247a, type: 3}
+  m_Name: DrumMachineConfig
+  m_EditorClassIdentifier: 
+  <ColorIndicatorDefault>k__BackingField: {r: 0.8313726, g: 0.91372555, b: 0.4156863, a: 1}
+  <ColorIndicatorActive>k__BackingField: {r: 1, g: 0, b: 0, a: 1}
+  <MetronomePrefab>k__BackingField: {fileID: 159117121069298664, guid: 2ed69eba685e2cc469bf7e34a332851d, type: 3}
+  _keyCodes:
+  - a
+  - d
+  - z
+  - s
+  - q
+  - w
+  - x
+  - c
+  <_keyCode1>k__BackingField: a
+  <_keyCode2>k__BackingField: d
+  <_keyCode3>k__BackingField: z
+  <_keyCode4>k__BackingField: s
+  <_keyCode5>k__BackingField: q
+  <_keyCode6>k__BackingField: w
+  <_keyCode7>k__BackingField: x
+  <_keyCode8>k__BackingField: c

@@ -14,7 +14,55 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GroupName: Default Local Group
   m_GUID: d53553b9432e42d4c940983b5dd14690
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 3c15895e029f42f4684ef9d5426c9497
+    m_Address: sample
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 504360e860c935d44895d5556446be73
+    m_Address: clap
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7923da94b3dd7af40a4d67be9a14e603
+    m_Address: perc1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9688629486743064ea5b48b15d7bb32a
+    m_Address: snare
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b4404e6d65c6c6a49afda066972c4ee7
+    m_Address: hat2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f460ddea0fd932540a5e30c852d93ba7
+    m_Address: kick1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f6d40ed731b7beb46bd690de4e9bdc00
+    m_Address: kick2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f79919d8fd93a094cb5337494e0c8e5d
+    m_Address: hat1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - preload
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 302c50e8503cf794f8c830ad33f8a904, type: 2}
   m_SchemaSet:

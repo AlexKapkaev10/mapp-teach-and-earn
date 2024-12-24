@@ -9,6 +9,7 @@ namespace Project.Scripts.Audio
     {
         event Action<int> Clicked;
         int Index { get; }
+        void SetIndex(int i);
         void PlayClip();
     }
     
@@ -19,29 +20,26 @@ namespace Project.Scripts.Audio
         [SerializeField] private Image _imageIndicator;
         [SerializeField] private AudioClip _clip;
         [SerializeField] private AudioSource _audioSource;
+        
         [SerializeField] private Color _colorIndicatorDefault;
-
-        [SerializeField] private KeyCode _keyCodePress;
         [SerializeField] private Color _colorPress = Color.cyan;
-        public event Action<int> Clicked;
 
+        public event Action<int> Clicked;
+        
         private void Awake()
         {
             _audioSource.clip = _clip;
         }
 
-        private void Update()
+        public void OnPointerDown(PointerEventData eventData)
         {
-            if (Input.GetKeyDown(_keyCodePress))
-            {
-                PlayClip();
-                SwitchColor(_colorPress);
-            }
+            PlayAndInvoke();
+            SwitchColor(_colorPress);
+        }
 
-            if (Input.GetKeyUp(_keyCodePress))
-            {
-                SwitchColor(_colorIndicatorDefault);
-            }
+        public void OnPointerUp(PointerEventData eventData)
+        {
+            SwitchColor(_colorIndicatorDefault);
         }
 
         public void PlayClip()
@@ -49,16 +47,15 @@ namespace Project.Scripts.Audio
             _audioSource.Play();
         }
 
-        public void OnPointerDown(PointerEventData eventData)
+        public void SetIndex(int i)
+        {
+            Index = i;
+        }
+
+        private void PlayAndInvoke()
         {
             Clicked?.Invoke(Index);
             PlayClip();
-            SwitchColor(_colorPress);
-        }
-
-        public void OnPointerUp(PointerEventData eventData)
-        {
-            SwitchColor(_colorIndicatorDefault);
         }
 
         private void SwitchColor(in Color color)

@@ -279,8 +279,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _canvasGroup: {fileID: 3848734138623421765}
-  _durationVisible: 0.2
-  _ignoreSetVisible: 0
+  _durationVisible: 0
+  _ignoreSetVisible: 1
   _buttonClaim: {fileID: 484163036881235789}
   _buttonBuy: {fileID: 8277788441829478379}
   _buttonUpgradeRandom: {fileID: 1535451089184107105}

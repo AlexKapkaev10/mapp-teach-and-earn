@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Gradient 2
+  m_Name: GradientRed
   m_Shader: {fileID: 4800000, guid: 783439c315659124ab0c578cce24b056, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -85,9 +85,9 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _BottomColor: {r: 0.27450982, g: 0.34117648, b: 0.47450984, a: 1}
+    - _BottomColor: {r: 0.2924528, g: 0.08244735, b: 0.04552332, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _TopColor: {r: 0.82745105, g: 0.8431373, b: 0.9058824, a: 1}
+    - _TopColor: {r: 0.9433962, g: 0.45834818, b: 0.45834818, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

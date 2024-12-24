@@ -137,7 +137,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4808cc05e5db4c918ab42db69f83da7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <ViewType>k__BackingField: 10
   _canvasGroup: {fileID: 2265196064039397180}
-  _durationVisible: 0.2
-  _ignoreSetVisible: 0
+  _durationVisible: 0
+  _ignoreSetVisible: 1
