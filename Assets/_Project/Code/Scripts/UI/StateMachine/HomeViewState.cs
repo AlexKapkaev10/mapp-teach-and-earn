@@ -13,10 +13,10 @@ namespace Project.Scripts.UI.StateMachine
     public class HomeViewState : IViewState
     {
         private readonly List<View> _views = new ();
-
-        private CancellationTokenSource _cts;
         private readonly ViewsStateMachineConfig _config;
         private readonly IFactory _factory;
+        
+        private CancellationTokenSource _cts;
 
         public HomeViewState(IFactory factory, ViewsStateMachineConfig config)
         {

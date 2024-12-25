@@ -17,8 +17,7 @@ namespace Project.Scripts.UI
             {
                 return;
             }
-
-            _canvasGroup.alpha = 0f;
+            
             SetEnable();
         }
 
@@ -32,6 +31,12 @@ namespace Project.Scripts.UI
 
         public virtual void SetDisable()
         {
+            if (_ignoreSetVisible)
+            {
+                Destroy(gameObject);
+                return;
+            }
+            
             _tweener = _canvasGroup.DOFade(0, _durationVisible)
                 .From(1f)
                 .SetEase(Ease.Linear)

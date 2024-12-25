@@ -27,6 +27,24 @@ MonoBehaviour:
     m_SerializedLabels:
     - preload
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 55242140bf48e4e42a32949573fc268a
+    m_Address: Gradient
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 629ea1d497ee48c4090632679f4ed5d5
+    m_Address: GradientDark
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6585b672c2ad72d4f8c7fe8aaba67364
+    m_Address: GradientRed
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - preload
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7923da94b3dd7af40a4d67be9a14e603
     m_Address: perc1
     m_ReadOnly: 0
@@ -41,6 +59,18 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b4404e6d65c6c6a49afda066972c4ee7
     m_Address: hat2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c4e0baa4f5249ce47b1428751d07ffaa
+    m_Address: lcdnormal SDF
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d0c787c7e282b2f419677602a19c9f9c
+    m_Address: GradientGrey
     m_ReadOnly: 0
     m_SerializedLabels:
     - preload

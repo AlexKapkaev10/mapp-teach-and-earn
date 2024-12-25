@@ -51,12 +51,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - preload
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 55242140bf48e4e42a32949573fc268a
-    m_Address: Gradient
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - default
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6f9e8adeea879104993aa9439b579784
     m_Address: icon-home
     m_ReadOnly: 0

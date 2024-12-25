@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using Project.Configs;
-using Project.Infrastructure.Extensions;
 using Project.Scripts.Audio;
 using UnityEngine;
 
@@ -15,13 +14,20 @@ namespace Project.Scripts.UI
         [SerializeField] private FuncItem _playItem;
         [SerializeField] private FuncItem _metronomeItem;
 
+        [SerializeField] private TimerItem _timerItem;
         [SerializeField] private GameObject _padsParent;
 
         private readonly List<ButtonPressData> _pressDataList = new ();
         private IDrumMachineItem[] _pads;
         private Coroutine _playCoroutine;
+        private Coroutine _timerCoroutine;
         private Metronome _metronome;
-        private float _startTime;
+        
+        private float _startRecTime;
+        private float _endRecTime;
+        
+        private float _elapsedTime;
+        
         private bool _isRecording;
         private bool _isMetronome;
         private bool _isPC;
@@ -41,18 +47,20 @@ namespace Project.Scripts.UI
 
         private void Update()
         {
-            if (_isPC)
+            if (!_isPC)
             {
-                for (int i = 0; i < _pads.Length; i++)
+                return;
+            }
+            
+            for (int i = 0; i < _pads.Length; i++)
+            {
+                if (Input.GetKeyDown(_config.GetKeyCode(i)))
                 {
-                    if (Input.GetKeyDown(_config.GetKeyCode(i)))
-                    {
-                        _pads[i].OnPointerDown(null);
-                    }
-                    if (Input.GetKeyUp(_config.GetKeyCode(i)))
-                    {
-                        _pads[i].OnPointerUp(null);
-                    }
+                    _pads[i].OnPointerDown(null);
+                }
+                if (Input.GetKeyUp(_config.GetKeyCode(i)))
+                {
+                    _pads[i].OnPointerUp(null);
                 }
             }
         }
@@ -98,6 +106,7 @@ namespace Project.Scripts.UI
             }
 
             _isRecording = true;
+            
             foreach (var pad in _pads)
             {
                 pad.Clicked += RegisterButtonPress;
@@ -108,29 +117,32 @@ namespace Project.Scripts.UI
                 StopPlaying();
             }
 
-            _recItem.SetColorIndicator(_config.ColorIndicatorActive);
             _pressDataList.Clear();
-            _startTime = Time.time;
-            this.Log("Recording started...");
+            _startRecTime = Time.time;
+            
+            _timerItem.SetHeader("rec");
+            _timerCoroutine = StartCoroutine(StartTimerAsync());
+            _recItem.SetColorIndicator(_config.ColorIndicatorActive);
         }
 
         private void StopRecording()
         {
-            if (!_isRecording)
-            {
-                this.LogWarning("Recording is not active. Nothing to stop.");
-                return;
-            }
-            
             foreach (var pad in _pads)
             {
                 pad.Clicked -= RegisterButtonPress;
             }
 
             _recItem.SetColorIndicator(_config.ColorIndicatorDefault);
-            float elapsedTime = Time.time - _startTime;
+            
             _isRecording = false;
-            this.Log($"Recording stopped. Total time: {elapsedTime}s");
+            
+            StopCoroutine(_timerCoroutine);
+            
+            _timerItem.SetRecCount(_pressDataList.Count > 0 ? "1" : "0");
+            _timerItem.SetHeader();
+            _timerItem.UpdateTimer();
+            
+            _endRecTime = Time.time - _startRecTime;
         }
 
         private void PlayRecordedSequence()
@@ -142,7 +154,6 @@ namespace Project.Scripts.UI
             
             if (_pressDataList.Count == 0)
             {
-                this.LogWarning("Can not play.");
                 return;
             }
 
@@ -151,10 +162,12 @@ namespace Project.Scripts.UI
                 StopPlaying();
                 return;
             }
-
+            
+            
+            _timerItem.SetHeader("play");
+            _timerCoroutine = StartCoroutine(StartTimerAsync());
             _playItem.SetColorIndicator(_config.ColorIndicatorActive);
-
-            this.Log("Playing recorded sequence...");
+            
             _playCoroutine = StartCoroutine(PlaySequence());
         }
 
@@ -162,19 +175,20 @@ namespace Project.Scripts.UI
         {
             if (!_isRecording)
             {
-                this.LogWarning("Recording is not active. Button press ignored.");
                 return;
             }
 
-            float currentTime = Time.time - _startTime;
+            float currentTime = Time.time - _startRecTime;
             _pressDataList.Add(new ButtonPressData(buttonIndex, currentTime));
-            this.Log($"Button {buttonIndex} pressed at {currentTime}s");
         }
 
         private void StopPlaying()
         {
             _playItem.SetColorIndicator(_config.ColorIndicatorDefault);
             StopCoroutine(_playCoroutine);
+            StopCoroutine(_timerCoroutine);
+            _timerItem.SetHeader();
+            _timerItem.UpdateTimer();
             _playCoroutine = null;
         }
 
@@ -190,22 +204,46 @@ namespace Project.Scripts.UI
             }
         }
 
+        private void UpdateTimerText()
+        {
+            int minutes = Mathf.FloorToInt(_elapsedTime / 60);
+            int seconds = Mathf.FloorToInt(_elapsedTime % 60);
+            
+            _timerItem.UpdateTimer($"{minutes:00}:{seconds:00}");
+        }
+
+        private IEnumerator StartTimerAsync()
+        {
+            _elapsedTime = 0;
+            
+            while (true)
+            {
+                _elapsedTime += Time.deltaTime;
+                UpdateTimerText();
+                yield return null;
+            }
+        }
+
         private IEnumerator PlaySequence()
         {
             float playbackStartTime = Time.time;
 
+            var waitAfter = _endRecTime - _pressDataList[^1].Time;
+
             foreach (var press in _pressDataList)
             {
                 float delay = press.Time - (Time.time - playbackStartTime);
-                
+
                 if (delay > 0)
                 {
                     yield return new WaitForSeconds(delay);
                 }
-                
+
                 PlayButtonSound(press.ButtonIndex);
             }
 
+            yield return new WaitForSeconds(waitAfter);
+            
             StopPlaying();
         }
     }
