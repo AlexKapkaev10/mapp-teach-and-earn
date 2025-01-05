@@ -27,12 +27,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - preload
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 167b41a6fbfcfcc4f8f5179ae65f9046
-    m_Address: GameSpriteAtlas
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - preload
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3018785682765f446a357fc1a70ec9d0
     m_Address: icon-coin
     m_ReadOnly: 0

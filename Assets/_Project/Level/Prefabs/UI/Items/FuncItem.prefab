@@ -105,6 +105,14 @@ PrefabInstance:
       value: Project.Scripts.Audio.DrumMachineController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3627109746276565265, guid: 10cbd099157cd314996d146e295bba60, type: 3}
+      propertyPath: m_Maskable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3627109746276565265, guid: 10cbd099157cd314996d146e295bba60, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3627109746276565265, guid: 10cbd099157cd314996d146e295bba60, type: 3}
       propertyPath: m_PixelsPerUnitMultiplier
       value: 5
       objectReference: {fileID: 0}
@@ -125,9 +133,17 @@ PrefabInstance:
       value: 0.5660378
       objectReference: {fileID: 0}
     - target: {fileID: 5037834180570026965, guid: 10cbd099157cd314996d146e295bba60, type: 3}
+      propertyPath: m_Maskable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5037834180570026965, guid: 10cbd099157cd314996d146e295bba60, type: 3}
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 2100000, guid: 6585b672c2ad72d4f8c7fe8aaba67364, type: 2}
+    - target: {fileID: 5037834180570026965, guid: 10cbd099157cd314996d146e295bba60, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5037834180570026965, guid: 10cbd099157cd314996d146e295bba60, type: 3}
       propertyPath: m_PixelsPerUnitMultiplier
       value: 5
@@ -138,12 +154,25 @@ PrefabInstance:
 
 '
       objectReference: {fileID: 0}
+    - target: {fileID: 6769584421869213497, guid: 10cbd099157cd314996d146e295bba60, type: 3}
+      propertyPath: m_Maskable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6769584421869213497, guid: 10cbd099157cd314996d146e295bba60, type: 3}
+      propertyPath: m_isRichText
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6769584421869213497, guid: 10cbd099157cd314996d146e295bba60, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7694825844775663151, guid: 10cbd099157cd314996d146e295bba60, type: 3}
       propertyPath: m_Name
       value: FuncItem
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8244833095501103975, guid: 10cbd099157cd314996d146e295bba60, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 1764209126695533751, guid: 10cbd099157cd314996d146e295bba60, type: 3}
       insertIndex: -1
@@ -308,6 +337,14 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2065277622263533521, guid: f569371d3755c314da9da8d423b6461e, type: 3}
+      propertyPath: m_Maskable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2065277622263533521, guid: f569371d3755c314da9da8d423b6461e, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2175456036868897481, guid: f569371d3755c314da9da8d423b6461e, type: 3}
       propertyPath: m_SizeDelta.x
       value: -4
@@ -351,6 +388,14 @@ PrefabInstance:
     - target: {fileID: 7716558868604149013, guid: f569371d3755c314da9da8d423b6461e, type: 3}
       propertyPath: m_Color.r
       value: 0.83218694
+      objectReference: {fileID: 0}
+    - target: {fileID: 7716558868604149013, guid: f569371d3755c314da9da8d423b6461e, type: 3}
+      propertyPath: m_Maskable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7716558868604149013, guid: f569371d3755c314da9da8d423b6461e, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
