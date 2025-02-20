@@ -26,6 +26,11 @@ MonoBehaviour:
     m_SerializedLabels:
     - mainView
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 85ab510a4d743e4438e308d688cacefc
+    m_Address: QuestView
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d3750ab1e6767fb40a7248a6f5fad9eb
     m_Address: SwitchViewMenu
     m_ReadOnly: 0

@@ -10,6 +10,7 @@ namespace Project.Scripts.UI
         [field: SerializeField] public bool IsCheckFps { get; private set; } = true;
         [field: SerializeField] public AssetReference MainViewReference { get; private set; }
         [field: SerializeField] public AssetReference ActivityViewReference { get; private set; }
+        [field: SerializeField] public AssetReference QuestViewReference { get; private set; }
         [field: SerializeField] public AssetReference InfoViewReference { get; private set; }
         [field: SerializeField] public AssetReference SwitchViewReference { get; private set; }
         [field: SerializeField] public AssetReference DramMachineViewReference { get; private set; }

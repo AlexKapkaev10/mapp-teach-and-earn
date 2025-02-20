@@ -22,11 +22,8 @@ namespace Project.Scripts.Mining
         
         private readonly IMainModel _model;
         private readonly ITransactionHandler _transactionHandler;
-        private IMainView _view;
         private readonly IBank _bank;
-
-        private const string k_onSuccess = "Success";
-        private const string k_onError = "Error";
+        private IMainView _view;
         
         public bool CanClaim { get; private set; } = true;
 
@@ -48,12 +45,12 @@ namespace Project.Scripts.Mining
             _transactionHandler.TransactionSend += OnTransactionSend;
             
             _view = view;
-            _view.UpdateScore($"{_bank.GetPoints():F} POI");
+            _view.UpdateScore($"{_bank.GetPoints():F} {_config.POI}");
         }
 
         private void OnTransactionSend(string message)
         {
-            var isSuccess = message == k_onSuccess;
+            var isSuccess = message == _config.Success;
             
             if (isSuccess)
             {
@@ -71,8 +68,8 @@ namespace Project.Scripts.Mining
 
         private void OnClaim(bool isSuccess, float claimPoints)
         {
-            _view.UpdateScore($"{_bank.GetPoints():F} POI");
-            _view.UpdateLog($"Claimed {claimPoints:F} poi", true);
+            _view.UpdateScore($"{_bank.GetPoints():F} {_config.POI}");
+            _view.UpdateLog($"Claimed {claimPoints:F} {_config.POI}", true);
             
             CanClaim = false;
         }

@@ -54,6 +54,10 @@ MonoBehaviour:
     m_Localized: Pads
     m_Metadata:
       m_Items: []
+  - m_Id: 32277681552650240
+    m_Localized: Video
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

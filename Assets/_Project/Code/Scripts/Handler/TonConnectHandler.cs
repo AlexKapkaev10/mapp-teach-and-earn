@@ -6,12 +6,14 @@ namespace Project.Scripts
     public interface ITransactionHandler
     {
         event Action<string> TransactionSend;
+        event Action<string, bool> WalletConnect;
         void OnSend(string message);
     }
     
     public class TonConnectHandler : MonoBehaviour, ITransactionHandler
     {
         public event Action<string> TransactionSend;
+        public event Action<string, bool> WalletConnect;
 
         private void OnDestroy()
         {
@@ -25,7 +27,12 @@ namespace Project.Scripts
 
         public void OnWalletConnected(string jsonMassage)
         {
-            Debug.Log(jsonMassage);
+            WalletConnect?.Invoke(jsonMassage, true);
+        }
+        
+        public void OnWalletDisconnected()
+        {
+            WalletConnect?.Invoke(null, false);
         }
     }
 }

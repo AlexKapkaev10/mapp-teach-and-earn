@@ -36,6 +36,12 @@ MonoBehaviour:
     m_SubObjectGUID: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
+  <QuestViewReference>k__BackingField:
+    m_AssetGUID: 85ab510a4d743e4438e308d688cacefc
+    m_SubObjectName: 
+    m_SubObjectGUID: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   <InfoViewReference>k__BackingField:
     m_AssetGUID: f23662942009b694ea1286a07b7eff2b
     m_SubObjectName: 

@@ -51,8 +51,20 @@ MonoBehaviour:
     m_SerializedLabels:
     - preload
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 803bb813295c3bc4cb0d4368051b87cf
+    m_Address: icon-video
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - preload
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9688629486743064ea5b48b15d7bb32a
     m_Address: snare
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - preload
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ae33de7781b49ca4888eda887b47b4e1
+    m_Address: RTVideoPlayer
     m_ReadOnly: 0
     m_SerializedLabels:
     - preload

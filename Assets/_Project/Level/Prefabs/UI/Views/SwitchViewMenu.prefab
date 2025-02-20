@@ -999,6 +999,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1164337130349280798, guid: b546b0e0b699fff48ab3dcc81606128d, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1164337130349280798, guid: b546b0e0b699fff48ab3dcc81606128d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1698864710591046845, guid: b546b0e0b699fff48ab3dcc81606128d, type: 3}
       propertyPath: m_Maskable
       value: 0
@@ -1009,7 +1017,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4472091687874587390, guid: b546b0e0b699fff48ab3dcc81606128d, type: 3}
       propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
-      value: 1811403000147968
+      value: 32277681552650240
       objectReference: {fileID: 0}
     - target: {fileID: 4472091687874587390, guid: b546b0e0b699fff48ab3dcc81606128d, type: 3}
       propertyPath: m_StringReference.m_TableReference.m_TableCollectionName
@@ -1022,7 +1030,19 @@ PrefabInstance:
     - target: {fileID: 6565112994891512554, guid: b546b0e0b699fff48ab3dcc81606128d, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 988540917f4f5b34caa324f68c7f3e07, type: 3}
+      objectReference: {fileID: 21300000, guid: 803bb813295c3bc4cb0d4368051b87cf, type: 3}
+    - target: {fileID: 6565112994891512554, guid: b546b0e0b699fff48ab3dcc81606128d, type: 3}
+      propertyPath: m_Color.b
+      value: 0.07075471
+      objectReference: {fileID: 0}
+    - target: {fileID: 6565112994891512554, guid: b546b0e0b699fff48ab3dcc81606128d, type: 3}
+      propertyPath: m_Color.g
+      value: 0.07075471
+      objectReference: {fileID: 0}
+    - target: {fileID: 6565112994891512554, guid: b546b0e0b699fff48ab3dcc81606128d, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6565112994891512554, guid: b546b0e0b699fff48ab3dcc81606128d, type: 3}
       propertyPath: m_Maskable
       value: 0
@@ -1037,7 +1057,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8642256983833379549, guid: b546b0e0b699fff48ab3dcc81606128d, type: 3}
       propertyPath: m_text
-      value: Tasks
+      value: Video
       objectReference: {fileID: 0}
     - target: {fileID: 8642256983833379549, guid: b546b0e0b699fff48ab3dcc81606128d, type: 3}
       propertyPath: m_Maskable

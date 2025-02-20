@@ -51,6 +51,10 @@ MonoBehaviour:
     m_Key: _pads
     m_Metadata:
       m_Items: []
+  - m_Id: 32277681552650240
+    m_Key: _video
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
