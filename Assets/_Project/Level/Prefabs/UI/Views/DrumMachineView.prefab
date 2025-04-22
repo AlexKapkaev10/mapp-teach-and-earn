@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.39607844, g: 0.39607844, b: 0.39607844, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -150,7 +150,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 100.22}
-  m_SizeDelta: {x: 10, y: -200.45}
+  m_SizeDelta: {x: 5, y: -200.45}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &78953850718947415
 CanvasRenderer:
@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.39607844, g: 0.39607844, b: 0.39607844, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 0
@@ -248,7 +248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 629ea1d497ee48c4090632679f4ed5d5, type: 2}
-  m_Color: {r: 0.25882354, g: 0.2901961, b: 0.36078432, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -478,7 +478,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 100}
-  m_SizeDelta: {x: 10, y: -200}
+  m_SizeDelta: {x: 5, y: -200}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &3149662977838928136
 CanvasRenderer:
@@ -501,7 +501,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.39607844, g: 0.39607844, b: 0.39607844, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 0
@@ -607,9 +607,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4834901457936604406, guid: 2435c4fad31c77a48b48f5de55ebd61e, type: 3}
+      propertyPath: m_Color.b
+      value: 0.3063813
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834901457936604406, guid: 2435c4fad31c77a48b48f5de55ebd61e, type: 3}
+      propertyPath: m_Color.g
+      value: 0.38047555
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834901457936604406, guid: 2435c4fad31c77a48b48f5de55ebd61e, type: 3}
+      propertyPath: m_Color.r
+      value: 0.8018868
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834901457936604406, guid: 2435c4fad31c77a48b48f5de55ebd61e, type: 3}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 2100000, guid: d0c787c7e282b2f419677602a19c9f9c, type: 2}
+      objectReference: {fileID: 2100000, guid: 6585b672c2ad72d4f8c7fe8aaba67364, type: 2}
     - target: {fileID: 6557974528896440346, guid: 2435c4fad31c77a48b48f5de55ebd61e, type: 3}
       propertyPath: m_text
       value: Play
@@ -726,6 +738,18 @@ PrefabInstance:
     - target: {fileID: 2200928597875012500, guid: 2435c4fad31c77a48b48f5de55ebd61e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834901457936604406, guid: 2435c4fad31c77a48b48f5de55ebd61e, type: 3}
+      propertyPath: m_Color.b
+      value: 0.3063813
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834901457936604406, guid: 2435c4fad31c77a48b48f5de55ebd61e, type: 3}
+      propertyPath: m_Color.g
+      value: 0.38047555
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834901457936604406, guid: 2435c4fad31c77a48b48f5de55ebd61e, type: 3}
+      propertyPath: m_Color.r
+      value: 0.8018868
       objectReference: {fileID: 0}
     - target: {fileID: 7798402126811494668, guid: 2435c4fad31c77a48b48f5de55ebd61e, type: 3}
       propertyPath: m_Name
@@ -1437,9 +1461,21 @@ PrefabInstance:
       value: -15
       objectReference: {fileID: 0}
     - target: {fileID: 4834901457936604406, guid: 2435c4fad31c77a48b48f5de55ebd61e, type: 3}
+      propertyPath: m_Color.b
+      value: 0.3063813
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834901457936604406, guid: 2435c4fad31c77a48b48f5de55ebd61e, type: 3}
+      propertyPath: m_Color.g
+      value: 0.38047555
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834901457936604406, guid: 2435c4fad31c77a48b48f5de55ebd61e, type: 3}
+      propertyPath: m_Color.r
+      value: 0.8018868
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834901457936604406, guid: 2435c4fad31c77a48b48f5de55ebd61e, type: 3}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 2100000, guid: d0c787c7e282b2f419677602a19c9f9c, type: 2}
+      objectReference: {fileID: 2100000, guid: 6585b672c2ad72d4f8c7fe8aaba67364, type: 2}
     - target: {fileID: 6557974528896440346, guid: 2435c4fad31c77a48b48f5de55ebd61e, type: 3}
       propertyPath: m_text
       value: Metronome

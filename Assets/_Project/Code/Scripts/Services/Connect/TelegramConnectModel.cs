@@ -1,13 +1,13 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Text;
-using System.Threading.Tasks;
 using JetBrains.Annotations;
 using Project.Infrastructure.Extensions;
 using Project.Scripts.API;
 using Project.Scripts.Loader;
 using UnityEngine;
 using UnityEngine.Networking;
+using Cysharp.Threading.Tasks;
 
 namespace Project.Scripts.Connect
 {
@@ -129,9 +129,16 @@ namespace Project.Scripts.Connect
 
         public async void OnInitDataResponse(string initData)
         {
-            var response = await SendInitDataAsync(initData);
-            Debug.Log(response);
-            _loaderService.StartLoadResources();
+            try
+            {
+                var response = await SendInitDataAsync(initData);
+                Debug.Log(response);
+                _loaderService.StartLoadResources();
+            }
+            catch (Exception e)
+            {
+                this.Log(e.Message);
+            }
         }
 
         public void DisconnectWallet()
@@ -142,9 +149,30 @@ namespace Project.Scripts.Connect
             this.Log("Editor Disconnect Wallet");
 #endif
         }
+        
+        public async UniTask<bool> ValidateInitDataAsync(string initData)
+        {
+            string encodedInitData = Uri.EscapeDataString(initData);
+            string url = $"https://api.telegram.org/bot{_config.BotToken}/validateWebAppInitData?initData={encodedInitData}";
 
-        [ItemCanBeNull]
-        private async Task<string> SendInitDataAsync(string initData)
+            using (UnityWebRequest request = UnityWebRequest.Get(url))
+            {
+                await request.SendWebRequest().ToUniTask();
+
+                if (request.result == UnityWebRequest.Result.Success)
+                {
+                    Debug.Log("InitData is valid: " + request.downloadHandler.text);
+                    return true;
+                }
+                else
+                {
+                    Debug.LogError("Validation failed: " + request.error);
+                    return false;
+                }
+            }
+        }
+        
+        private async UniTask<string> SendInitDataAsync(string initData)
         {
             byte[] bodyRaw = Encoding.UTF8.GetBytes($"{{\"{_config.DataKey}\": \"{initData}\"}}");
             

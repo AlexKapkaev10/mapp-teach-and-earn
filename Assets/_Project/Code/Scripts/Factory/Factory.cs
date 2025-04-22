@@ -7,8 +7,6 @@ namespace Project.Scripts.Services
 {
     public interface IFactory
     {
-        IObjectResolver Resolver { get; }
-
         T GetView<T>(in T component, in Transform parent = null) 
             where T : View;
     }

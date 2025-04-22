@@ -1,0 +1,7 @@
+{
+  "name": "Drum Machine App",
+  "description": "boom-bap",
+  "url": "https://storage.yandexcloud.net/drum-machine-app",
+  "bridge": "https://bridge.tonconnect.org",
+  "iconUrl": "https://storage.yandexcloud.net/drum-machine-app/icon.png"
+}
