@@ -1,7 +1,7 @@
 {
-  "name": "MyApp",
-  "description": "Приложение для интеграции TON кошелька",
-  "url": "https://0nmoaqxwtn.loclx.io",
+  "name": "Drum Machine App",
+  "description": "boom-bap",
+  "url": "https://storage.yandexcloud.net/drum-machine-app",
   "bridge": "https://bridge.tonconnect.org",
-  "iconUrl": "https://0nmoaqxwtn.loclx.io/icon.png"
+  "iconUrl": "https://storage.yandexcloud.net/drum-machine-app/icon.png"
 }

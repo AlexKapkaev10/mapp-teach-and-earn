@@ -11,5 +11,6 @@ namespace Project.Scripts.Connect
         [field: SerializeField] public string DataKey { get; private set; } = "initData";
         [field: SerializeField] public string ContentTypeKey { get; private set; } = "Content-Type";
         [field: SerializeField] public string ApplicationKey { get; private set; } = "application/json";
+        [field: SerializeField] public string BotToken { get; private set; } = "7150310782:AAFehNVXrgtayDbLgm75sdXG1vdpwX5dWvo";
     }
 }

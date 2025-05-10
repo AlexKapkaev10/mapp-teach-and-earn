@@ -21,7 +21,7 @@ namespace Project.Scripts.API
         private CancellationTokenSource _cts = new ();
         private IBank _bank;
 
-        private const string _url = "https://jsonplaceholder.typicode.com/posts";
+        private const string URL = "https://jsonplaceholder.typicode.com/posts";
 
         [Inject]
         private void Construct(IBank bank)
@@ -34,7 +34,7 @@ namespace Project.Scripts.API
             try
             {
                 var token = _cts.Token;
-                var claimPoints = await ClaimPointsAsync(_url, token);
+                var claimPoints = await ClaimPointsAsync(URL, token);
                 
                 if (token.IsCancellationRequested)
                 {
