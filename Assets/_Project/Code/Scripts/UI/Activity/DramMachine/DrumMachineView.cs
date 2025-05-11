@@ -12,7 +12,6 @@ namespace Project.Scripts.UI
         
         [SerializeField] private FuncItem _recItem;
         [SerializeField] private FuncItem _playItem;
-        [SerializeField] private FuncItem _metronomeItem;
 
         [SerializeField] private TimerItem _timerItem;
         [SerializeField] private GameObject _padsParent;
@@ -69,23 +68,17 @@ namespace Project.Scripts.UI
         {
             _recItem.Button.onClick.AddListener(StartRecording);
             _playItem.Button.onClick.AddListener(PlayRecordedSequence);
-            _metronomeItem.Button.onClick.AddListener(SetMetronome);
         }
 
         private void OnDisable()
         {
             _recItem.Button.onClick.RemoveListener(StartRecording);
             _playItem.Button.onClick.RemoveListener(PlayRecordedSequence);
-            _metronomeItem.Button.onClick.RemoveListener(SetMetronome);
         }
 
         private void SetMetronome()
         {
             _isMetronome = !_isMetronome;
-
-            _metronomeItem.SetColorIndicator(_isMetronome
-                ? _config.ColorIndicatorActive
-                : _config.ColorIndicatorDefault);
 
             if (_isMetronome)
             {

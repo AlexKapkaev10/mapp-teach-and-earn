@@ -28,6 +28,7 @@ namespace Project.Scripts.UI.StateMachine
             _cts = new CancellationTokenSource();
 
             await LoadViewAsync(_config.ActivityViewReference, _cts.Token);
+            await LoadViewAsync(_config.InfoViewReference, _cts.Token);
         }
 
         public void Exit()
